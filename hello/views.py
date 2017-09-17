@@ -49,5 +49,5 @@ def test(request):
                 continue
             strhtml += '<img src"' + url + '"/><br>'
 
-    return HttpResponse('strhtml')
+    return HttpResponse(strhtml)
 
