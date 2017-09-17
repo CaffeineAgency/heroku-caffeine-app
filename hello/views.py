@@ -38,7 +38,6 @@ def test(request):
             if attachment["type"] != "photo":
                 continue
             photo = attachment["photo"]
-            url = ""
             if ("photo_1280" in photo):
                 url = photo["photo_1280"]
             elif ("photo_807" in photo):
@@ -47,7 +46,7 @@ def test(request):
                 url = photo["photo_604"]
             else:
                 continue
-            strhtml += '<img src"' + url + '"/><br>'
+            strhtml += '<img src"' + url.replace(' ', '/') + '"/><br>'
 
     return HttpResponse(strhtml)
 
