@@ -20,5 +20,6 @@ def db(request):
 
 
 def test(request):
-     return HttpResponse('TEST<b>BOLD</b><br>TEST')
+    import vk_api
+    return HttpResponse('TEST<b>BOLD</b><br>TEST')
 
