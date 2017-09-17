@@ -20,5 +20,5 @@ def db(request):
 
 
 def test(request):
-     return HttpResponse('')
+     return HttpResponse('TEST<b>BOLD</b><br>TEST')
 
