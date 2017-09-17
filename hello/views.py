@@ -46,7 +46,7 @@ def test(request):
                 url = photo["photo_604"]
             else:
                 continue
-            strhtml += '<img src"' + url.replace(' ', '/') + '"/><br>'
+            strhtml += '<img src="' + url.replace(' ', '/') + '"/><br>'
 
     return HttpResponse(strhtml)
 
