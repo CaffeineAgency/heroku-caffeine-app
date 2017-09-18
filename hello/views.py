@@ -20,7 +20,8 @@ def db(request):
 
 
 def test(request):
-    return HttpResponse(request.GET.get('test'))
+    import init.requestWorkers as rw
+    return HttpResponse(rw.getGet(request, "negor"))
     """
     import vk_api
     client_id = '5882810'
