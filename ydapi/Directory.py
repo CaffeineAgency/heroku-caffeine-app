@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from src.File import File
+from ydapi.File import File
 
 
 class Directory():

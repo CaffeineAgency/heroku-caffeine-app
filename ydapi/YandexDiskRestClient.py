@@ -2,11 +2,11 @@
 
 import requests
 
-from src.Directory import Directory
+from ydapi.Directory import Directory
 
-from src.Disk import Disk
-from src.File import File
-from src.YandexDiskException import YandexDiskException
+from ydapi.Disk import Disk
+from ydapi.File import File
+from ydapi.YandexDiskException import YandexDiskException
 
 
 class YandexDiskRestClient:
