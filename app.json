@@ -1,0 +1,15 @@
+{
+  "name": "Caffeine App. Powered by Heroku",
+  "description": "Nuark Noir's CAH.",
+  "image": "heroku/python",
+  "repository": "",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ],
+  "environments": {
+    "test": {
+      "scripts": {
+
+      }
+    }
+  }
+}
