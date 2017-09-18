@@ -11,7 +11,7 @@ def test(request):
     from ydapi.YandexDiskRestClient import YandexDiskRestClient
     from ydapi.YandexDiskException import YandexDiskException
 
-    api = YandexDiskRestClient("47d8dbf144ce417e8eaa543d94d5f193")
+    api = YandexDiskRestClient("AQAAAAAMTrBzAARbbEhJbcQgn0dDg-Nag1ykG7o")
     try:
         disk = api.get_disk_metadata()
         rsp = "total space of disk = " + str(disk.total_space)
