@@ -22,22 +22,11 @@ def db(request):
 def test(request):
     import init.requestWorkers as rw
     import vk_api
-    appid = '5882810'
-    client_sec = 'umeTZX5ykJVPyNsQSlzf'
-    perm = "messages,friends,audio,offline,groups,wall"
-
-    #vk_session = vk_api.VkApi(token="e5fe3e55c448969c1bb62a51429b409863d46199f346401508e01efae41fcaf4bc52be0aded49cf736fd3")
-    email = rw.getGet(request, "e")
-    password = rw.getGet(request, "p")
-    vk_session = vk_api.VkApi(email, password, scope=perm, app_id=appid, client_secret=client_sec)
+    vk_session = vk_api.VkApi(token="ed12702994b221ed2cef5e4dfacaf4106a47285a41b5f9605f8f54930e82e1ea578bd62549b795e588fa7")
     vk_session.authorization()
     api = vk_session.get_api()
     tools = vk_api.VkTools(vk_session)
-    cu = api.account.getProfileInfo()
-    return HttpResponse(str(cu['first_name']) + str(vk_session.token['access_token']))
-    """
-    vk_session.authorization()
-    tools = vk_api.VkTools(vk_session)
+
     owner = '148147627'
     items = tools.get_all('wall.get', 100, {'owner_id': int("-" + owner)})["items"]
     strhtml = ''
@@ -62,5 +51,4 @@ def test(request):
             strhtml += '<img src="' + url.replace(' ', '/') + '"/><br>'
 
     return HttpResponse(strhtml)
-    """
 
