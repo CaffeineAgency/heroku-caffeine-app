@@ -31,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/hello/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+              <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -42,8 +42,8 @@
       <file leaf-file-name="YandexDiskRestClient.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ydapi/YandexDiskRestClient.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="210" column="50" lean-forward="false" selection-start-line="210" selection-start-column="50" selection-end-line="210" selection-end-column="50" />
+            <state relative-caret-position="260">
+              <caret line="214" column="42" lean-forward="false" selection-start-line="214" selection-start-column="8" selection-end-line="214" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -691,8 +691,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ydapi/YandexDiskRestClient.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="210" column="50" lean-forward="false" selection-start-line="210" selection-start-column="50" selection-end-line="210" selection-end-column="50" />
+        <state relative-caret-position="260">
+          <caret line="214" column="42" lean-forward="false" selection-start-line="214" selection-start-column="8" selection-end-line="214" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -700,7 +700,7 @@
     <entry file="file://$PROJECT_DIR$/hello/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
