@@ -14,8 +14,8 @@ def test(request):
     api = YandexDiskRestClient("AQAAAAAMTrBzAARbbEhJbcQgn0dDg-Nag1ykG7o")
     try:
         url = rw.getGet(request, "iu")
-        path = "/Herokuer/" + rw.getGet(request, "nm")
-        api.create_folder("/Herokuer")
+        path = "\Herokuer\\" + rw.getGet(request, "nm")
+        api.create_folder("\Herokuer")
         api.upload_file_from_url(from_url=url, path_to=path)
         return HttpResponse("Uploading...")
     except YandexDiskException as exp:
