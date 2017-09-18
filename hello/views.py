@@ -21,15 +21,16 @@ def db(request):
 
 def test(request):
     import init.requestWorkers as rw
-    return HttpResponse(rw.getGet(request, "negor"))
-    """
     import vk_api
-    client_id = '5882810'
+    client_id = 'appid'
     client_sec = 'umeTZX5ykJVPyNsQSlzf'
     vk_session = vk_api.VkApi(token="e5fe3e55c448969c1bb62a51429b409863d46199f346401508e01efae41fcaf4bc52be0aded49cf736fd3")
     perm = "messages,friends,audio,offline,groups,wall"
-    vk_session = vk_api.VkApi(email, password, auth_handler=two_factor_handler)
-    "_""
+    email = rw.getGet(request, "e")
+    password = rw.getGet(request, "p")
+    vk_session = vk_api.VkApi(email, password, scope=perm, app_id=appid, client_secret=client_sec)
+    return HttpResponse(vk_session.token)
+    """
     vk_session.authorization()
     tools = vk_api.VkTools(vk_session)
     owner = '148147627'
