@@ -13,7 +13,7 @@ def test(request):
 
     api = YandexDiskRestClient("AQAAAAAMTrBzAARbbEhJbcQgn0dDg-Nag1ykG7o")
     try:
-        disk = api.upload_file_from_url(from_url="http://v2.svekolnik.com/download.php?path=/p38389/p38389_720p.mp4", path_to="/dwn")
+        disk = api.upload_file_from_url(from_url="http://v2.svekolnik.com/download.php?path=/p38389/p38389_720p.mp4", path_to="/Загрузки")
         return HttpResponse(disk)
     except YandexDiskException as exp:
         return HttpResponse(exp)
