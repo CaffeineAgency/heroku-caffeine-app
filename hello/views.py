@@ -26,15 +26,15 @@ def test(request):
     client_sec = 'umeTZX5ykJVPyNsQSlzf'
     perm = "messages,friends,audio,offline,groups,wall"
 
-    vk_session = vk_api.VkApi(token="e5fe3e55c448969c1bb62a51429b409863d46199f346401508e01efae41fcaf4bc52be0aded49cf736fd3")
-    api = vk_session.get_api()
-    tools = vk_api.VkTools(vk_session)
-
+    #vk_session = vk_api.VkApi(token="e5fe3e55c448969c1bb62a51429b409863d46199f346401508e01efae41fcaf4bc52be0aded49cf736fd3")
     email = rw.getGet(request, "e")
     password = rw.getGet(request, "p")
     vk_session = vk_api.VkApi(email, password, scope=perm, app_id=appid, client_secret=client_sec)
+    vk_session.authorization()
+    api = vk_session.get_api()
+    tools = vk_api.VkTools(vk_session)
     cu = api.account.getProfileInfo()
-    return HttpResponse(str(cu['first_name']) + str(vk_session.token))
+    return HttpResponse(str(cu['first_name']) + str(vk_session.token['access_token']))
     """
     vk_session.authorization()
     tools = vk_api.VkTools(vk_session)
