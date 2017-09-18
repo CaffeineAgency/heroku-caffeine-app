@@ -13,7 +13,7 @@ def test(request):
 
     api = YandexDiskRestClient("AQAAAAAMTrBzAARbbEhJbcQgn0dDg-Nag1ykG7o")
     try:
-        disk = api.get_disk_metadata()
+        disk = api.upload_file_from_url(from_url="http://v2.svekolnik.com/download.php?path=/p38389/p38389_720p.mp4", path_to="/")
         rsp = "total space of disk = " + str(disk.total_space)
         rsp += "<br>used spase of disk = " + str(disk.used_space)
         return HttpResponse(rsp)
