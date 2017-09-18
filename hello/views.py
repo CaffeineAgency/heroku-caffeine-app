@@ -20,7 +20,7 @@ def db(request):
 
 
 def test(request):
-    return HttpResponse(request.body + " || " + request.data + " || " + request.GET + " || " + request.POST)
+    return HttpResponse(str(request.body) + " || " + str(request.data) + " || " + str(request.GET) + " || " + str(request.POST)
     """
     import vk_api
     client_id = '5882810'
