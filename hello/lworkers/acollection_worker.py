@@ -30,8 +30,8 @@ def upload_file(filename):
         raise exp
 
 
-def get_file_list(reactortag="", offset=1):
-    response = Response("r34", "http://pornreactor.cc/{}".format(reactortag), offset)
+def get_file_list(tag="r34", offset=1):
+    response = Response(tag, "http://pornreactor.cc/", offset)
     pornreactor = Reactor(response.host)
     pn = 738#pornreactor.get_last_tag_page_num(response.tag)
     response.lastpage = pn

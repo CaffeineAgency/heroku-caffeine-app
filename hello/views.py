@@ -16,7 +16,7 @@ def acollection(request):
         response = upload_file(filename)
         return HttpResponse(response)
         '''
-        ss = get_file_list("tag/Newhalf")
+        ss = get_file_list("Newhalf")
         return HttpResponse(ss)
     except YandexDiskException as ex:
         return HttpResponse(ex)
