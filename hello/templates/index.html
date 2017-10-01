@@ -13,7 +13,24 @@
 </div>
 <div class="container">
     <div class="alert alert-info text-center" role="alert">
-        MAIN PAGE
+        <script type="application/javascript">
+            $(document).ready(function() {
+                $('form').submit(function(event) {
+                    console.log("sending request");
+                    var formData = {};
+                    $.ajax({
+                        type        : 'GET',
+                        url         : '/acollection',
+                        data        : formData,
+                        encode      : true
+                    }).done(function(data) { console.log(data); });
+                    event.preventDefault();
+                });
+            });
+        </script>
+        <form action="/acollection" method="GET">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
     </div>
     <hr>
     <div class="alert alert-info text-center" role="alert">
