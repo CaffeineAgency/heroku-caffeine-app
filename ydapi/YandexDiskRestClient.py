@@ -200,6 +200,30 @@ class YandexDiskRestClient:
             r2 = requests.put(upload_link, headers=self.base_headers, files=files)
             self._check_code(r2)
 
+    def upload_file_and_remove(self, path_from, path_to):
+        """
+        Upload file
+        :param path_from: path from
+        :param path_to: path to yandex disk
+        """
+        url = self._base_url + "/resources/upload"
+
+        payload = {'path': path_to}
+        r = requests.get(url, headers=self.base_headers, params=payload)
+        self._check_code(r)
+
+        json_dict = r.json()
+        upload_link = json_dict["href"]
+
+        with open(path_from, 'rb') as fh:
+            files = {'file': fh}
+
+            r2 = requests.put(upload_link, headers=self.base_headers, files=files)
+            self._check_code(r2)
+            import os
+            os.remove(upload_link)
+            return r2.raw
+
     def upload_file_from_url(self, from_url, path_to):
         """
         Upload file by URL
