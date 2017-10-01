@@ -20,11 +20,14 @@ def acollection(request):
         ss = get_file_list("Newhalf")
         for post in ss:
             for image in post.images_list:
-                url = image
-                filename = download_file(url)
-                response += "{}<br><br><br>\n\n\n".format(upload_file(filename))
+                try:
+                    url = image
+                    filename = download_file(url)
+                    response += "{}<br><br><br>\n\n\n".format(upload_file(filename))
+                except YandexDiskException as ex:
+                    continue
         return HttpResponse(response)
-    except YandexDiskException as ex:
+    except ConnectionError as ex:
         return HttpResponse(ex)
 
 
