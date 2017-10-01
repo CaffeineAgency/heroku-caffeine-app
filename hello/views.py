@@ -25,8 +25,9 @@ def test(request):
                 r.raw.decode_content = True
                 shutil.copyfileobj(r.raw, f)
         #path = "/Herokuer/" + path
-
-        return HttpResponse(api.upload_file(filename, path))
+        api.upload_file(filename, path)
+        os.remove(path)
+        return HttpResponse()
     except YandexDiskException as exp:
         return HttpResponse(exp)
 
