@@ -12,7 +12,7 @@ def acollection(request):
     url = "http://img1.pornreactor.cc/pics/post/Newhalf-Furry-Newhalf-%D1%81%D0%B5%D0%BA%D1%80%D0%B5%D1%82%D0%BD%D1%8B%D0%B5-%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D1%8B-4081553.jpeg"
     try:
         response = ""
-        ss = get_file_list("Newhalf")
+        ss = get_file_list("r34")
         for post in ss:
             for image in post.images_list:
                 try:
