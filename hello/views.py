@@ -24,9 +24,9 @@ def test(request):
             with open(filename, 'wb') as f:
                 r.raw.decode_content = True
                 shutil.copyfileobj(r.raw, f)
-        #path = "/Herokuer/" + rw.getGet(request, "nm")
-        api.upload_file(filename, path)
-        return HttpResponse("Uploading...")
+        #path = "/Herokuer/" + path
+
+        return HttpResponse(api.upload_file(filename, path))
     except YandexDiskException as exp:
         return HttpResponse(exp)
 
