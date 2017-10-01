@@ -33,7 +33,7 @@ def upload_file(filename):
 def get_file_list(reactortag="", offset=1):
     response = Response("r34", "http://pornreactor.cc/{}".format(reactortag), offset)
     pornreactor = Reactor(response.host)
-    pn = pornreactor.get_last_tag_page_num(response.tag)
+    pn = 738#pornreactor.get_last_tag_page_num(response.tag)
     response.lastpage = pn
     for i in range(pn, pn - 10 * response.offset, -1):
         posts = pornreactor.get_tag_posts(response.tag, i)
