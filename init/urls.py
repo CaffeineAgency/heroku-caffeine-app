@@ -7,6 +7,6 @@ import hello.views
 
 urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
-    url(r'^test', hello.views.test, name='test'),
+    url(r'^acollection', hello.views.acollection, name='test'),
     url(r'^admin/', include(admin.site.urls)),
 ]
