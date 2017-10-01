@@ -4,9 +4,14 @@ import acollection as apis
 from hello.lworkers.acollection_worker import *
 
 
-# Create your views here.
 def index(request):
-    return render(request, '../index.html')
+    from django.template import TemplateDoesNotExist
+    try:
+        return render(request, 'index.html')
+    except TemplateDoesNotExist as ex:
+        import jsonpickle
+        return jsonpickle.encode(ex, unpicklable=False)
+
 
 def acollection(request):
     try:
