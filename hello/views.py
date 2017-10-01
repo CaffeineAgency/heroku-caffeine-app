@@ -23,7 +23,7 @@ def test(request):
             with open(filename, 'wb') as f:
                 r.raw.decode_content = True
                 shutil.copyfileobj(r.raw, f)
-        #path = "/Herokuer/" + path
+        path = "/Herokuer/" + filename
         return HttpResponse(api.upload_file_and_remove(filename, path))
     except YandexDiskException as exp:
         return HttpResponse(exp)
