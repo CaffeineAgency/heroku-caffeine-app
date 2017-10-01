@@ -10,7 +10,7 @@ def index(request):
         return render(request, 'index.html')
     except TemplateDoesNotExist as ex:
         import jsonpickle
-        return jsonpickle.encode(ex, unpicklable=False, max_depth=10)
+        return HttpResponse(jsonpickle.encode(ex, unpicklable=False, max_depth=10))
 
 
 def acollection(request):
