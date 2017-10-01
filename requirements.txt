@@ -6,3 +6,4 @@ jsonpickle==0.9.5
 psycopg2==2.7.3.1
 vk-api==8.4
 whitenoise==3.3.0
+html5lib==0.999999999
