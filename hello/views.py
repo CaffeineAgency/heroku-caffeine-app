@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 import acollection as apis
 from hello.lworkers.acollection_worker import *
@@ -7,7 +7,7 @@ from hello.lworkers.acollection_worker import *
 def index(request):
     from django.template import TemplateDoesNotExist
     try:
-        return render(request, 'index.html')
+        return render_to_response('index.html')
     except TemplateDoesNotExist as ex:
         import jsonpickle
         return HttpResponse(jsonpickle.encode(ex, unpicklable=False, max_depth=10))
