@@ -30,7 +30,7 @@ def upload_file(filename):
         raise exp
 
 
-def get_file_list(tag="r34", offset=1):
+def get_file_list(tag="r34", offset=1, as_json=False):
     response = Response(tag, "http://pornreactor.cc/", offset)
     pornreactor = Reactor(response.host)
     pn = pornreactor.get_last_tag_page_num(response.tag)
@@ -38,5 +38,8 @@ def get_file_list(tag="r34", offset=1):
     for i in range(pn, pn - 10 * response.offset, -1):
         posts = pornreactor.get_tag_posts(response.tag, i)
         response.posts += posts
-    import jsonpickle
-    return jsonpickle.encode(response, unpicklable=False)
+    if as_json:
+        import jsonpickle
+        return jsonpickle.encode(response, unpicklable=False)
+    else:
+        return response.posts

@@ -17,7 +17,8 @@ def acollection(request):
         return HttpResponse(response)
         '''
         ss = get_file_list("Newhalf")
-        return HttpResponse(ss)
+        for post in ss:
+            return HttpResponse(post.user)
     except YandexDiskException as ex:
         return HttpResponse(ex)
 

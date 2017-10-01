@@ -5,7 +5,8 @@ from bs4 import BeautifulSoup as soup
 class Reactor(object):
     def __init__(self, url, blacklisted_tags=None):
         self.url = url
-        if blacklisted_tags == None: blacklisted_tags = ["фэндомы", "artist", "секретные разделы", "игры", "r34"]
+        if blacklisted_tags == None: blacklisted_tags = ["фэндомы", "artist", "секретные разделы", "игры", "r34",
+                                                         "под катом продолжение"]
         self.b_t = blacklisted_tags
 
     def get_tag_posts(self, tag, num = 999):
