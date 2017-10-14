@@ -30,6 +30,21 @@ def upload_file(filename):
         raise exp
 
 
+def download_and_upload_file(url):
+    file = download_file(url)
+    upload_file(file)
+
+
+def upload_file_by_link(link, filename=None):
+    try:
+        if not filename or len(filename) < 5:
+            filename = link.split("/").pop()
+        path = "/Herokuer/" + filename
+        return api.upload_file_from_url(link, path)
+    except YandexDiskException as exp:
+        raise exp
+
+
 def get_file_list(tag="r34", offset=1, as_json=False):
     response = Response(tag, "http://pornreactor.cc/", offset)
     pornreactor = Reactor(response.host)

@@ -1,7 +1,9 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 import acollection as apis
+from hello.lworkers import collect
 from hello.lworkers.acollection_worker import *
+from init.requestWorkers import getGet
 
 
 def index(request):
@@ -14,20 +16,35 @@ def index(request):
 
 
 def acollection(request):
-    try:
-        response = ""
-        ss = get_file_list("r34")
-        for post in ss:
-            for image in post.images_list:
-                try:
-                    url = image
-                    filename = download_file(url)
-                    response += "{}<br><br><br>\n\n\n".format(upload_file(filename))
-                except YandexDiskException as ex:
-                    continue
-        return HttpResponse(response)
-    except ConnectionError as ex:
-        return HttpResponse(ex)
+    mode = getGet(request, "mode")
+    if mode == "ubl":
+        url = getGet(request, "u")
+        filename = getGet(request, "f")
+        upload_file_by_link(url, filename)
+    elif mode == "ubf":
+        url = getGet(request, "u")
+        download_and_upload_file(url)
+    elif mode == "col":
+        collect.main()
+    else:
+        return HttpResponse("""
+        СПРАВКА:\n
+        Существует три мода работы сервиса:\n
+        \t'uploading file by link'
+        \t\tМетод: GET
+        \t\tВходные данные:
+        \t\t\tmode=ubl
+        \t\t\tu=<url>
+        \t\t\tf=<filename> - можно не указывать
+        \t'download and upload file'
+        \tПозволяет обойти ограничение яндекса на файлы, запрещённые на территории РФ. Не загружайте большие файлы.
+        \t\tМетод: GET
+        \t\tВходные данные:
+        \t\t\tmode=ubf
+        \t\t\tu=<url>
+        \t'collect.main'
+        \tПока в разработке.
+        """, content_type="text/plain")
 
 
 
