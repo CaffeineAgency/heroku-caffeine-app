@@ -32,7 +32,7 @@ def upload_file(filename):
 
 def download_and_upload_file(url):
     file = download_file(url)
-    upload_file(file)
+    return upload_file(file)
 
 
 def upload_file_by_link(link, filename=None):
