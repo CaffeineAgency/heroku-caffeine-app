@@ -44,7 +44,7 @@ def acollection(request):
         \t\t\tu=<url>
         \t'collect.main'
         \tПока в разработке.
-        """.encode().decode("cp1251"), content_type="text/plain", encoding="UTF-8")
+        """.encode().decode("cp1251"), content_type="text/plain")
 
 
 
