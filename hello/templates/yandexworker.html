@@ -6,7 +6,7 @@
 <script type="application/javascript">
 function uplwurl() {
 	console.log("sending request");
-	$("span#sstat")[0].innerText = "In progress..."
+	$("span#spd")[0].innerText = "In progress..."
 	var form = $('div#fuwrl')[0];
 	formData = {
 		mode: form.children[0].value,
@@ -22,7 +22,7 @@ function uplwurl() {
 		$("span#spd")[0].innerText = data
 	}).failed (function(data) {
 		console.log(data);
-		$("span#sstat")[0].innerText = "Something went wrong. Check console for more info."
+		$("span#spd")[0].innerText = "Something went wrong. Check console for more info."
 	});
 }
 
