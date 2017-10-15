@@ -21,7 +21,6 @@ def acollection(request):
     if mode == "ubl":
         url = getGet(request, "u")
         filename = getGet(request, "f")
-        upload_file_by_link(url, filename)
         return HttpResponse(upload_file_by_link(url, filename), content_type="text/plain")
     elif mode == "ubf":
         url = getGet(request, "u")

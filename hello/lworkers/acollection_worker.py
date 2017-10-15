@@ -1,3 +1,5 @@
+import jsonpickle
+
 import init.requestWorkers as rw
 from acollection import Response, Reactor
 from ydapi.YandexDiskRestClient import YandexDiskRestClient
@@ -40,7 +42,9 @@ def upload_file_by_link(link, filename=None):
         if not filename or len(filename) < 5:
             filename = link.split("/").pop()
         path = "/Herokuer/" + filename
-        return api.upload_file_from_url(link, path)
+        jresp = jsonpickle.decode(api.upload_file_from_url(link, path))
+        id = jresp.get("href").split("/")
+        return api.check_async_operation(id)
     except YandexDiskException as exp:
         raise exp
 
@@ -54,7 +58,6 @@ def get_file_list(tag="r34", offset=1, as_json=False):
         posts = pornreactor.get_tag_posts(response.tag, i)
         response.posts += posts
     if as_json:
-        import jsonpickle
         return jsonpickle.encode(response, unpicklable=False)
     else:
         return response.posts

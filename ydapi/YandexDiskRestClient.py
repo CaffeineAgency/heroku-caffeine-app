@@ -12,6 +12,7 @@ from ydapi.YandexDiskException import YandexDiskException
 class YandexDiskRestClient:
     '''
     Implementation of https://tech.yandex.ru/disk/poligon/
+    Modded by Nuark (https://github.com/NuarkNoir)
     '''
 
     _base_url = "https://cloud-api.yandex.net:443/v1/disk"
@@ -233,6 +234,14 @@ class YandexDiskRestClient:
         payload = {'path': path_to, 'url': from_url}
         r = requests.post(url, headers=self.base_headers, params=payload)
         return self._check_code(r)
+
+    def check_async_operation(self, operation_id):
+        url = self._base_url + "/operations/" + operation_id
+
+        r = requests.get(url, headers=self.base_headers)
+        self._check_code(r)
+
+        return r.json()
 
     def _get_dictionary_of_published_files(self):
         url = self._base_url + "/resources/public"
