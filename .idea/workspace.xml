@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commiter.bat" afterPath="$PROJECT_DIR$/commiter.bat" />
-    </list>
+    <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
