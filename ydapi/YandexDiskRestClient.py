@@ -239,9 +239,7 @@ class YandexDiskRestClient:
         url = self._base_url + "/operations/" + operation_id
 
         r = requests.get(url, headers=self.base_headers)
-        self._check_code(r)
-
-        return r.json()
+        return self._check_code(r)
 
     def _get_dictionary_of_published_files(self):
         url = self._base_url + "/resources/public"
