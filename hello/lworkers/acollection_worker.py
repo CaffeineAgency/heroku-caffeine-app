@@ -43,7 +43,7 @@ def upload_file_by_link(link, filename=None):
             filename = link.split("/").pop()
         path = "/Herokuer/" + filename
         jresp = jsonpickle.decode(api.upload_file_from_url(link, path))
-        id = jresp.get("href").split("/")
+        id = jresp.get("href").split("/").pop()
         return api.check_async_operation(id)
     except YandexDiskException as exp:
         raise exp

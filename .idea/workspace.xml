@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commiter.bat" afterPath="$PROJECT_DIR$/commiter.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hello/lworkers/acollection_worker.py" afterPath="$PROJECT_DIR$/hello/lworkers/acollection_worker.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hello/views.py" afterPath="$PROJECT_DIR$/hello/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ydapi/YandexDiskRestClient.py" afterPath="$PROJECT_DIR$/ydapi/YandexDiskRestClient.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="acollection_worker.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="acollection_worker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hello/lworkers/acollection_worker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="41" column="33" lean-forward="false" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+            <state relative-caret-position="192">
+              <caret line="45" column="47" lean-forward="false" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -43,11 +42,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="commiter.bat" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/commiter.bat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="YandexDiskRestClient.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ydapi/YandexDiskRestClient.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="237" column="29" lean-forward="false" selection-start-line="237" selection-start-column="8" selection-end-line="237" selection-end-column="29" />
+            <state relative-caret-position="260">
+              <caret line="238" column="12" lean-forward="false" selection-start-line="238" selection-start-column="12" selection-end-line="238" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -79,7 +88,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Procfile.windows" />
         <option value="$PROJECT_DIR$/Procfile" />
-        <option value="$PROJECT_DIR$/commiter.bat" />
         <option value="$USER_HOME$/PycharmProjects/VkIMAGEPump/batch.cmd" />
         <option value="$PROJECT_DIR$/app.json" />
         <option value="$USER_HOME$/PycharmProjects/VkIMAGEPump/GetAllGroupImages.py" />
@@ -99,6 +107,7 @@
         <option value="$PROJECT_DIR$/hello/views.py" />
         <option value="$PROJECT_DIR$/ydapi/YandexDiskRestClient.py" />
         <option value="$PROJECT_DIR$/hello/lworkers/acollection_worker.py" />
+        <option value="$PROJECT_DIR$/commiter.bat" />
       </list>
     </option>
   </component>
@@ -363,7 +372,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2001488" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -396,13 +405,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/vk_api/vk_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4495">
-          <caret line="291" column="35" lean-forward="false" selection-start-line="291" selection-start-column="30" selection-end-line="291" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files/Python36/Lib/site-packages/django/core/management/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
@@ -426,13 +428,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/messages_bot.py" />
     <entry file="file://$PROJECT_DIR$/init/heroku_test_runner.py" />
-    <entry file="file://$PROJECT_DIR$/ssh.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ydapi/examples.py" />
     <entry file="file://$PROJECT_DIR$/site/templates/base.html" />
     <entry file="file://$PROJECT_DIR$/site/templates/db.html" />
@@ -689,19 +684,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ydapi/YandexDiskRestClient.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="237" column="29" lean-forward="false" selection-start-line="237" selection-start-column="8" selection-end-line="237" selection-end-column="29" />
+        <state relative-caret-position="260">
+          <caret line="238" column="12" lean-forward="false" selection-start-line="238" selection-start-column="12" selection-end-line="238" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hello/lworkers/acollection_worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="41" column="33" lean-forward="false" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+        <state relative-caret-position="192">
+          <caret line="45" column="47" lean-forward="false" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commiter.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
