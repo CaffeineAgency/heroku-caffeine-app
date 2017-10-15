@@ -8,7 +8,7 @@ function uplwurl() {
 	console.log("sending request");
 	var form = $$('form#fuwrl')[0];
 	formData = {
-		mode: "chk",
+		mode: form.children[0].value,
 		u: form.children[1].children[2].value
 	}
 	$.ajax({
@@ -42,27 +42,28 @@ function chkbycode() {
 </script>
 <div class="container">
     <div class="alert alert-info text-center" role="alert">
-        <h3>Check async operation</h3>
+        <h3>Upload file with link</h3>
         <form id="fuwrl">
+            <input name="mode" value="ubl" hidden>
             <p><b>URL:</b><br>
                 <input type="text" name="u">
             </p>
-            <button onclick="uplwurl" class="btn btn-success">Submit</button>
         </form>
+        <button onclick="uplwurl" class="btn btn-success">Submit</button>
         <p><b>Your operation id:</b><br>
             <span id="spd"></span>
         </p>
     </div>
     <hr>
     <div class="alert alert-info text-center" role="alert">
-        <h3>Upload file with link</h3>
+        <h3>Check async operation</h3>
         <form id="fubl">
             <input name="mode" value="chk" hidden>
             <p><b>ID:</b><br>
                 <input type="text" name="id">
             </p>
-            <button onclick="chkbycode" class="btn btn-success">Submit</button>
         </form>
+        <button onclick="chkbycode" class="btn btn-success">Submit</button>
         <p><b>Status:</b><br>
             <span id="sstat"></span>
         </p>
