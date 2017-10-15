@@ -232,8 +232,7 @@ class YandexDiskRestClient:
 
         payload = {'path': path_to, 'url': from_url}
         r = requests.post(url, headers=self.base_headers, params=payload)
-        self._check_code(r)
-        return r.raw
+        return self._check_code(r)
 
     def _get_dictionary_of_published_files(self):
         url = self._base_url + "/resources/public"
@@ -246,5 +245,6 @@ class YandexDiskRestClient:
     def _check_code(self, req):
         if not str(req.status_code).startswith("2"):
             raise YandexDiskException(req.status_code, req.text)
+        return req.content
 
 
