@@ -3,6 +3,43 @@
 
 {% block content %}
 
+<script type="application/javascript">
+function uplwurl() {
+	console.log("sending request");
+	var form = $$('form#fuwrl')[0];
+	formData = {
+		mode: "chk",
+		u: form.children[1].children[2].value
+	}
+	$.ajax({
+		type: 'GET',
+		url: '/acollection',
+		data: formData,
+		encode: true
+	}).done(function(data) {
+		console.log(data);
+		$$("span#spd")[0].innerText = data
+	});
+}
+
+function chkbycode() {
+	console.log("sending request");
+	var form = $$('form#fubl')[0];
+	formData = {
+		mode: form.children[0].value,
+		id: form.children[1].children[2].value
+	}
+	$.ajax({
+		type: 'GET',
+		url: '/acollection',
+		data: formData,
+		encode: true
+	}).done(function(data) {
+		console.log(data);
+		$$("span#spd")[0].innerText = data
+	});
+}
+</script>
 <div class="container">
     <div class="alert alert-info text-center" role="alert">
         <h3>Check async operation</h3>
@@ -31,43 +68,4 @@
         </p>
     </div>
 </div>
-<script type="application/javascript">
-$(document).ready(function() {
-	function uplwurl() {
-		console.log("sending request");
-		var form = $$('form#fuwrl')[0];
-		formData = {
-			mode: "chk",
-			u: form.children[1].children[2].value
-		}
-		$.ajax({
-			type: 'GET',
-			url: '/acollection',
-			data: formData,
-			encode: true
-		}).done(function(data) {
-			console.log(data);
-			$$("span#spd")[0].innerText = data
-		});
-	}
-
-	function chkbycode() {
-		console.log("sending request");
-		var form = $$('form#fubl')[0];
-		formData = {
-			mode: form.children[0].value,
-			id: form.children[1].children[2].value
-		}
-		$.ajax({
-			type: 'GET',
-			url: '/acollection',
-			data: formData,
-			encode: true
-		}).done(function(data) {
-			console.log(data);
-			$$("span#sstat")[0].innerText = data
-		});
-	}
-});
-</script>
 {% endblock %}
