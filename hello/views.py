@@ -65,6 +65,7 @@ def acollection(request):
         \t\tМетод: GET
         \t\tВходные данные:
         \t\t\tmode=chk
+        \t\t\tid=<id>
         \t'collect.main'
         \tПока в разработке.
         """.encode("cp1251"), content_type="text/plain")
