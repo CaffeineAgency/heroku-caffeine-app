@@ -6,6 +6,7 @@
 <script type="application/javascript">
 function uplwurl() {
 	console.log("sending request");
+	$("span#sstat")[0].innerText = "In progress..."
 	var form = $('div#fuwrl')[0];
 	formData = {
 		mode: form.children[0].value,
@@ -27,6 +28,7 @@ function uplwurl() {
 
 function chkbycode() {
 	console.log("sending request");
+	$("span#sstat")[0].innerText = "In progress..."
 	var form = $('div#fubl')[0];
 	formData = {
 		mode: form.children[0].value,
@@ -61,7 +63,7 @@ function chkbycode() {
 		</div>
 		<br>
 		<p><b>Your operation id:</b><br>
-			<span id="spd"></span>
+			<span id="spd">[############################]</span>
 		</p>
 	</div>
 	<div class="alert text-center">
@@ -77,7 +79,7 @@ function chkbycode() {
 		</div>
 		<br>
 		<p><b>Status:</b><br>
-			<span id="sstat"></span>
+			<span id="sstat">[############################]</span>
 		</p>
 	</div>
 </div>
