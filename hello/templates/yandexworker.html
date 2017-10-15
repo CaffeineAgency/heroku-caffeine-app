@@ -18,7 +18,7 @@ function uplwurl() {
 		encode: true
 	}).done(function(data) {
 		console.log(data);
-		$$("span#spd")[0].innerText = data
+		$("span#spd")[0].innerText = data
 	});
 }
 
@@ -36,7 +36,7 @@ function chkbycode() {
 		encode: true
 	}).done(function(data) {
 		console.log(data);
-		$$("span#spd")[0].innerText = data
+		$("span#spd")[0].innerText = data
 	});
 }
 </script>
@@ -46,7 +46,7 @@ function chkbycode() {
 		<form id="fuwrl">
 			<input name="mode" value="ubl" hidden>
 			<p><b>URL:</b><br>
-				<input type="text" name="u">
+				<input type="text" name="u" required>
 			</p>
 		</form>
 		<button onclick="uplwurl()" class="btn btn-success">Submit</button>
@@ -60,7 +60,7 @@ function chkbycode() {
 		<form id="fubl">
 			<input name="mode" value="chk" hidden>
 			<p><b>ID:</b><br>
-				<input type="text" name="id">
+				<input type="text" name="id" required>
 			</p>
 		</form>
 		<button onclick="chkbycode()" class="btn btn-success">Submit</button>
