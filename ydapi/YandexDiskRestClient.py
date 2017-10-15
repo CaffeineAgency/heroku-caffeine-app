@@ -233,7 +233,7 @@ class YandexDiskRestClient:
         payload = {'path': path_to, 'url': from_url}
         r = requests.post(url, headers=self.base_headers, params=payload)
         self._check_code(r)
-        return r.headers
+        return r.raw
 
     def _get_dictionary_of_published_files(self):
         url = self._base_url + "/resources/public"

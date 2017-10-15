@@ -23,11 +23,11 @@ def acollection(request):
         filename = getGet(request, "f")
         upload_file_by_link(url, filename)
         status = upload_file_by_link(url, filename)
-        return HttpResponse(status)
+        return HttpResponse(status, content_type="text/plain")
     elif mode == "ubf":
         url = getGet(request, "u")
         status = download_and_upload_file(url)
-        return HttpResponse(status)
+        return HttpResponse(status, content_type="text/plain")
     elif mode == "col":
         collect.main()
     elif mode == "stream":
