@@ -5,24 +5,6 @@
 
 <div class="container">
     <div class="alert alert-info text-center" role="alert">
-        <script type="application/javascript">
-            $(document).ready(function() {
-                function uplwurl(){
-                    console.log("sending request");
-                    var form = $$('form#fuwrl')[0];
-                    formData = {
-                        mode: "chk",
-                        u: form.children[1].children[2].value
-                    }
-                    $.ajax({
-                        type: 'GET',
-                        url: '/acollection',
-                        data: formData,
-                        encode: true
-                    }).done(function(data) { console.log(data); $$("span#spd")[0].innerText = data });
-                }
-            });
-        </script>
         <h3>Check async operation</h3>
         <form id="fuwrl">
             <p><b>URL:</b><br>
@@ -36,35 +18,56 @@
     </div>
     <hr>
     <div class="alert alert-info text-center" role="alert">
-        <script type="application/javascript">
-            $(document).ready(function() {
-                function uplwurl(){
-                    console.log("sending request");
-                    var form = $$('form#fubl')[0];
-                    formData = {
-                        mode: form.children[0].value,
-                        id: form.children[1].children[2].value
-                    }
-                    $.ajax({
-                        type: 'GET',
-                        url: '/acollection',
-                        data: formData,
-                        encode: true
-                    }).done(function(data) { console.log(data); $$("span#spd")[0].innerText = data });
-                }
-            });
-        </script>
         <h3>Upload file with link</h3>
         <form id="fubl">
             <input name="mode" value="chk" hidden>
             <p><b>ID:</b><br>
                 <input type="text" name="id">
             </p>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button onclick="chkbycode" class="btn btn-success">Submit</button>
         </form>
         <p><b>Status:</b><br>
             <span id="sstat"></span>
         </p>
     </div>
 </div>
+<script type="application/javascript">
+$(document).ready(function() {
+	function uplwurl() {
+		console.log("sending request");
+		var form = $$('form#fuwrl')[0];
+		formData = {
+			mode: "chk",
+			u: form.children[1].children[2].value
+		}
+		$.ajax({
+			type: 'GET',
+			url: '/acollection',
+			data: formData,
+			encode: true
+		}).done(function(data) {
+			console.log(data);
+			$$("span#spd")[0].innerText = data
+		});
+	}
+
+	function chkbycode() {
+		console.log("sending request");
+		var form = $$('form#fubl')[0];
+		formData = {
+			mode: form.children[0].value,
+			id: form.children[1].children[2].value
+		}
+		$.ajax({
+			type: 'GET',
+			url: '/acollection',
+			data: formData,
+			encode: true
+		}).done(function(data) {
+			console.log(data);
+			$$("span#sstat")[0].innerText = data
+		});
+	}
+});
+</script>
 {% endblock %}
