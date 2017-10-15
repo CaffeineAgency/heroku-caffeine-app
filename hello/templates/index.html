@@ -8,35 +8,18 @@
         <a href="/" class="lang-logo">
             <img src="{% static 'lang-logo.png'%}">
         </a>
-        <h1>Python on Heroku</h1>
+        <h1>PoH</h1>
     </div>
 </div>
 <div class="container">
     <div class="alert alert-info text-center" role="alert">
-        <script type="application/javascript">
-            $(document).ready(function() {
-                $('form').submit(function(event) {
-                    console.log("sending request");
-                    var formData = {};
-                    $.ajax({
-                        type        : 'GET',
-                        url         : '/acollection',
-                        data        : formData,
-                        encode      : true
-                    }).done(function(data) { console.log(data); });
-                    event.preventDefault();
-                });
-            });
-        </script>
-        <form action="/acollection" method="GET">
-            <button type="submit" class="btn btn-success">Submit</button>
+        <form action="/acollection">
+            <button type="submit" class="btn btn-success">Enter</button>
         </form>
     </div>
     <hr>
     <div class="alert alert-info text-center" role="alert">
-        Please do work through the Getting Started guide, even if you do know how to build such an application. The
-        guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order
-        to build and deploy your own apps.
+        Таки тут находятся мои разные штуки. Эта страница - чисто заглушка, чтобы посмотреть остальные штуки, нажмите кнопку сверху.
     </div>
 </div>
 {% endblock %}

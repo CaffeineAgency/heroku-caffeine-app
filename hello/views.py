@@ -1,4 +1,5 @@
-from django.shortcuts import render, render_to_response
+from django.http import StreamingHttpResponse
+from django.shortcuts import render_to_response
 from django.http import HttpResponse
 import acollection as apis
 from hello.lworkers import collect
@@ -29,6 +30,8 @@ def acollection(request):
         return HttpResponse(status)
     elif mode == "col":
         collect.main()
+    elif mode == "stream":
+        return StreamingHttpResponse([x for x in range(500000)])
     else:
         return HttpResponse("""
         СПРАВКА:\n
