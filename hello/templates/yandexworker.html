@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <a href="/" class="lang-logo">
+            <img src="{% static 'lang-logo.png'%}">
+        </a>
+        <h1>PoH</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="alert alert-info text-center" role="alert">
+        <script type="application/javascript">
+            $(document).ready(function() {
+                $('form#fubl').submit(function(event) {
+                    console.log("sending request");
+                    var $form = $(this);
+                    var formData = $form.serialize();
+                    $.ajax({
+                        type        : 'GET',
+                        url         : '/acollection',
+                        data        : formData,
+                        encode      : true
+                    }).done(function(data) { console.log(data); });
+                    event.preventDefault();
+                });
+            });
+        </script>
+        <h3>Upload file with link</h3>
+        <form id="fubl" action="/acollection" method="GET">
+            <input name="mode" value="ubl" hidden>
+            <p><b>URL:</b><br>
+                <input type="text" name="u">
+            </p>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <hr>
+    <div class="alert alert-info text-center" role="alert">
+        <script type="application/javascript">
+            $(document).ready(function() {
+                $('form#fubl').submit(function(event) {
+                    console.log("sending request");
+                    var $form = $(this);
+                    var formData = $form.serialize();
+                    $.ajax({
+                        type        : 'GET',
+                        url         : '/acollection',
+                        data        : formData,
+                        encode      : true
+                    }).done(function(data) { console.log(data); $$("span#spd")[0].innerText = data });
+                    event.preventDefault();
+                });
+            });
+        </script>
+        <h3>Check async operation</h3>
+        <form id="cao" action="/acollection" method="GET">
+            <input name="mode" value="chk" hidden>
+            <p><b>URL:</b><br>
+                <input type="text" name="u">
+            </p>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        <p><b>Your operation id:</b><br>
+            <span id="spd"></span>
+        </p>
+    </div>
+</div>
+{% endblock %}

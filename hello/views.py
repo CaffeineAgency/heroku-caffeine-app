@@ -5,10 +5,10 @@ import acollection as apis
 from hello.lworkers import collect
 from hello.lworkers.acollection_worker import *
 from init.requestWorkers import getGet
+from django.template import TemplateDoesNotExist
 
 
 def index(request):
-    from django.template import TemplateDoesNotExist
     try:
         return render_to_response('index.html')
     except TemplateDoesNotExist as ex:
@@ -18,13 +18,24 @@ def index(request):
 
 def acollection(request):
     mode = getGet(request, "mode")
-    if mode == "ubl":
+    if mode == "gui":
+        try:
+            return render_to_response('yandexworker.html')
+        except TemplateDoesNotExist as ex:
+            import jsonpickle
+            return HttpResponse(jsonpickle.encode(ex, unpicklable=False, max_depth=10))
+    elif mode == "ubl":
         url = getGet(request, "u")
         filename = getGet(request, "f")
-        return HttpResponse(upload_file_by_link(url, filename), content_type="text/plain")
+        id = upload_file_by_link(url, filename)
+        return HttpResponse(id)
     elif mode == "ubf":
         url = getGet(request, "u")
         return HttpResponse(download_and_upload_file(url), content_type="text/plain")
+    elif mode == "chk":
+        id = getGet(request, "id")
+        stat = jsonpickle.decode(api.check_async_operation(id)).get("status")
+        return HttpResponse(stat)
     elif mode == "col":
         collect.main()
     elif mode == "stream":
