@@ -40,8 +40,9 @@ function chkbycode() {
 	});
 }
 </script>
-<div class="container">
-	<div class="alert alert-info text-center" role="alert">
+<div class="container-fluid">
+	<br><br>
+	<div class="alert text-center">
 		<h3>Upload file with link</h3>
 		<div id="fuwrl">
 			<input name="mode" value="ubl" hidden>
@@ -52,22 +53,24 @@ function chkbycode() {
 				</span>
 			</div>
 		</div>
+		<br>
 		<p><b>Your operation id:</b><br>
 			<span id="spd"></span>
 		</p>
 	</div>
 	<hr>
-	<div class="alert alert-info text-center" role="alert">
+	<div class="alert text-center">
 		<h3>Check async operation</h3>
 		<div id="fubl">
 			<input name="mode" value="chk" hidden>
 			<div class="input-group">
-				<input class="form-control" type="text" name="id" required>
+				<input placeholder="ID" class="form-control" type="text" name="id" required>
 				<span class="input-group-btn">
 					<button onclick="chkbycode()" class="btn btn-secondary" type="button">CHECK!</button>
 				</span>
 			</div>
 		</div>
+		<br>
 		<p><b>Status:</b><br>
 			<span id="sstat"></span>
 		</p>
