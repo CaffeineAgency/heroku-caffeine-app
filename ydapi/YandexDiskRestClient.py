@@ -251,8 +251,7 @@ class YandexDiskRestClient:
 
     def _check_code(self, req):
         if not str(req.status_code).startswith("2"):
-            # raise YandexDiskException(req.status_code, req.text)
-            return "\n".join([req.status_code, req.text])
+            raise YandexDiskException(req.status_code, req.text)
         return req.content
 
 
