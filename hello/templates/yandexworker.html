@@ -7,27 +7,28 @@
     <div class="alert alert-info text-center" role="alert">
         <script type="application/javascript">
             $(document).ready(function() {
-                $('form#fubl').submit(function(event) {
+                function uplwurl(){
                     console.log("sending request");
-                    var $form = $(this);
-                    var formData = $form.serialize();
+                    var form = $$('form#fuwrl')[0];
+                    formData = {
+                        mode: "chk",
+                        u: form.children[1].children[2].value
+                    }
                     $.ajax({
-                        type        : 'GET',
-                        url         : '/acollection',
-                        data        : formData,
-                        encode      : true
+                        type: 'GET',
+                        url: '/acollection',
+                        data: formData,
+                        encode: true
                     }).done(function(data) { console.log(data); $$("span#spd")[0].innerText = data });
-                    event.preventDefault();
-                });
+                }
             });
         </script>
         <h3>Check async operation</h3>
-        <form id="cao" action="/acollection" method="GET">
-            <input name="mode" value="chk" hidden>
+        <form id="fuwrl">
             <p><b>URL:</b><br>
                 <input type="text" name="u">
             </p>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button onclick="uplwurl" class="btn btn-success">Submit</button>
         </form>
         <p><b>Your operation id:</b><br>
             <span id="spd"></span>
@@ -37,22 +38,24 @@
     <div class="alert alert-info text-center" role="alert">
         <script type="application/javascript">
             $(document).ready(function() {
-                $('form#fubl').submit(function(event) {
+                function uplwurl(){
                     console.log("sending request");
-                    var $form = $(this);
-                    var formData = $form.serialize();
+                    var form = $$('form#fubl')[0];
+                    formData = {
+                        mode: form.children[0].value,
+                        id: form.children[1].children[2].value
+                    }
                     $.ajax({
-                        type        : 'GET',
-                        url         : '/acollection',
-                        data        : formData,
-                        encode      : true
-                    }).done(function(data) { console.log(data); $$("span#sstat")[0].innerText = data });
-                    event.preventDefault();
-                });
+                        type: 'GET',
+                        url: '/acollection',
+                        data: formData,
+                        encode: true
+                    }).done(function(data) { console.log(data); $$("span#spd")[0].innerText = data });
+                }
             });
         </script>
         <h3>Upload file with link</h3>
-        <form id="fubl" action="/acollection" method="GET">
+        <form id="fubl">
             <input name="mode" value="chk" hidden>
             <p><b>ID:</b><br>
                 <input type="text" name="id">
