@@ -40,9 +40,31 @@ def acollection(request):
     elif mode == "stream":
         return StreamingHttpResponse([x for x in range(500000)])
     else:
-        with open("/static/info.txt") as o:
-            #.encode("cp1251")
-            return HttpResponse("\n".join(o.readlines()), content_type="text/plain")
+        return HttpResponse("""
+        СПРАВКА:
+        Существует три мода работы сервиса:
+            'uploading file by link'
+                Метод: GET
+                Входные данные:
+                    mode=ubl
+                    u=<url>
+                    f=<filename> - можно не указывать
+            'download and upload file' - Позволяет обойти ограничение яндекса на файлы, запрещённые на территории РФ. Не загружайте большие файлы.
+                Метод: GET
+                Входные данные:
+                    mode=ubf
+                    u=<url>
+            'gui' - GUI для yandexworker.
+                Метод: GET
+                Входные данные:
+                    mode=gui
+            'async operation checker' - Проверяет статус асинхронной операции с диском яндекса.
+                Метод: GET
+                Входные данные:
+                    mode=chk
+                    id=<id>
+            'collect.main' - Пока в разработке.
+        """.encode("cp1251"), content_type="text/plain")
 
 
 
