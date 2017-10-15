@@ -6,13 +6,13 @@ from hello.lworkers import collect
 from hello.lworkers.acollection_worker import *
 from init.requestWorkers import getGet
 from django.template import TemplateDoesNotExist
+import jsonpickle
 
 
 def index(request):
     try:
         return render_to_response('index.html')
     except TemplateDoesNotExist as ex:
-        import jsonpickle
         return HttpResponse(jsonpickle.encode(ex, unpicklable=False, max_depth=10))
 
 
@@ -22,7 +22,6 @@ def acollection(request):
         try:
             return render_to_response('yandexworker.html')
         except TemplateDoesNotExist as ex:
-            import jsonpickle
             return HttpResponse(jsonpickle.encode(ex, unpicklable=False, max_depth=10))
     elif mode == "ubl":
         url = getGet(request, "u")
@@ -43,7 +42,7 @@ def acollection(request):
     else:
         return HttpResponse("""
         СПРАВКА:\n
-        Существует три мода работы сервиса:\n
+        Существует три мода работы сервиса:
         \t'uploading file by link'
         \t\tМетод: GET
         \t\tВходные данные:
@@ -56,6 +55,16 @@ def acollection(request):
         \t\tВходные данные:
         \t\t\tmode=ubf
         \t\t\tu=<url>
+        \t'gui'
+        \tGUI для yandexworker.
+        \t\tМетод: GET
+        \t\tВходные данные:
+        \t\t\tmode=gui
+        \t'async operation checker'
+        \tПроверяет статус асинхронной операции с диском яндекса.
+        \t\tМетод: GET
+        \t\tВходные данные:
+        \t\t\tmode=chk
         \t'collect.main'
         \tПока в разработке.
         """.encode("cp1251"), content_type="text/plain")
