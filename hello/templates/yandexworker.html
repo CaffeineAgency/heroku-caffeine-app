@@ -9,7 +9,7 @@ function uplwurl() {
 	var form = $('div#fuwrl')[0];
 	formData = {
 		mode: form.children[0].value,
-		u: form.children[1].children[1].value
+		u: form.children[1].children[0].value
 	}
 	$.ajax({
 		type: 'GET',
@@ -19,6 +19,9 @@ function uplwurl() {
 	}).done(function(data) {
 		console.log(data);
 		$("span#spd")[0].innerText = data
+	}).failed (function(data) {
+		console.log(data);
+		$("span#sstat")[0].innerText = "Something went wrong. Check console for more info."
 	});
 }
 
@@ -27,7 +30,7 @@ function chkbycode() {
 	var form = $('div#fubl')[0];
 	formData = {
 		mode: form.children[0].value,
-		id: form.children[1].children[1].value
+		id: form.children[1].children[0].value
 	}
 	$.ajax({
 		type: 'GET',
@@ -37,6 +40,9 @@ function chkbycode() {
 	}).done(function(data) {
 		console.log(data);
 		$("span#sstat")[0].innerText = data
+	}).failed (function(data) {
+		console.log(data);
+		$("span#sstat")[0].innerText = "Something went wrong. Check console for more info."
 	});
 }
 </script>
@@ -58,7 +64,6 @@ function chkbycode() {
 			<span id="spd"></span>
 		</p>
 	</div>
-	<hr>
 	<div class="alert text-center">
 		<h3>Check async operation</h3>
 		<div id="fubl">
