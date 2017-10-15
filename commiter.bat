@@ -1,4 +1,4 @@
-echo %1
+set /P comm_mess="Commit message: "
 git add .
-git commit -am "make it better"
+git commit -am \"%comm_mess%\"
 git push
