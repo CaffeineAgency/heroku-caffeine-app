@@ -1,11 +1,10 @@
 import jsonpickle
 
-import init.requestWorkers as rw
 from acollection import Response, Reactor
 from ydapi.YandexDiskRestClient import YandexDiskRestClient
 from ydapi.YandexDiskException import YandexDiskException
 from urllib.parse import unquote
-import requests, shutil, os
+import requests, shutil
 
 api = YandexDiskRestClient("AQAAAAAMTrBzAARbbEhJbcQgn0dDg-Nag1ykG7o")
 

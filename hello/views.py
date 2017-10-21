@@ -1,13 +1,14 @@
 from django.http import StreamingHttpResponse
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-import acollection as apis
-from hello.lworkers import collect
-from hello.lworkers.acollection_worker import *
-from init.requestWorkers import getGet
 from django.template import TemplateDoesNotExist
+
+from init.extensions import getGet
 import jsonpickle
 
+from hello.worklogic import collect
+from hello.worklogic.yandexdisk_worker import *
+import hello.worklogic.ruminecraft_worker as RuMineApi
 
 def index(request):
     try:
@@ -39,10 +40,17 @@ def acollection(request):
         collect.main()
     elif mode == "stream":
         return StreamingHttpResponse([x for x in range(500000)])
+    elif mode == "rumine":
+        rq = dict()
+        rq["threadId"] = getGet(request, "threadId")
+        rq["pagenum"] = getGet(request, "pagenum")
+        rq["b64"] = getGet(request, "b64")
+        return HttpResponse(RuMineApi.getComments(rq))
     else:
         return HttpResponse("""
         СПРАВКА:
-        Существует три мода работы сервиса:
+		// Все методы обязательны, если не указано обратное
+        Существует три режима работы сервиса:
             'uploading file by link'
                 Метод: GET
                 Входные данные:
@@ -64,6 +72,13 @@ def acollection(request):
                     mode=chk
                     id=<id>
             'collect.main' - Пока в разработке.
+			'rumine forum api' - парсит сообщения из форумных тредов сайта ru-minecraft.ru
+                Метод: GET
+                Входные данные:
+                    mode=rumine
+                    threadId=<threadId>
+                    pagenum=<pagenum>
+                    b64=<b64> - Не обязателен, если указан, то конвертирует текст в base64(иногда бывает полезно)
         """.encode("cp1251"), content_type="text/plain")
 
 

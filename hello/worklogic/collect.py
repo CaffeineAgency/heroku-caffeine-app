@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 
-from hello.lworkers.acollection_worker import download_file, get_file_list, upload_file
+from hello.worklogic.yandexdisk_worker import download_file, get_file_list, upload_file
 from ydapi.YandexDiskException import YandexDiskException
 
 

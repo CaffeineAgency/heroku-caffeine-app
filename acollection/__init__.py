@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import requests
-from bs4 import BeautifulSoup as soup
+from bs4 import BeautifulSoup as Soup
 
 class Reactor(object):
     def __init__(self, url, blacklisted_tags=None):
         self.url = url
-        if blacklisted_tags == None: blacklisted_tags = ["фэндомы", "artist", "секретные разделы", "игры", "r34",
+        if blacklisted_tags is None: blacklisted_tags = ["фэндомы", "artist", "секретные разделы", "игры", "r34",
                                                          "под катом продолжение", "продолжение в комментах",
                                                          "под катом еще"]
         self.b_t = blacklisted_tags
@@ -14,7 +14,7 @@ class Reactor(object):
         import re
         url = "{}/tag/{}/{}".format(self.url, tag, num)
         response = requests.get(url)
-        post_list = soup(response.text, "html5lib").find("div", {"id": "post_list"})
+        post_list = Soup(response.text, "html5lib").find("div", {"id": "post_list"})
         postContainers = post_list.find_all("div", {"class": "postContainer"})
         posts = []
         for postContainer in postContainers:
@@ -38,7 +38,7 @@ class Reactor(object):
     def get_last_tag_page_num(self, tag):
         url = "{}/tag/{}".format(self.url, tag)
         response = requests.get(url)
-        num = soup(response.text, "html5lib").find("div", {"class": "pagination_expanded"}).find("span", {"class": "current"}).text
+        num = Soup(response.text, "html5lib").find("div", {"class": "pagination_expanded"}).find("span", {"class": "current"}).text
         return int(num)
 
 
