@@ -32,7 +32,7 @@ def parse_data(soup, tb64):
 		pid = item.select_one(".msgInfo a").text.replace("#", "")
 		sender = item.select_one(".msgAutorInfo .autorInfo p > a").text
 		stri = item.select_one(".msgText td > div").encode('utf-8')
-		posts.append(Post(pid, sender, (base64.b64decode(stri), base64.b64encode(stri))[tb64 == "y"]))
+		posts.append(Post(pid, sender, (stri, base64.b64encode(stri))[tb64 == "y"]))
 	return Response(posts)
 
 
@@ -44,5 +44,6 @@ def get_comments(request):
 		soup = sanitize_html(soup)
 		return jsonpickle.encode(parse_data(soup, request["b64"]), unpicklable=False)
 	except Exception as ex:
-		return jsonpickle.encode(ex.args, unpicklable=False)
+		return jsonpickle.encode(dict(error=ex.args), unpicklable=False)
+
 
