@@ -39,7 +39,7 @@ def parse_data(soup, tb64):
 def get_comments(request):
 	try:
 		url = check_for_input(request)
-		source = requests.get(url).content.encode("cp1251")
+		source = requests.get(url).content
 		soup = bs.BeautifulSoup(source, "html5lib")
 		soup = sanitize_html(soup)
 		return jsonpickle.encode(parse_data(soup, request["b64"]), unpicklable=False)
