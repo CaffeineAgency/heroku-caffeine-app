@@ -13,7 +13,7 @@ def check_for_input(request):
 		pagenum = 9999999999999
 	else:
 		pagenum = request["pagenum"]
-	return "https://ru-minecraft.ru/forum/showtopic-{}/page-{}".format(thread, pagenum)
+	return "https://ru-minecraft.ru/forum/showtopic-{}/page-{}/".format(thread, pagenum)
 
 
 def sanitize_html(soup):
@@ -24,11 +24,9 @@ def sanitize_html(soup):
 
 
 def parse_data(soup, tb64):
-	spmarks = soup.findAll("div", class_="title_spoiler")
-	[spmark.extract() for spmark in spmarks]
-	splers = soup.findAll("div", class_="text_spoiler")
-	for spler in splers:
-		del (spler['style'])
+	[spmark.extract() for spmark in soup.findAll("div", class_="title_spoiler")]
+	for spler in soup.findAll("div", class_="text_spoiler"):
+		del(spler['style'])
 	posts = []
 	for item in soup.find_all('li', class_="msg"):
 		pid = item.select_one(".msgInfo a").text.replace("#", "")
@@ -43,7 +41,7 @@ def getComments(request):
 		url = check_for_input(request)
 		source = requests.get(url).raw
 		soup = bs.BeautifulSoup(source, "html5lib")
-		soup = sanitize_html(soup)
+		#soup = sanitize_html(soup)
 		return jsonpickle.encode(parse_data(soup, request["b64"]), unpicklable=False)
 	except Exception as ex:
 		return jsonpickle.encode(ex, unpicklable=False)
