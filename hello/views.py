@@ -45,7 +45,6 @@ def acollection(request):
         rq["threadId"] = getGet(request, "threadId")
         rq["pagenum"] = getGet(request, "pagenum")
         rq["b64"] = getGet(request, "b64")
-        return HttpResponse(jsonpickle.encode(rq, unpicklable=False))
         return HttpResponse(RuMineApi.getComments(rq))
     else:
         return HttpResponse("""
