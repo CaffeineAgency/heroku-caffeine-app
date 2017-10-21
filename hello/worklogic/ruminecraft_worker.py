@@ -32,7 +32,7 @@ def parse_data(soup, tb64):
 		pid = item.select_one(".msgInfo a").text.replace("#", "")
 		sender = item.select_one(".msgAutorInfo .autorInfo p > a").text
 		stri = item.select_one(".msgText td > div").encode('utf-8')
-		posts.append(Post(pid, sender, (stri, base64.b64encode(stri))[int(tb64)]))
+		posts.append(Post(pid, sender, (stri, base64.b64encode(stri))[bool(tb64)]))
 	return Response(posts)
 
 
