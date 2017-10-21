@@ -41,7 +41,7 @@ def getComments(request):
 		url = check_for_input(request)
 		source = requests.get(url).raw
 		soup = bs.BeautifulSoup(source, "html5lib")
-		#soup = sanitize_html(soup)
+		soup = sanitize_html(soup)
 		return jsonpickle.encode(parse_data(soup, request["b64"]), unpicklable=False)
 	except Exception as ex:
 		return jsonpickle.encode(ex, unpicklable=False)

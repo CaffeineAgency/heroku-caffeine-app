@@ -45,6 +45,7 @@ def acollection(request):
         rq["threadId"] = getGet(request, "threadId")
         rq["pagenum"] = getGet(request, "pagenum")
         rq["b64"] = getGet(request, "b64")
+        return HttpResponse(jsonpickle.encode(rq, unpicklable=False))
         return HttpResponse(RuMineApi.getComments(rq))
     else:
         return HttpResponse("""
@@ -77,7 +78,7 @@ def acollection(request):
                 Входные данные:
                     mode=rumine
                     threadId=<threadId>
-                    pagenum=<pagenum>
+                    pagenum=<pagenum> - Не обязателен, если не указан, то берётся 9999999999999
                     b64=<b64> - Не обязателен, если указан, то конвертирует текст в base64(иногда бывает полезно)
         """.encode("cp1251"), content_type="text/plain")
 
