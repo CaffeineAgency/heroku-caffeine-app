@@ -45,7 +45,7 @@ def acollection(request):
         rq["threadId"] = getGet(request, "threadId")
         rq["pagenum"] = getGet(request, "pagenum")
         rq["b64"] = getGet(request, "b64")
-        return HttpResponse(RuMineApi.getComments(rq))
+        return HttpResponse(RuMineApi.get_comments(rq))
     else:
         return HttpResponse("""
         СПРАВКА:

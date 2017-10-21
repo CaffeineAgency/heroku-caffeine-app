@@ -32,11 +32,11 @@ def parse_data(soup, tb64):
 		pid = item.select_one(".msgInfo a").text.replace("#", "")
 		sender = item.select_one(".msgAutorInfo .autorInfo p > a").text
 		stri = item.select_one(".msgText td > div").encode('utf-8')
-		posts.append(Post(pid, sender, (stri, base64.b64encode(stri))[bool(eval(tb64))]))
+		posts.append(Post(pid, sender, (base64.b64decode(stri), base64.b64encode(stri))[tb64 == "y"]))
 	return Response(posts)
 
 
-def getComments(request):
+def get_comments(request):
 	try:
 		url = check_for_input(request)
 		source = requests.get(url).content
