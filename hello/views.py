@@ -49,7 +49,7 @@ def acollection(request):
     else:
         return HttpResponse("""
         СПРАВКА:
-		// Все методы обязательны, если не указано обратное
+        // Все методы обязательны, если не указано обратное
         Существует три режима работы сервиса:
             'uploading file by link'
                 Метод: GET
@@ -72,7 +72,7 @@ def acollection(request):
                     mode=chk
                     id=<id>
             'collect.main' - Пока в разработке.
-			'rumine forum api' - парсит сообщения из форумных тредов сайта ru-minecraft.ru
+            'rumine forum api' - парсит сообщения из форумных тредов сайта ru-minecraft.ru
                 Метод: GET
                 Входные данные:
                     mode=rumine
