@@ -8,7 +8,7 @@ import jsonpickle
 
 from hello.worklogic import collect
 from hello.worklogic.yandexdisk_worker import *
-import hello.worklogic.ruminecraft_worker as RuMineApi
+import acollection.ruminelib.api as rapi
 
 def index(request):
     try:
@@ -45,7 +45,8 @@ def acollection(request):
         rq["threadId"] = getGet(request, "threadId")
         rq["pagenum"] = getGet(request, "pagenum")
         rq["b64"] = getGet(request, "b64")
-        return HttpResponse(RuMineApi.get_comments(rq))
+        api = rapi.RuMineApi(request=rq)
+        return HttpResponse(api.get_comments())
     else:
         return HttpResponse("""
         СПРАВКА:
@@ -78,7 +79,7 @@ def acollection(request):
                     mode=rumine
                     threadId=<threadId>
                     pagenum=<pagenum> - Не обязателен, если не указан, то берётся 9999999999999
-                    b64=<any or y> - Если "y", то конвертирует текст в base64(иногда бывает полезно). IDN почему(скорее-всего из-за 3 питона), текст всегда конвертится в base64
+                    b64=<any or y> - [WIP] Если "y", то конвертирует текст в base64(иногда бывает полезно). 
         """.encode("cp1251"), content_type="text/plain")
 
 
