@@ -11,6 +11,7 @@
 	<div class="container">
 		<h1 class="display-3">Reactor gallery</h1>
 		<p class="lead">Галерея пикч из джойреакторовского тега <i>"красивые картинки"</i>.</p>
+		<p class="text-muted">Чтобы скачать изображение, <b>кликайте</b> по нему. <i>Simple.</i></p>
 	</div>
 </div>
 <div class="container-fluid">
@@ -90,10 +91,14 @@
 
 
 		images.forEach(function(image) {
+			var a = document.createElement("a");
+			a.href = image;
+			a.download = true;
 			var img = document.createElement("img");
 			img.className = "card-img-top";
 			img.src = image;
-			div.appendChild(img);
+			a.appendChild(img);
+			div.appendChild(a);
 			div.appendChild(document.createElement("br"))
 		});
 

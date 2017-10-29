@@ -51,10 +51,6 @@ def acollection(request):
         rq["page"] = getGet(request, "page")
         api = reapi.ReactorApi()
         return HttpResponse(api.get_images(request=rq))
-    elif mode == "download_image":
-        url = getGet(request, "url")
-        req = requests.get(url)
-        return StreamingHttpResponse(req.raw, content_type=req.headers['content-type'])
     else:
         return HttpResponse("""
         СПРАВКА:
