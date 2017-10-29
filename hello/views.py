@@ -10,6 +10,7 @@ import jsonpickle
 from hello.worklogic import collect
 from hello.worklogic.yandexdisk_worker import *
 import acollection.ruminelib.api as rapi
+import acollection.reactorlib.api as reapi
 
 def index(request):
     try:
@@ -44,41 +45,32 @@ def acollection(request):
         rq["b64"] = getGet(request, "b64")
         api = rapi.RuMineApi(request=rq)
         return HttpResponse(api.get_comments())
-    elif mode == "":
-        return HttpResponse()
+    elif mode == "reactorparser":
+        rq = dict()
+        rq["tag"] = getGet(request, "tag")
+        rq["page"] = getGet(request, "page")
+        api = reapi.ReactorApi()
+        return HttpResponse(api.get_images(request=rq))
     else:
         return HttpResponse("""
         СПРАВКА:
-        // Все методы обязательны, если не указано обратное
+        // Все входные данные обязательны, если не указано обратное
         Существует три режима работы сервиса:
-            'uploading file by link'
-                Метод: GET
-                Входные данные:
-                    mode=ubl
-                    u=<url>
-                    f=<filename> - можно не указывать
-            'download and upload file' - Позволяет обойти ограничение яндекса на файлы, запрещённые на территории РФ. Не загружайте большие файлы.
-                Метод: GET
-                Входные данные:
-                    mode=ubf
-                    u=<url>
             'yagui' - GUI для yandexworker.
                 Метод: GET
                 Входные данные:
                     mode=yagui
-            'async operation checker' - Проверяет статус асинхронной операции с диском яндекса.
-                Метод: GET
-                Входные данные:
-                    mode=chk
-                    id=<id>
-            'collect.main' - Пока в разработке.
             'rumine forum api' - парсит сообщения из форумных тредов сайта ru-minecraft.ru
                 Метод: GET
                 Входные данные:
                     mode=rumine
                     threadId=<threadId>
                     pagenum=<pagenum> - Не обязателен, если не указан, то берётся 9999999999999
-                    b64=<any or y> - [WIP] Если "y", то конвертирует текст в base64(иногда бывает полезно). 
+                    b64=<any or y> - [WIP] Если "y", то конвертирует текст в base64(иногда бывает полезно).
+            'reactor gallery' - Галерея пикч из джойреакторовского тега "красивые картинки".
+                Метод: GET
+                Входные данные:
+                    mode=reactorgui
         """.encode("cp1251"), content_type="text/plain")
 
 
