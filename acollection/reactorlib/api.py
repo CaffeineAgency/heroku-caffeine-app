@@ -13,7 +13,7 @@ class ReactorApi():
         self.base_url = "http://joyreactor.cc"
 
     def prepare_uri(self, request):
-        if request["tag"] == None:
+        if request["tag"] is None:
             raise Exception("No tag passed")
         tag = request["tag"].replace(" ", "+")
         page = "" if request["page"] == "latest" else f'/{request["page"]}'
