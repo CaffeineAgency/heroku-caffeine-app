@@ -111,5 +111,5 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ADMINS = (
-    ('Nuark', 'nuark@noir.com'),
+    ('Nuark', 'mrcluster@ya.ru'),
 )
