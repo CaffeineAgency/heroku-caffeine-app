@@ -139,11 +139,11 @@
 			.then(function(response) {
 				parsed_json = user = JSON.parse(response);
 				posts = parsed_json.posts;
-				nextPage--;
 				posts.forEach(function(entry) {
 					generateCard(entry);
 				});
 			}).catch(console.log);
+		nextPage--;
 		console.log(nextPage);
 	};
 </script>

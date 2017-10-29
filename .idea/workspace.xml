@@ -31,8 +31,8 @@
       <file leaf-file-name="reactorgallery.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hello/templates/reactorgallery.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="44" column="35" lean-forward="false" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
+            <state relative-caret-position="399">
+              <caret line="145" column="8" lean-forward="true" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -697,8 +697,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hello/templates/reactorgallery.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="44" column="35" lean-forward="false" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
+        <state relative-caret-position="399">
+          <caret line="145" column="8" lean-forward="true" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
           </folding>
