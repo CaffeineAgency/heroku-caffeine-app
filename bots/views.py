@@ -7,4 +7,5 @@ from init.extensions import getGet
 import jsonpickle
 
 def index(request):
-    return HttpResponse("EXAMPLE TEXT")
+    print(request)
+    return jsonpickle.encode(request, unpicklable=False)
