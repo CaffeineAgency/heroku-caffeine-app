@@ -8,4 +8,4 @@ import jsonpickle
 
 def index(request):
     print(request)
-    return jsonpickle.encode(request, unpicklable=False)
+    return request
