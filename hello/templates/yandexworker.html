@@ -20,7 +20,7 @@ function uplwurl() {
 	}).done(function(data) {
 		console.log(data);
 		$("span#spd")[0].innerText = data
-	}).failed (function(data) {
+	}).fail(function(data) {
 		console.log(data);
 		$("span#spd")[0].innerText = "Something went wrong. Check console for more info."
 	});
