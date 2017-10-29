@@ -8,4 +8,5 @@ import jsonpickle
 
 def index(request):
     print(request)
-    return request
+    print(request.POST)
+    return HttpResponse("HELLO!")
