@@ -32,24 +32,24 @@
 </div>
 <script type="application/javascript">
 	function getImages(tag, page) {
-		var req_data = {
-			mode: "reactorparser",
-			tag: tag,
-			page: page
-		}
-		console.log([tag, page]);
-
-		$.ajax({
-			type: 'GET',
-			url: '/acollection',
-			data: req_data,
-			encode: true
-		}).done(function(data) {
-			console.log(data);
-			return data;
-		}).fail(function(data) {
-			console.log(data);
-			alert("Something went wrong. Check console or network tab in dev tools for more info.")
+		return new Promise(function(resolve, reject) {
+			var req_data = {
+				mode: "reactorparser",
+				tag: tag,
+				page: page
+			}
+			console.log([tag, page]);
+			$.ajax({
+				type: 'GET',
+				url: '/acollection',
+				data: req_data,
+				encode: true
+			}).done(function(data) {
+				resolve(data);
+			}).fail(function(data) {
+				alert("Something went wrong. Check console or network tab in dev tools for more info.")
+				reject(new Error(data));
+			});
 		});
 	}
 
@@ -101,32 +101,38 @@
 	}
 
 	//$(function() {	//Нужно выполнять этот код только после загрузки документа. А может, не нужно. Я не знаю, всё вроде работает и без этого.
-	var resp_json = getImages("красивые+картинки", "latest");
-	var parsed_json = JSON.parse(resp_json);
-	var posts = parsed_json.posts;
-	var currentPage = parsed_json.lp,
-		nextPage = currentPage - 1,
-		numPages = 1;
+	var parsed_json, posts, currentPage, nextPage
+	getImages("красивые+картинки", "latest")
+		.then(function(response) {
+			parsed_json = user = JSON.parse(response);
+			posts = parsed_json.posts;
+			currentPage = parsed_json.lp;
+			nextPage = currentPage - 1;
+			posts.forEach(function(entry) {
+				generateCard(entry);
+			});
+		})
+		.catch(console.log);
 
-	posts.forEach(function(entry) {
-		generateCard(entry);
-	});
 	$(window).scroll(function() {
 		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-			if (nextPage > numPages) {
+			if (nextPage > 1) {
 				upd();
 			}
 		}
 	});
 
 	function upd() {
-		console.log("Im visibal!");
-		resp_json = getImages("красивые+картинки", nextPage);
-		parsed_json = JSON.parse(resp_json);
-		posts = parsed_json.posts;
-		posts.forEach(function(entry) {
-			generateCard(entry);
-		});
+		getImages("красивые+картинки", "latest")
+			.then(function(response) {
+				parsed_json = user = JSON.parse(response);
+				posts = parsed_json.posts;
+				currentPage = parsed_json.lp;
+				nextPage = currentPage - 1;
+				posts.forEach(function(entry) {
+					generateCard(entry);
+				});
+			}).catch(console.log);
 		nextPage--;
 		console.log(nextPage);
 	};
