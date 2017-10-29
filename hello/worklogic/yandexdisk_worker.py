@@ -48,6 +48,13 @@ def upload_file_by_link(link, filename=None):
         raise exp
 
 
+def check_async_operation(id):
+    try:
+        return jsonpickle.decode(api.check_async_operation(id)).get("status")
+    except YandexDiskException as exp:
+        raise exp
+
+
 def get_file_list(tag="r34", offset=1, as_json=False):
     response = Response(tag, "http://pornreactor.cc/", offset)
     pornreactor = Reactor(response.host)

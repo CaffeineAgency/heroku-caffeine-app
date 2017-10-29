@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<style>
+	img { cursor: pointer }
+	.nomargin { margin: 0 }
+</style>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-3">Reactor gallery</h1>
+		<p class="lead">Галерея пикч из джойреакторовского тега <i>"красивые картинки"</i>.</p>
+	</div>
+</div>
+<div class="container-fluid">
+	<br>
+	<br>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-10">
+			<section class="card-columns">
+			</section>
+		</div>
+		<div class="col"></div>
+	</div>
+	<br>
+	<br>
+	<button class="btn btn-success col" onclick="upd()">Load more!</button>
+	<br>
+
+</div>
+<script type="application/javascript">
+	function getImages(tag, page) {
+		var req_data = {
+			mode: "reactorparser",
+			tag: tag,
+			page,
+			page
+		}
+		console.log([tag, page]);
+		return '{"lp":1980, "posts":[{"author":{"avatar":"http://img1.joyreactor.cc/pics/avatar/user/81101","nick":"psionik1113"},"tags":["арт девушка","красивые картинки","hoang do hung"],"images":["http://img1.joyreactor.cc/pics/post/full/%D0%B0%D1%80%D1%82-%D0%B4%D0%B5%D0%B2%D1%83%D1%88%D0%BA%D0%B0-%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D1%8B%D0%B5-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-hoang-do-hung-4127273.jpeg"]},{"author":{"avatar":"http://img1.joyreactor.cc/pics/avatar/user/66819","nick":"Ali-dgi"},"tags":["KR0NPR1NZ","artist","арт барышня","красивые картинки"],"images":["http://img1.joyreactor.cc/pics/post/KR0NPR1NZ-artist-%D0%B0%D1%80%D1%82-%D0%B1%D0%B0%D1%80%D1%8B%D1%88%D0%BD%D1%8F-%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D1%8B%D0%B5-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-4127175.jpeg","http://img0.joyreactor.cc/pics/post/KR0NPR1NZ-artist-%D0%B0%D1%80%D1%82-%D0%B1%D0%B0%D1%80%D1%8B%D1%88%D0%BD%D1%8F-%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D1%8B%D0%B5-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-4127176.jpeg","http://img1.joyreactor.cc/pics/post/KR0NPR1NZ-artist-%D0%B0%D1%80%D1%82-%D0%B1%D0%B0%D1%80%D1%8B%D1%88%D0%BD%D1%8F-%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D1%8B%D0%B5-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-4127177.jpeg","http://img0.joyreactor.cc/pics/post/KR0NPR1NZ-artist-%D0%B0%D1%80%D1%82-%D0%B1%D0%B0%D1%80%D1%8B%D1%88%D0%BD%D1%8F-%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D1%8B%D0%B5-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-4127178.jpeg"]}]}';
+		$.ajax({
+			type: 'GET',
+			url: '/acollection',
+			data: req_data,
+			encode: true
+		}).done(function(data) {
+			console.log(data);
+			return data;
+		}).failed(function(data) {
+			console.log(data);
+			alert("Something went wrong. Check console or network tab in dev tools for more info.")
+		});
+	}
+
+	function generateCard(post) {
+		var author = post.author;
+		var tags = post.tags;
+		var images = post.images;
+
+		var div = document.createElement("div");
+		div.className = "card";
+		div.style = {
+			width: "20rem"
+		};
+
+		var div_ch = document.createElement("div");
+		div_ch.className = "row card-header nomargin";
+		var img_ava = document.createElement("img");
+		img_ava.className = "rounded mr-2";
+		img_ava.src = author.avatar;
+		img_ava.alt = author.nick;
+		div_ch.appendChild(img_ava);
+		div_ch.append(author.nick);
+		div.appendChild(div_ch);
+
+
+		images.forEach(function(image) {
+			var img = document.createElement("img");
+			img.className = "card-img-top";
+			img.src = image;
+			div.appendChild(img);
+			div.appendChild(document.createElement("br"))
+		});
+
+		var div_cb = document.createElement("div");
+		div_cb.className = "card-body";
+		var p_ct = document.createElement("p");
+		p_ct.className = "card-text";
+
+		tags.forEach(function(tag) {
+			var span_tag = document.createElement("span");
+			span_tag.className = "badge badge-light";
+			span_tag.textContent = tag;
+			div_cb.appendChild(span_tag);
+			div_cb.append(" ");
+		});
+		div_cb.appendChild(p_ct);
+		div.appendChild(div_cb);
+		$("section.card-columns").prepend(div);
+	}
+
+	//$(function() {	//Нужно выполнять этот код только после загрузки документа. А может, не нужно. Я не знаю, всё вроде работает и без этого.
+	var resp_json = getImages("красивые+картинки", "latest");
+	var parsed_json = JSON.parse(resp_json);
+	var posts = parsed_json.posts;
+	var currentPage = parsed_json.lp,
+		nextPage = currentPage - 1,
+		numPages = 1;
+
+	posts.forEach(function(entry) {
+		generateCard(entry);
+	});
+	$(window).scroll(function() {
+		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+			if (nextPage > numPages) {
+				upd();
+			}
+		}
+	});
+
+	function upd() {
+		console.log("Im visibal!");
+		resp_json = getImages("красивые+картинки", nextPage);
+		parsed_json = JSON.parse(resp_json);
+		posts = parsed_json.posts;
+		posts.forEach(function(entry) {
+			generateCard(entry);
+		});
+		nextPage--;
+		console.log(nextPage);
+	};
+	//});
+</script>
+{% endblock %}

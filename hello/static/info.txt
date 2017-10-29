@@ -12,21 +12,23 @@
                 Входные данные:
                     mode=ubf
                     u=<url>
-            'gui' - GUI для yandexworker.
+            'yagui' - GUI для yandexworker.
                 Метод: GET
                 Входные данные:
-                    mode=gui
+                    mode=yagui
             'async operation checker' - Проверяет статус асинхронной операции с диском яндекса.
                 Метод: GET
                 Входные данные:
                     mode=chk
                     id=<id>
-            'collect.main' - Пока в разработке.
             'rumine forum api' - парсит сообщения из форумных тредов сайта ru-minecraft.ru
                 Метод: GET
                 Входные данные:
                     mode=rumine
                     threadId=<threadId>
                     pagenum=<pagenum> - Не обязателен, если не указан, то берётся 9999999999999
-                    b64=<any or y> - Не обязателен, если "y", то конвертирует текст в base64(иногда бывает полезно). 
-                //IDN почему(скорее-всего из-за 3 питона), текст всегда конвертится в base64
+                    b64=<any or y> - [WIP] Если "y", то конвертирует текст в base64(иногда бывает полезно).
+            'reactor' - reactor gallery.
+                Метод: GET
+                Входные данные:
+                    mode=reactorgui
