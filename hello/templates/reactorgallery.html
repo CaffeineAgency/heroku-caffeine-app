@@ -122,7 +122,7 @@
 	});
 
 	function upd() {
-		getImages("красивые+картинки", "latest")
+		getImages("красивые+картинки", nextPage)
 			.then(function(response) {
 				parsed_json = user = JSON.parse(response);
 				posts = parsed_json.posts;
