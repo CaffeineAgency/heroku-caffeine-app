@@ -9,10 +9,17 @@ import jsonpickle
 
 @csrf_exempt
 def index(request):
-    inc_data = jsonpickle.decode(request.body)
-    type = inc_data["type"]
-    if type == "confirmation":
-        if inc_data["group_id"] == 140299531:
-            return HttpResponse("401176a7")
-    else:
-        return HttpResponse("PASSED!")
+    try:
+        inc_data = jsonpickle.decode(request.body)
+        type = inc_data["type"]
+        if type == "confirmation":
+            if inc_data["group_id"] == 140299531:
+                return HttpResponse("401176a7")
+        elif type == "message_new":
+            pass
+        elif type == "group_join":
+            pass
+        else:
+            return HttpResponse("err")
+    except:
+        return HttpResponse("THIS PAGE FOR BOT! NOT FOR HUMANS!")
