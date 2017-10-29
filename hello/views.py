@@ -21,9 +21,9 @@ def index(request):
 def acollection(request):
     mode = getGet(request, "mode")
     if mode == "yagui":
-        return render_to_response('reactorgallery.html')
+        return render_to_response('yandexworker.html')
     if mode == "reactorgui":
-        return render_to_response('reactorguiworker.html')
+        return render_to_response('reactorgallery.html')
     elif mode == "ubl":
         url = getGet(request, "u")
         filename = getGet(request, "f")
