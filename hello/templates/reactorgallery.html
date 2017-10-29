@@ -101,13 +101,12 @@
 	}
 
 	//$(function() {	//Нужно выполнять этот код только после загрузки документа. А может, не нужно. Я не знаю, всё вроде работает и без этого.
-	var parsed_json, posts, currentPage, nextPage
+	var parsed_json, posts, nextPage
 	getImages("красивые+картинки", "latest")
 		.then(function(response) {
 			parsed_json = user = JSON.parse(response);
 			posts = parsed_json.posts;
-			currentPage = parsed_json.lp;
-			nextPage = currentPage - 1;
+			nextPage = parsed_json.lp-1;
 			posts.forEach(function(entry) {
 				generateCard(entry);
 			});
@@ -127,13 +126,11 @@
 			.then(function(response) {
 				parsed_json = user = JSON.parse(response);
 				posts = parsed_json.posts;
-				currentPage = parsed_json.lp;
-				nextPage = currentPage - 1;
+				nextPage--;
 				posts.forEach(function(entry) {
 					generateCard(entry);
 				});
 			}).catch(console.log);
-		nextPage--;
 		console.log(nextPage);
 	};
 	//});
