@@ -1,24 +1,26 @@
 from django.http import HttpResponse
 
+from acollection.ydapi.YandexDiskException import YandexDiskException
 from hello.worklogic.yandexdisk_worker import download_file, get_file_list, upload_file
-from ydapi.YandexDiskException import YandexDiskException
 
 
 def main():
+    response = HttpResponse()
     try:
-        response = ""
         ss = get_file_list("r34")
         for post in ss:
             for image in post.images_list:
                 try:
                     url = image
                     filename = download_file(url)
-                    response += "{}<br><br><br>\n\n\n".format(upload_file(filename))
+                    response.write(f"Writing {filename}...<br>")
+                    upload_file(filename)
+                    response.write(f"Done: {filename}!<br><br><br>")
                 except YandexDiskException as ex:
                     continue
-        return HttpResponse(response)
-    except ConnectionError as ex:
-        return HttpResponse(ex)
+        return HttpResponse("")
+    except ConnectionError:
+        return response.write("Exception!")
 
 
 if __name__ == '__main__':

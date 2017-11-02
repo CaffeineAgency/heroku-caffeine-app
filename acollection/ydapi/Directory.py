@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from ydapi.File import File
+from acollection.ydapi.File import File
 
 
 class Directory():

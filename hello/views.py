@@ -51,6 +51,8 @@ def acollection(request):
         rq["page"] = getGet(request, "page")
         api = reapi.ReactorApi()
         return HttpResponse(api.get_images(request=rq))
+    elif mode == "cpy":
+        collect.main()
     else:
         return HttpResponse("""
         СПРАВКА:

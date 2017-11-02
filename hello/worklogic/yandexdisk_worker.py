@@ -1,10 +1,12 @@
+from urllib.parse import unquote
+
 import jsonpickle
+import requests
+import shutil
+from acollection.ydapi.YandexDiskException import YandexDiskException
 
 from acollection import Response, Reactor
-from ydapi.YandexDiskRestClient import YandexDiskRestClient
-from ydapi.YandexDiskException import YandexDiskException
-from urllib.parse import unquote
-import requests, shutil
+from acollection.ydapi.YandexDiskRestClient import YandexDiskRestClient
 
 api = YandexDiskRestClient("AQAAAAAMTrBzAARbbEhJbcQgn0dDg-Nag1ykG7o")
 
@@ -39,7 +41,7 @@ def download_and_upload_file(url):
 def upload_file_by_link(link, filename=None):
     try:
         if not filename or len(filename) < 5:
-            filename = link.split("/").pop()
+            filename = link.split("/").pop().split("?")[0]
         path = "/Herokuer/" + filename
         jresp = jsonpickle.decode(api.upload_file_from_url(link, path))
         id = jresp.get("href").split("/").pop()

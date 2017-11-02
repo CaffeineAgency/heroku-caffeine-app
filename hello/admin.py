@@ -5,7 +5,6 @@ from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 
 from .models import User
 
-
 class MyUserCreationForm(UserCreationForm):
     def clean_username(self):
         username = self.cleaned_data["username"]
