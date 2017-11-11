@@ -15,6 +15,8 @@ groupsec = "05f59078d7cfe924415b7f162a1e1eace16a9aaa30f969e51636808ce1d317cb7fc5
 def index(request):
     try:
         sess = vk_api.VkApi(app_id=6157263, api_version="5.69", token=groupsec)
+        sess.auth()
+        api = sess.get_api()
         inc_data = jsonpickle.decode(request.body)
         type = inc_data["type"]
         if type == "confirmation":
@@ -25,10 +27,10 @@ def index(request):
             sender = obj["user_id"]
             text = obj["body"]
             if text.startswith("~/"):
-                sess.message.send(user_id=sender, message="Wait for command recognition...")
+                api.message.send(user_id=sender, message="Wait for command recognition...")
                 recognized, parsed_command = try_parse_command(text)
                 if not recognized:
-                    sess.message.send(user_id=sender, message="Command not recognized")
+                    api.message.send(user_id=sender, message="Command not recognized")
 
         elif type == "group_join":
             pass
