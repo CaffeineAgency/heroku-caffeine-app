@@ -15,7 +15,6 @@ groupsec = "05f59078d7cfe924415b7f162a1e1eace16a9aaa30f969e51636808ce1d317cb7fc5
 def index(request):
     try:
         sess = vk_api.VkApi(app_id=6157263, api_version="5.69", token=groupsec)
-        sess.auth()
         api = sess.get_api()
         inc_data = jsonpickle.decode(request.body)
         type = inc_data["type"]
@@ -35,7 +34,7 @@ def index(request):
         elif type == "group_join":
             pass
         else:
-            return HttpResponse("err")
+            return HttpResponse("ok")
     except vk_api.VkApiError as e:
         return HttpResponse(e.args)
     except:
