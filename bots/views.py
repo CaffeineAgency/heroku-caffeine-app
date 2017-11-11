@@ -14,7 +14,8 @@ groupsec = "05f59078d7cfe924415b7f162a1e1eace16a9aaa30f969e51636808ce1d317cb7fc5
 @csrf_exempt
 def index(request):
     try:
-        sess = vk_api.VkApi(app_id=6157263, api_version="5.69", token=groupsec)
+        sess = vk_api.VkApi(app_id=6157263, api_version="5.69", token=groupsec, scope=266240)
+        sess.api_login()
         api = sess.get_api()
         inc_data = jsonpickle.decode(request.body)
         type = inc_data["type"]
