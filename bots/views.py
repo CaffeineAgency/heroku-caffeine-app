@@ -38,7 +38,7 @@ def try_parse_command(text):
     command_parts = text.split()
     if command_parts[0] not in commands_list:
         return False, None
-    return False, command_parts[0]
+    return True, command_parts[0]
 
 def send_message(uid, text):
     vkapi_endpoint = f"https://api.vk.com/method/messages.send?message={text}&user_id={uid}&access_token={groupsec}&v=5.69"
