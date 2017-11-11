@@ -25,7 +25,7 @@ def index(request):
         text = obj["body"]
         if text.startswith("~/"):
             send_message(sender, "Wait for command recognition...")
-            recognized, parsed_command = try_parse_command(text)
+            recognized, parsed_command = try_parse_command(text.replace("~/", "").strip())
             if not recognized:
                 send_message(sender, "Command not recognized")
                 return HttpResponse("ok")
@@ -35,7 +35,7 @@ def index(request):
     return HttpResponse("ok")
 
 def try_parse_command(text):
-    command_parts = text.replace("~/", "").split()
+    command_parts = text.split()
     if command_parts[0] not in commands_list:
         return False, None
     return False, command_parts[0]
