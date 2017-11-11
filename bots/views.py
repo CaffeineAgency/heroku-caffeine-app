@@ -1,4 +1,5 @@
 # coding=utf-8
+import requests
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.template import TemplateDoesNotExist
@@ -14,9 +15,6 @@ groupsec = "05f59078d7cfe924415b7f162a1e1eace16a9aaa30f969e51636808ce1d317cb7fc5
 @csrf_exempt
 def index(request):
     try:
-        sess = vk_api.VkApi(app_id=6157263, api_version="5.69", token=groupsec, scope=266240)
-        sess.auth()
-        api = sess.get_api()
         inc_data = jsonpickle.decode(request.body)
         type = inc_data["type"]
         if type == "confirmation":
@@ -27,10 +25,10 @@ def index(request):
             sender = obj["user_id"]
             text = obj["body"]
             if text.startswith("~/"):
-                api.message.send(user_id=sender, message="Wait for command recognition...")
+                send_message(sender, "Wait for command recognition...")
                 recognized, parsed_command = try_parse_command(text)
                 if not recognized:
-                    api.message.send(user_id=sender, message="Command not recognized")
+                    send_message(sender, "Command not recognized")
 
         elif type == "group_join":
             pass
@@ -47,3 +45,8 @@ def try_parse_command(text):
     if command_parts[0] not in commands_list:
         return False, None
     return False, None
+
+def send_message(uid, text):
+    vkapi_endpoint = f"https://api.vk.com/method/messages.send?message={text}&user_id={uid}&access_token={groupsec}&v=5.69"
+    requests.request("GET", vkapi_endpoint)
+    
