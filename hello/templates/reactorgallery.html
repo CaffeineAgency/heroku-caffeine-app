@@ -9,6 +9,33 @@
 	.flex5 { -webkit-column-count: 5; column-count: 5 }
 	.flex2 { -webkit-column-count: 2; column-count: 2 }
 	.flex1 { -webkit-column-count: 1; column-count: 1 }
+	/* FLEX
+	section > .card {
+		min-width: 24%;
+		max-width: 24%;
+	}
+
+	.contentholder {
+		display: inline-flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-content: space-between;
+	}
+	*/
+
+	/*
+	GRID
+	*/
+	section > .card {
+	  padding: 1em;
+	  border: 1px solid #fff;
+	}
+
+	.contentholder {
+	  display: grid;
+	  grid-template-areas: "a b c d"
+						   "k l m n";
+	}
 </style>
 <div class="jumbotron jumbotron-fluid">
 	<div class="container">
@@ -21,7 +48,7 @@
 	<div class="row">
 		<div class="col"></div>
 		<div class="col-12">
-			<section class="card-columns flex5">
+			<section class="contentholder">
 			</section>
 		</div>
 		<div class="col"></div>
