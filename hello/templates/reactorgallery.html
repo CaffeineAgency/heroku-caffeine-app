@@ -67,6 +67,7 @@
 	<script type="application/javascript">
 	var load_btn = $("button#lbt")[0];
 	var prog_bar = $("div#prog")[0];
+	var tag = "красивые+картинки";
 
 	function getImages(tag, page) {
 		return new Promise(function(resolve, reject) {
@@ -148,7 +149,7 @@
 	}
 
 	var parsed_json, posts, nextPage
-	getImages("красивые+картинки", "latest")
+	getImages(tag, "latest")
 		.then(function(response) {
 			parsed_json = user = JSON.parse(response);
 			posts = parsed_json.posts;
@@ -168,7 +169,7 @@
 	});
 
 	function upd() {
-		getImages("красивые+картинки", nextPage)
+		getImages(tag, nextPage)
 			.then(function(response) {
 				parsed_json = user = JSON.parse(response);
 				posts = parsed_json.posts;
@@ -178,6 +179,12 @@
 			}).catch(console.log);
 		nextPage--;
 		console.log(nextPage);
+	};
+	
+	function changeTag(tg){
+		tag = tg;
+		$("section.contentholder").html('');
+		getImages(tag, "latest");
 	};
 </script>
 </div>
