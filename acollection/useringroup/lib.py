@@ -19,7 +19,7 @@ class VKGroupWorker():
 
         for group_id in input_groups:
             vkapi_endpoint = f"https://api.vk.com/method/groups.isMember?user_id={user_id}&group_id={group_id}&access_token={self.token}&v=5.69"
-            g[group_id] = 1 if requests.request("GET", vkapi_endpoint).content.find('0') == -1 else 0
+            g[group_id] = jsonpickle.decode(requests.request("GET", vkapi_endpoint).content)["response"]
         return uid, g
 
 

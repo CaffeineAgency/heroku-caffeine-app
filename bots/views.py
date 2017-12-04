@@ -42,12 +42,12 @@ def execute_command(request):
         return "Awaken!"
     elif command == "check-subs":
         if args is None or len(args) < 2:
-            return "Not enough arguments!\n~/check UID|g1,g3,g4,g5"
+            return "Not enough arguments!\n~/check-subs UID|g1,g3,g4,g5"
         vgw = VKGroupWorker(groupsec)
         return vgw.isUserSubscribed(args[1], args[0])
     elif command == "check-like":
         if args is None or len(args) < 2:
-            return "Not enough arguments!\n~/check UID|post_link"
+            return "Not enough arguments!\n~/check-like UID|post_link"
         vgw = VKGroupWorker(groupsec)
         return vgw.isUserLikedPost(args[1], args[0])
 
