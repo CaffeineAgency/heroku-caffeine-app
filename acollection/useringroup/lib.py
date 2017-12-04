@@ -27,7 +27,7 @@ class VKGroupWorker():
         owner_id, item_id = post_link.replace("https://vk.com/wall","").strip().split("_")
         user_id = self.v.users.get(user_ids=uid.split("/").pop())[0]["id"]
 
-        vkapi_endpoint = f"https://api.vk.com/method/likes.isLiked?user_id={user_id}&type=post&owner_id={owner_id}&item_id={item_id}&access_token={self.token}&v=5.69"
+        vkapi_endpoint = f"https://api.vk.com/method/likes.isLiked?user_id={user_id}&type=post&owner_id={owner_id}&item_id={item_id}&access_token=c518f08403204774981953557994f492b0783f0b23d60a22d33df3602b2294b5fa4fe249ea8c90115e47c&v=5.69"
         resp = jsonpickle.decode(requests.request("GET", vkapi_endpoint).content)
         print(resp)
         liked_info = resp["response"]
