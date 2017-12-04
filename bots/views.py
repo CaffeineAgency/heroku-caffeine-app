@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from acollection.useringroup.lib import VKGroupWorker
 
-commands_list = ["help", "wake", "check-subs", "check-like"]
+commands_list = ["help", "wake", "cmds", "check-subs", "check-like"]
 groupsec = "05f59078d7cfe924415b7f162a1e1eace16a9aaa30f969e51636808ce1d317cb7fc5957f7925c9364c258"
 
 @csrf_exempt
@@ -32,10 +32,11 @@ def index(request):
 
 def execute_command(request):
     command, args = request
-    args = args.split("|")
+    if args is not None:
+        args = args.split("|")
     if command == "help":
         return "**Тут (должен быть) краткий референс по использованию бота**\nАх да, аргументы надо отделять (\"|\")\nПример: ~/{command_name} arg1|arg2|3|(256)|..."
-    elif command == "commands":
+    elif command == "cmds":
         return "\n".join(commands_list)
     elif command == "wake":
         return "Awaken!"
