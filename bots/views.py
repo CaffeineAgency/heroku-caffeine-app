@@ -55,7 +55,10 @@ def try_parse_command(text):
     command_parts = text.split()
     if command_parts[0] not in commands_list:
         return False, None
-    request = command_parts[0], command_parts[1] if len(command_parts) == 2 else None
+    if len(command_parts) == 2:
+        request = command_parts[0], command_parts[1]
+    else:
+        request = command_parts[0], None
     return True, execute_command(request)
 
 def send_message(uid, text):
