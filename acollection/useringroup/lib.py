@@ -17,14 +17,15 @@ class VKGroupWorker():
 
     def isUserSubscribed(self, groups_ids_str, uid):
         input_groups = groups_ids_str.split(",")
-        g = dict()
 
         user_id = self.v.users.get(user_ids=uid.split("/").pop())[0]["id"]
 
+        resp_m = f"UID: @{uid}\n\n"
         for group_id in input_groups:
             vkapi_endpoint = f"https://api.vk.com/method/groups.isMember?user_id={user_id}&group_id={group_id}&access_token={self.token}&v=5.69"
-            g[group_id] = jsonpickle.decode(requests.request("GET", vkapi_endpoint).content)["response"]
-        return uid, g
+            r = "yes" if jsonpickle.decode(requests.request("GET", vkapi_endpoint).content)["response"] == 1 else "no"
+            resp_m += f"Group: {group_id}\nSubscribed: {r}\n\n"
+        return resp_m.strip()
 
 
     def isUserLikedPost(self, post_link, uid):
@@ -36,6 +37,8 @@ class VKGroupWorker():
             resp = jsonpickle.decode(requests.request("GET", vkapi_endpoint).content)
             print(resp)
             liked_info = resp["response"]
-            return "UID: @{}\nPost id: {}\nLiked: {}\nReposted: {}\nPost link: {}".format(uid, item_id, liked_info["liked"], liked_info["copied"], post_link)
+            liked = "no" if liked_info['liked'] == 1 else "no"
+            reposted = "no" if liked_info['copied'] == 1 else "no"
+            return f"UID: @{uid}\nPost id: {item_id}\nLiked: {liked}\nReposted: {reposted}\nPost link: {post_link}"
         except:
             return f"API Exception\n{resp}"
