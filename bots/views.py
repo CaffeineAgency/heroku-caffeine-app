@@ -1,12 +1,13 @@
 # coding=utf-8
 import jsonpickle
+import os
 import requests
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from acollection.useringroup.lib import VKGroupWorker
 
 commands_list = ["help", "wake", "cmds", "check-subs", "check-like"]
-groupsec = "05f59078d7cfe924415b7f162a1e1eace16a9aaa30f969e51636808ce1d317cb7fc5957f7925c9364c258"
+groupsec = os.environ["rkkk_token"]
 
 @csrf_exempt
 def index(request):
@@ -20,11 +21,14 @@ def index(request):
         sender = obj["user_id"]
         text = obj["body"]
         if text.startswith("~/"):
-            recognized, parsed_command = try_parse_command(text.replace("~/", "").strip())
-            if not recognized:
-                send_message(sender, "Ты бы мне ещё консервных банок насобирал!")
-                return HttpResponse("ok")
-            send_message(sender, parsed_command)
+            try:
+                recognized, parsed_command = try_parse_command(text.replace("~/", "").strip())
+                if not recognized:
+                    send_message(sender, "Ты бы мне ещё консервных банок насобирал!")
+                    return HttpResponse("ok")
+                send_message(sender, parsed_command)
+            except Exception as e:
+                send_message(307982226, e)
     elif type == "group_join":
         pass
     return HttpResponse("ok")
