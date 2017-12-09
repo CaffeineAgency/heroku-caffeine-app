@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/useringroup/lib.py" afterPath="$PROJECT_DIR$/acollection/useringroup/lib.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bots/views.py" afterPath="$PROJECT_DIR$/bots/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bots/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+            <state relative-caret-position="687">
+              <caret line="54" column="23" lean-forward="false" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
               <folding>
                 <element signature="e#15#32#0" expanded="true" />
               </folding>
@@ -29,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lib.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="lib.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/acollection/useringroup/lib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+            <state relative-caret-position="467">
+              <caret line="38" column="54" lean-forward="true" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
               <folding>
                 <element signature="e#15#32#0" expanded="true" />
               </folding>
@@ -116,8 +117,8 @@
         <option value="$PROJECT_DIR$/hello/worklogic/yandexdisk_worker.py" />
         <option value="$PROJECT_DIR$/bots/models.py" />
         <option value="$PROJECT_DIR$/acollection/useringroup/__init__.py" />
-        <option value="$PROJECT_DIR$/acollection/useringroup/lib.py" />
         <option value="$PROJECT_DIR$/bots/views.py" />
+        <option value="$PROJECT_DIR$/acollection/useringroup/lib.py" />
       </list>
     </option>
   </component>
@@ -430,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512820500097</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Working on bugs...">
+      <created>1512821409048</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1512821409048</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -463,7 +471,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Explicit data moved to envvars&#10;Add try/catch construction, to catch all the errors and send them to my profile" />
     <MESSAGE value="Checking for user-token-required features" />
-    <option name="LAST_COMMIT_MESSAGE" value="Checking for user-token-required features" />
+    <MESSAGE value="Working on bugs..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on bugs..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -751,20 +760,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/useringroup/lib.py">
+    <entry file="file://$PROJECT_DIR$/bots/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        <state relative-caret-position="687">
+          <caret line="54" column="23" lean-forward="false" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
           <folding>
             <element signature="e#15#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bots/views.py">
+    <entry file="file://$PROJECT_DIR$/acollection/useringroup/lib.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+        <state relative-caret-position="467">
+          <caret line="38" column="54" lean-forward="true" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
           <folding>
             <element signature="e#15#32#0" expanded="true" />
           </folding>

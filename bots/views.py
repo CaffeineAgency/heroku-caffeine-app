@@ -28,7 +28,7 @@ def index(request):
                     return HttpResponse("ok")
                 send_message(sender, parsed_command)
             except Exception as e:
-                send_message(307982226, e.args)
+                send_message(307982226, e)
     elif type == "group_join":
         pass
     return HttpResponse("ok")
