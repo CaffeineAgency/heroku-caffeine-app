@@ -52,7 +52,7 @@ def execute_command(request):
     elif command == "check-like":
         if args is None or len(args) < 2:
             return "Not enough arguments!\n~/check-like UID|post_link"
-        vgw = VKGroupWorker(groupsec)
+        vgw = VKGroupWorker(groupsec, True)
         return vgw.isUserLikedPost(args[1], args[0])
 
 

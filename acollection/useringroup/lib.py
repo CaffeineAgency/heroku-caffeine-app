@@ -7,8 +7,10 @@ import vk_api
 class VKGroupWorker():
     app_id = 5882810
     internal_token = os.environ["u_token"]
-    def __init__(self, token):
+    def __init__(self, token, by_user=False):
         self.token = token
+        if by_user:
+            self.token = self.internal_token
         self.vk_session = vk_api.VkApi(token=token, app_id=self.app_id)
         self.v = self.vk_session.get_api()
         self.tools = vk_api.VkTools(self.vk_session)
