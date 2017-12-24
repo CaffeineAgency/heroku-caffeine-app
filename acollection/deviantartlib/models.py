@@ -23,6 +23,7 @@ class WorkerTask:
         doc = bs(resp.content, "html5lib")
         mainscript = ""
         for script in doc.select("script"):
+            print(f"SCR={script}")
             if "csrf" in str(script) and "requestid" in str(script):
                 mainscript = script
                 break
