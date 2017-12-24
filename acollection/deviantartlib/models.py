@@ -23,8 +23,7 @@ class WorkerTask:
         doc = bs(resp.content, "html5lib")
         mainscript = doc.select("script").pop()
         for script in doc.select("script"):
-            print(f"SCR={script}")
-            if "bilogger" in str(script):
+            if script.find("bilogger") != -1:
                 mainscript = script
                 break
         if len(mainscript) < 10:
