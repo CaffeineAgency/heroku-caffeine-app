@@ -39,11 +39,9 @@ class WorkerTask:
             resp = conn.post(url=self.URL, data=data)
             got = resp.text
             respjson = jsonpickle.decode(got)
-            return got
-            for jobject in respjson["dapi"]["metadata"]:
-                for link in jobject:
-                    urls.append(link["src"])
+            for i in range(len(respjson["dapi"]["metadata"])):
+                urls.append((respjson["dapi"]["metadata"][f".{i}"]["alt"], respjson["dapi"]["metadata"][f".{i}"]["src"]))
             hasmore = respjson["content"]["has_more"]
             offset += 24
             data["offset"] = str(offset)
-        return urls
+        return jsonpickle.encode(urls, unpicklable=False)
