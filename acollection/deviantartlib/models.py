@@ -22,7 +22,7 @@ class WorkerTask:
         resp = conn.get(url=self.MAINURL)
         doc = bs(resp.content, "html5lib")
         mainscript = doc.select("script")
-        print(mainscript)
+        print(mainscript.pop())
         for script in mainscript:
             if "bilogger" in script:
                 mainscript = script
