@@ -39,7 +39,7 @@ class WorkerTask:
             resp = conn.post(url=self.URL, data=data)
             got = resp.text
             respjson = jsonpickle.decode(got)
-            return respjson
+            return got
             for jobject in respjson["dapi"]["metadata"]:
                 for link in jobject:
                     urls.append(link["src"])
