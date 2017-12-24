@@ -6,8 +6,8 @@ import requests
 class WorkerTask:
     URL = "https://www.deviantart.com/dapi/v1/gallery/"
     def __init__(self, url):
-        if not url.startswith("https://") or not url.startswith("http://"):
-            raise Exception("Author's gallery URL should starts with \"http[s]://\"")
+        if not url.startswith("https://"):
+            raise Exception("Author's gallery URL should starts with \"https://\"")
         elif "deviantart.com/gallery/" not in url:
             raise Exception("Author's gallery URL should contains \"deviantart.com/gallery/\"")
         self.MAINURL = url

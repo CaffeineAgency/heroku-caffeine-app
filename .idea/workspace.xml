@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/deviantartlib/api.py" afterPath="$PROJECT_DIR$/acollection/deviantartlib/api.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/deviantartlib/models.py" afterPath="$PROJECT_DIR$/acollection/deviantartlib/models.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/acollection/deviantartlib/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="69" lean-forward="true" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
+            <state relative-caret-position="153">
+              <caret line="9" column="75" lean-forward="true" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
               <folding>
                 <element signature="e#24#41#0" expanded="true" />
               </folding>
@@ -880,8 +879,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/acollection/deviantartlib/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="69" lean-forward="true" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
+        <state relative-caret-position="153">
+          <caret line="9" column="75" lean-forward="true" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
           <folding>
             <element signature="e#24#41#0" expanded="true" />
           </folding>
