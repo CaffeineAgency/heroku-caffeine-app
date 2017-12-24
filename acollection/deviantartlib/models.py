@@ -22,7 +22,7 @@ class WorkerTask:
         resp = conn.get(url=self.MAINURL)
         doc = bs(resp.content, "html5lib")
         mainscript = doc.select('script[type="text/javascript"]')[::-1][8]
-        mainscript = mainscript.split("=")[1].strip().split(";")[0]
+        mainscript = str(mainscript).split("=")[2].split(";")[0]
         mainjson = jsonpickle.decode(mainscript)
         RID = mainjson["bilogger"]["requestid"]
         CSRF = mainjson["csrf"]
