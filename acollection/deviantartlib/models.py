@@ -21,10 +21,10 @@ class WorkerTask:
         conn.headers.update({"UserAgent": "Maxthon 5"})
         resp = conn.get(url=self.MAINURL)
         doc = bs(resp.content, "html5lib")
-        mainscript = ""
+        mainscript = doc.select("script").pop()
         for script in doc.select("script"):
             print(f"SCR={script}")
-            if "csrf" in str(script) and "requestid" in str(script):
+            if "bilogger" in str(script):
                 mainscript = script
                 break
         if len(mainscript) < 10:
