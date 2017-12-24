@@ -55,8 +55,10 @@ def acollection(request):
     elif mode == "deviantart":
         do = getGet(request, "do")
         if do == "rip":
-            api = dapi.DeviantRipperApi(getGet(request, "url"))
-            return HttpResponse(api.get_gallery_of_author())
+            url = getGet(request, "url")
+            if url:
+                api = dapi.DeviantRipperApi(url)
+                return HttpResponse(api.get_gallery_of_author())
         return HttpResponse("No work specified")
     elif mode == "cpy":
         collect.main()
