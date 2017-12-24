@@ -37,7 +37,8 @@ class WorkerTask:
         self.URL += GID
         while hasmore:
             resp = conn.post(url=self.URL, data=data)
-            got = resp.content
+            got = resp.text
+            print(self.URL)
             print(got)
             respjson = jsonpickle.decode(got)
             for jobject in respjson["dapi"]["metadata"]:
