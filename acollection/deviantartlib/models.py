@@ -38,9 +38,9 @@ class WorkerTask:
         while hasmore:
             resp = conn.post(url=self.URL, data=data)
             respjson = jsonpickle.decode(resp.content)
+            return respjson
             for jobject in respjson["dapi"]["metadata"]:
                 for link in jobject:
-                    return link
                     urls.append(link["src"])
             hasmore = respjson["content"]["has_more"]
             offset += 24
