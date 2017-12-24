@@ -22,8 +22,7 @@ class WorkerTask:
         resp = conn.get(url=self.MAINURL)
         doc = bs(resp.content, "html5lib")
         mainscript = ""
-        mainscript = ""
-        return doc.select('script[type="text/javascript"]')
+        return doc.select('script[type="text/javascript"]')[::-1][8]
 
         for script in "dd":
             print(len(script.text))
