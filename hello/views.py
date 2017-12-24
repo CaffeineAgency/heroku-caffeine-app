@@ -11,6 +11,7 @@ from hello.worklogic import collect
 from hello.worklogic.yandexdisk_worker import *
 import acollection.ruminelib.api as rapi
 import acollection.reactorlib.api as reapi
+import acollection.deviantartlib.api as dapi
 
 def index(request):
     try:
@@ -51,6 +52,12 @@ def acollection(request):
         rq["page"] = getGet(request, "page")
         api = reapi.ReactorApi()
         return HttpResponse(api.get_images(request=rq))
+    elif mode == "deviantart":
+        do = getGet(request, "do")
+        if do == "rip":
+            api = dapi.DeviantRipperApi(getGet(request, "url"))
+            return HttpResponse(api.get_gallery_of_author())
+        return HttpResponse("No work specified")
     elif mode == "cpy":
         collect.main()
     else:

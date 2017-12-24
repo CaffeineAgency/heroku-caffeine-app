@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import codecs
+
 import bs4 as bs
-from bs4 import Comment
-import base64
-from .models import Post, Response
 import jsonpickle
 import requests
 
+from .models import Post, Response
 
-class ReactorApi():
+
+class ReactorApi:
     def __init__(self):
         self.base_url = "http://joyreactor.cc"
 
