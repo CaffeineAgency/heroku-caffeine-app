@@ -21,8 +21,12 @@ class WorkerTask:
         conn.headers.update({"UserAgent": "Maxthon 5"})
         resp = conn.get(url=self.MAINURL)
         doc = bs(resp.content, "html5lib")
-        mainscript = doc.select("script").pop()
-        print(mainscript, type(mainscript))
+        mainscript = ""
+        for script in doc.select("script"):
+            if "bilogger" in script.text:
+                print(len(script.text))
+                mainscript = script
+                break
         mainscript = mainscript.split("=")[1].strip().split(";")[0]
         mainjson = jsonpickle.decode(mainscript)
         RID = mainjson["bilogger"]["requestid"]
