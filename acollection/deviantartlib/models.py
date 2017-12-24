@@ -22,11 +22,7 @@ class WorkerTask:
         resp = conn.get(url=self.MAINURL)
         doc = bs(resp.content, "html5lib")
         mainscript = doc.select("script").pop()
-        for script in doc.select("script"):
-            if script.find("bilogger") != -1:
-                mainscript = script
-                break
-        if len(mainscript) < 10:
+        if not len(mainscript):
             raise Exception("No main script found!")
         mainscript = mainscript.split("=")[1].strip().split(";")[0]
         mainjson = jsonpickle.decode(mainscript)
