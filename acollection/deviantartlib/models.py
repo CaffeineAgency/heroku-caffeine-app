@@ -22,14 +22,15 @@ class WorkerTask:
         resp = conn.get(url=self.MAINURL)
         doc = bs(resp.content, "html5lib")
         mainscript = ""
-        return doc.select("script")
+        mainscript = ""
+        return doc.select('script[type="text/javascript"]')
 
         for script in "dd":
             print(len(script.text))
             if "bilogger" in script.text:
                 mainscript = script
                 break
-        
+
         mainscript = mainscript.split("=")[1].strip().split(";")[0]
         mainjson = jsonpickle.decode(mainscript)
         RID = mainjson["bilogger"]["requestid"]
