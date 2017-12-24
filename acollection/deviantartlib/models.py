@@ -23,8 +23,8 @@ class WorkerTask:
         doc = bs(resp.content, "html5lib")
         mainscript = ""
         for script in doc.select("script"):
+            print(len(script.text))
             if "bilogger" in script.text:
-                print(len(script.text))
                 mainscript = script
                 break
         mainscript = mainscript.split("=")[1].strip().split(";")[0]
