@@ -7,5 +7,6 @@ class Post:
 
 
 class Response:
-    def __init__(self, posts):
+    def __init__(self, page, posts):
+        self.current_page = page
         self.posts = posts

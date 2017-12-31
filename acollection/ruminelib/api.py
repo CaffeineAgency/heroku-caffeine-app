@@ -27,7 +27,7 @@ class RuMineApi():
             sender = item.select_one(".msgAutorInfo .autorInfo p > a").text
             stri = str(item.select_one(".msgText td > div"))
             posts.append(Post(pid, sender, stri))
-        return Response(posts)
+        return Response(self.pagenum, posts)
 
     def get_comments(self):
         try:
