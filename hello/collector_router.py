@@ -44,18 +44,19 @@ class ApiRouter:
         return HttpResponse(check_async_operation(id))
 
     def rumine_forum_parser(self):
-        rq = dict()
-        rq["threadId"] = getGet(self.request, "threadId")
-        rq["pagenum"] = getGet(self.request, "pagenum")
-        rq["b64"] = getGet(self.request, "b64")
+        rq = {
+            "threadId": getGet(self.request, "threadId"),
+            "pagenum": getGet(self.request, "pagenum")
+        }
         api = rapi.RuMineApi(request=rq)
-        return HttpResponse(api.get_comments())
+        return HttpResponse(api.get_comments(), content_type="application/json")
 
     def pornreactor_tag_parser(self):
-        rq = dict()
-        rq["tag"] = getGet(self.request, "tag")
-        rq["page"] = getGet(self.request, "page")
-        return HttpResponse(reapi.ReactorApi().get_images(request=rq))
+        rq = {
+            "tag": getGet(self.request, "tag"),
+            "page": getGet(self.request, "page")
+        }
+        return HttpResponse(reapi.ReactorApi().get_images(request=rq), content_type="application/json")
 
     def deviantart_worker(self):
         do = getGet(self.request, "do")
@@ -63,7 +64,7 @@ class ApiRouter:
             url = getGet(self.request, "url")
             if url:
                 api = dapi.DeviantRipperApi(url)
-                return HttpResponse(api.get_gallery_of_author())
+                return HttpResponse(api.get_gallery_of_author(), content_type="application/json")
         return HttpResponse("No work specified")
 
     def info(self):

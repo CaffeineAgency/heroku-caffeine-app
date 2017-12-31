@@ -11,15 +11,14 @@ import requests
 class RuMineApi():
     def __init__(self, login=None, password=None, request=None):
         self.pagenum = 9999999999999
-        self.tb64 = False
         self.base_url = "https://ru-minecraft.ru"
         self.login = login
         self.password = password
         self.request = request
 
     def prepare_uri(self, request=None):
-        if request is None:
-            if self.request is not None:
+        if not request:
+            if self.request:
                 request = self.request
             else:
                 raise Exception("No request dict passed")
@@ -37,8 +36,6 @@ class RuMineApi():
                 self.pagenum = request["pagenum"]
             except:
                 pass
-        if request["b64"] == "y":
-            self.tb64 = True
         return "{}/forum/showtopic-{}/page-{}/".format(self.base_url, self.threadId, self.pagenum)
 
     def parse_data(self, soup):
@@ -47,7 +44,7 @@ class RuMineApi():
             pid = item.select_one(".msgInfo a").text.replace("#", "")
             sender = item.select_one(".msgAutorInfo .autorInfo p > a").text
             stri = item.select_one(".msgText td > div").encode('utf-8')
-            posts.append(Post(pid, sender, (stri, base64.b64encode(stri))[self.tb64 == True]))
+            posts.append(Post(pid, sender, stri))
         return Response(posts)
 
     def get_comments(self, url=None):
