@@ -7,6 +7,5 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 class User(StdUser):
-
     def __unicode__(self):
         return self.username

@@ -24,7 +24,6 @@ INSTALLED_APPS = (
     'site',
     'hello',
     'bots',
-    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
