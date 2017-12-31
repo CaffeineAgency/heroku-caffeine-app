@@ -22,9 +22,7 @@ class ApiRouter:
         }
 
         self.request = request
-        if not cmdname in cmdlist.keys():
-            self.command = self.info
-        self.command = cmdlist[cmdname]
+        self.command = cmdlist[cmdname] if cmdlist.get(cmdname) else self.info
 
     def execute(self):
         return self.command()

@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hello/worklogic/collect.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/hello/worklogic/__init__.py" afterPath="$PROJECT_DIR$/hello/collector_router.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/hello/worklogic/yandexdisk_worker.py" afterPath="$PROJECT_DIR$/acollection/ydapi/yandexdisk_worker.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hello/admin.py" afterPath="$PROJECT_DIR$/hello/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hello/models.py" afterPath="$PROJECT_DIR$/hello/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hello/views.py" afterPath="$PROJECT_DIR$/hello/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init/settings.py" afterPath="$PROJECT_DIR$/init/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hello/collector_router.py" afterPath="$PROJECT_DIR$/hello/collector_router.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,8 +31,8 @@
       <file leaf-file-name="collector_router.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hello/collector_router.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+            <state relative-caret-position="356">
+              <caret line="24" column="78" lean-forward="false" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
               <folding>
                 <element signature="e#15#51#0" expanded="true" />
               </folding>
@@ -129,8 +122,8 @@
         <option value="$PROJECT_DIR$/hello/admin.py" />
         <option value="$PROJECT_DIR$/hello/models.py" />
         <option value="$PROJECT_DIR$/hello/collector.py" />
-        <option value="$PROJECT_DIR$/hello/collector_router.py" />
         <option value="$PROJECT_DIR$/hello/views.py" />
+        <option value="$PROJECT_DIR$/hello/collector_router.py" />
       </list>
     </option>
   </component>
@@ -892,8 +885,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hello/collector_router.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+        <state relative-caret-position="356">
+          <caret line="24" column="78" lean-forward="false" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
           <folding>
             <element signature="e#15#51#0" expanded="true" />
           </folding>
