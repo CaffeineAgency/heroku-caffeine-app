@@ -1,0 +1,75 @@
+<div class="container text-center" id="loader">
+	<br><br><br><br><br><br>
+	<h1>Loading...</h1>
+</div>
+<div class="container hide" id="loginframe">
+    <div>
+    <p class="h5 text-center mb-4">Войти</p>
+
+    <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="orangeForm-name" class="form-control">
+        <label for="orangeForm-name">Ник</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <input type="password" id="orangeForm-pass" class="form-control">
+        <label for="orangeForm-pass">Пароль</label>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-deep-orange">Войти</button>
+    </div>
+
+</div>
+</div>
+<div class="container hide" id="listframe">
+	<div class="row">
+		<button class="btn btn-deep-orange">Добавить раздел</button>
+	</div>
+	<div class="row" id="forumslist">
+
+	</div>
+</div>
+<div class="container hide" id="mainframe">
+qwe
+</div>
+<script>
+var loginframe, listframe, mainframe, loader;
+
+function hideElem(e){ e.classList.add("hide"); showElem(loader); return "Hidden " + e; }
+
+function showElem(e){ e.classList.remove("hide"); hideElem(loader); return "Showed " + e; }
+
+function messageLister(inputjson){
+	hideElem(loginframe);
+	hideElem(listframe);
+	var json = JSON.parse(inputjson);
+	if (json["current_page"] > 1){
+		json["posts"].splice(0, 1);
+	}
+	var card_tmpl = '<ul><% for (var i = 0; i < data.length; i++){ console.log(data); console.log(i); %><li><div class="card my-1"><div class="card-body"><div class="row"><div class="col-10"><h4 class="card-title"><%- data[i].sender%></h4><p class="card-text"><%= data[i].text%></p></div><div class="col-2"><a href="#" class="btn btn-outline-default btn-sm">Ответить</a></div></div></div></div></li><% }; %><br></ul>'
+	var tmpl = _.template(card_tmpl);
+	var data = json["posts"];
+	var res = tmpl(data);
+	mainframe.append(res);
+}
+
+function addNewForumChanel(){
+	var link = prompt("Введите ссылку на тему форума(без page-*):");
+}
+
+$(document).ready(function() {
+	log("Body loaded. Starting initialization...");
+	loginframe = $("body > .container#login");
+	listframe = $("body > .container#list");
+	mainframe = $("body > .container#mainframe");
+	loader = $("body > .container#loader");
+	if ($.cookie("authInfo") === undefined){
+		log("No login cookie found. Showing auth frame...");
+		return showElem(loginframe);
+	}
+
+});
+</script>
