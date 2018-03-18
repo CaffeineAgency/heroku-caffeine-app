@@ -18,7 +18,7 @@ def index(request):
                 140299531: "401176a7",
                 153656617: "6bb6be65",
             }
-            return HttpResponse(cids[inc_data["group_id"]])
+            return HttpResponse(content=cids.get(inc_data["group_id"]))
         elif type == "message_new":
             obj = inc_data["object"]
             hooker = GroupApiHooks()
