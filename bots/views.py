@@ -14,8 +14,11 @@ def index(request):
         inc_data = jsonpickle.decode(request.body)
         type = inc_data["type"]
         if type == "confirmation":
-            if inc_data["group_id"] == 140299531:
-                return HttpResponse("401176a7")
+            cids = {
+                140299531: "401176a7",
+                153656617: "6bb6be65",
+            }
+            return HttpResponse(inc_data["group_id"])
         elif type == "message_new":
             obj = inc_data["object"]
             hooker = GroupApiHooks()
