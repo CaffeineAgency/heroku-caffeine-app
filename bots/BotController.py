@@ -27,7 +27,7 @@ class BotController:
             command_name, command_args = text.strip(), None
         if command_name not in self.command_dict:
             return "bot@Clyde > Такой команды, увы, нет."
-        command_args = command_args.split("|") if command_args else None
+        command_args = command_args.split("|") if command_args else []
         return command_dict[command_name](*command_args)
 
     def execute(self):
