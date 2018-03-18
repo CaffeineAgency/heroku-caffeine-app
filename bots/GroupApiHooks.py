@@ -4,10 +4,10 @@ import requests
 
 class GroupApiHooks:
 
-    def __init__(self):
+    def __init__(self, gid):
         self.endpoint = "https://api.vk.com/method/"
         self.app_id = 5882810
-        self.groupsec = os.environ["rkkk_token"]
+        self.groupsec = os.environ[gid]
         self.internal_token = os.environ["u_token"]
 
     def send_message(self, uid, text):
