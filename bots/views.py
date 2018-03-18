@@ -23,7 +23,7 @@ def index(request):
                 140299531: "401176a7",
                 153656617: "6bb6be65",
             }
-            return HttpResponse(content=cids.get(inc_data["group_id"]))
+            return HttpResponse(content=cids.get(gid))
         elif type == "message_new":
             obj = inc_data["object"]
             hooker = GroupApiHooks(gid=gid)
@@ -37,4 +37,5 @@ def index(request):
     except Exception as e:
         print(e, inc_data)
         GroupApiHooks(gid=gid).notify_creator("Error(s) happend: " + ", ".join(e.args))
+        raise e
     return HttpResponse(content="ok")

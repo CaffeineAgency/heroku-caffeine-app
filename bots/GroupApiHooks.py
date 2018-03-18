@@ -22,7 +22,7 @@ class GroupApiHooks:
         text = ""
         for i, user in enumerate(response["response"]):
             text += f"{i}. {user['first_name']} + {user['last_name']}".strip() + "\n"
-        return text
+        return text.strip()
 
     def notify_creator(self, text):
         self.send_message(307982226, "bot@Clyde > " + text)
