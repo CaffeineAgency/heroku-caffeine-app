@@ -9,7 +9,7 @@ class BotController:
             "help": lambda *_: "**Краткий референс**\nПример использования: \n.{cmd} arg1|arg2|<...>",
             "cmds": lambda *_: "Доступные команды:\n" + "\n".join(self.commands_list),
             "wake": lambda *_: "Awaken!",
-            "notify_creator": lambda msg, *_: GroupApiHooks(gid=hooker.gid).notify_creator(str(msg)),
+            "notify_creator": lambda msg, *_: hooker.notify_creator(str(msg)),
         }
 
         self.sender = obj["user_id"]
