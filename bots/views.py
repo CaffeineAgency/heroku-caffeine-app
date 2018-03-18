@@ -9,8 +9,8 @@ from bots.GroupApiHooks import GroupApiHooks
 
 @csrf_exempt
 def index(request):
+    inc_data = jsonpickle.decode(request.body)
     try:
-        inc_data = jsonpickle.decode(request.body)
         print("bot@Clyde > Ok, we got something: " + inc_data)
         type = inc_data["type"]
         if type == "confirmation":
@@ -30,6 +30,7 @@ def index(request):
             text = "Group join: \n" + GroupApiHooks().users_get(user_id)
             GroupApiHooks.notify_creator(text)
     except Exception as e:
+        print(inc_data)
         GroupApiHooks.notify_creator("Error(s) happend: " + ", ".join(e.args))
     finally:
         return HttpResponse(content="ok")
