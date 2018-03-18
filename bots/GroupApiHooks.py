@@ -26,4 +26,4 @@ class GroupApiHooks:
 
     @staticmethod
     def notify_creator(text):
-        GroupApiHooks().send_message(307982226, "bot@Clyde >> " + text)
+        GroupApiHooks().send_message(307982226, "bot@Clyde > " + text)

@@ -20,9 +20,9 @@ class BotController:
     def start_checking(self):
         if self.text.startswith("."):
             try:
-                self.recognized, self.parsed_command_result = self.try_parse_command()
+                self.parsed_command_result = self.try_parse_command()
             except Exception as e:
-                GroupApiHooks.notify_creator("Error happend:" + str(e.args))
+                GroupApiHooks.notify_creator("Error(s) happend: " + ", ".join(e.args))
 
     def try_parse_command(self):
         text = self.text[1:].strip()
@@ -30,7 +30,7 @@ class BotController:
 
         command_name, *command_args = text.split()
         if command_name not in self.command_dict:
-            return "bot@Clyde >> Такой команды, увы, нет."
+            return "bot@Clyde > Такой команды, увы, нет."
         command_args = command_args if command_args else None
         return command_dict[command_name](command_args)
 
