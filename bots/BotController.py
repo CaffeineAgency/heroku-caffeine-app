@@ -22,7 +22,7 @@ class BotController:
             try:
                 self.recognized, self.parsed_command_result = self.try_parse_command()
             except Exception as e:
-                GroupApiHooks.notify_creator("Error happend:" + e.args)
+                GroupApiHooks.notify_creator("Error happend:" + str(e.args))
 
     def try_parse_command(self):
         text = self.text[1:].strip()
