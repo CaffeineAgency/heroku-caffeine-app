@@ -10,14 +10,14 @@ from bots.GroupApiHooks import GroupApiHooks
 @csrf_exempt
 def index(request):
     inc_data = jsonpickle.decode(request.body)
+    cids = {
+        140299531: "401176a7",
+        153656617: "6bb6be65",
+    }
     try:
         print("bot@Clyde > Ok, we got something: " + inc_data)
         type = inc_data["type"]
         if type == "confirmation":
-            cids = {
-                140299531: "401176a7",
-                153656617: "6bb6be65",
-            }
             return HttpResponse(content=cids.get(inc_data["group_id"]))
         elif type == "message_new":
             obj = inc_data["object"]
@@ -32,5 +32,4 @@ def index(request):
     except Exception as e:
         print(inc_data)
         GroupApiHooks.notify_creator("Error(s) happend: " + ", ".join(e.args))
-    finally:
-        return HttpResponse(content="ok")
+    return HttpResponse(content="ok")
