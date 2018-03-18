@@ -24,6 +24,5 @@ class GroupApiHooks:
             text += f"{i}. {user['first_name']} + {user['last_name']}".strip() + "\n"
         return text
 
-    @staticmethod
-    def notify_creator(text):
-        GroupApiHooks().send_message(307982226, "bot@Clyde > " + text)
+    def notify_creator(self, text):
+        self.send_message(307982226, "bot@Clyde > " + text)

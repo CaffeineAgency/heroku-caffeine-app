@@ -14,6 +14,7 @@ def index(request):
         140299531: "rkkk_token",
         153656617: "cagency_token",
     }
+    gid = gids.get(inc_data["group_id"])
     try:
         print("bot@Clyde > Ok, we got something:",inc_data)
         type = inc_data["type"]
@@ -25,15 +26,15 @@ def index(request):
             return HttpResponse(content=cids.get(inc_data["group_id"]))
         elif type == "message_new":
             obj = inc_data["object"]
-            hooker = GroupApiHooks(gid=gids.get(inc_data["group_id"]))
+            hooker = GroupApiHooks(gid=gid)
             controller = BotController(obj, hooker)
             controller.execute()
         elif type == "group_join":
             obj = inc_data["object"]
             user_id, join_type = obj["user_id"], obj["join_type"]
-            text = "Group join: \n" + GroupApiHooks(gid=gids.get(inc_data["group_id"])).users_get(user_id)
-            GroupApiHooks.notify_creator(text)
+            text = "Group join: \n" + GroupApiHooks(gid=gid).users_get(user_id)
+            GroupApiHooks(gid=gid).notify_creator(text)
     except Exception as e:
         print(e, inc_data)
-        GroupApiHooks.notify_creator("Error(s) happend: " + ", ".join(e.args))
+        GroupApiHooks(gid=gid).notify_creator("Error(s) happend: " + ", ".join(e.args))
     return HttpResponse(content="ok")
