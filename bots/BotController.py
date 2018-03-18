@@ -9,7 +9,7 @@ class BotController:
             "help": lambda *_: "**Краткий референс**\nПример использования: \n.{cmd} arg1|arg2|<...>",
             "cmds": lambda *_: "Доступные команды:\n" + "\n".join(self.commands_list),
             "wake": lambda *_: "Awaken!",
-            "notify_creator": lambda *_: hooker.notify_creator(_[0]),
+            "notify_creator": lambda msg, *_: hooker.notify_creator(msg),
         }
 
         self.sender = obj["user_id"]
@@ -29,7 +29,7 @@ class BotController:
         if command_name not in self.command_dict:
             return "bot@Clyde > Такой команды, увы, нет."
         command_args = command_args.split("|") if command_args else None
-        return command_dict[command_name](command_args)
+        return command_dict[command_name](*command_args)
 
     def execute(self):
         if self.parsed_command_result:
