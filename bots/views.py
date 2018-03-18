@@ -32,4 +32,5 @@ def index(request):
     except Exception as e:
         print(inc_data)
         GroupApiHooks.notify_creator("Error(s) happend: " + ", ".join(e.args))
+        raise e
     return HttpResponse(content="ok")
