@@ -10,8 +10,8 @@ from bots.GroupApiHooks import GroupApiHooks
 @csrf_exempt
 def index(request):
     try:
-        print("bot@Clyde > Ok, we got something: " + request.body)
         inc_data = jsonpickle.decode(request.body)
+        print("bot@Clyde > Ok, we got something: " + inc_data)
         type = inc_data["type"]
         if type == "confirmation":
             cids = {
