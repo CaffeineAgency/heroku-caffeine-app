@@ -26,13 +26,14 @@ def index(request):
             return HttpResponse(content=cids.get(gid))
         elif type == "message_new":
             obj = inc_data["object"]
-            hooker = GroupApiHooks(gid=gid)
-            controller = BotController(obj, hooker)
-            controller.execute()
+            if obj["body"].strip().startswith("."):
+                hooker = GroupApiHooks(gid=gid)
+                controller = BotController(obj, hooker)
+                controller.execute()
         elif type == "group_join":
             obj = inc_data["object"]
             user_id, join_type = obj["user_id"], obj["join_type"]
-            text = "Group join: \n" + GroupApiHooks(gid=gid).users_get(user_id)
+            text = "Group join: \n" + GroupApiHooks(gid=gid).users_get(*[user_id])
             GroupApiHooks(gid=gid).notify_creator(text, gid)
     except Exception as e:
         print(e, inc_data)

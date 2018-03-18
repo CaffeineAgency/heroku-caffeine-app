@@ -15,11 +15,7 @@ class BotController:
         self.sender = obj["user_id"]
         self.text = obj["body"].strip()
         self.hooker = hooker
-        self.start_checking()
-
-    def start_checking(self):
-        if self.text.startswith("."):
-            self.parsed_command_result = self.try_parse_command()
+        self.parsed_command_result = self.try_parse_command()
 
     def try_parse_command(self):
         text = self.text[1:].strip()
