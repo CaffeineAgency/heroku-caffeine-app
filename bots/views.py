@@ -15,7 +15,7 @@ def index(request):
         153656617: "6bb6be65",
     }
     try:
-        print("bot@Clyde > Ok, we got something: " + inc_data)
+        print("bot@Clyde > Ok, we got something:",inc_data)
         type = inc_data["type"]
         if type == "confirmation":
             return HttpResponse(content=cids.get(inc_data["group_id"]))
@@ -30,7 +30,7 @@ def index(request):
             text = "Group join: \n" + GroupApiHooks().users_get(user_id)
             GroupApiHooks.notify_creator(text)
     except Exception as e:
-        print(inc_data)
+        print(e, inc_data)
         GroupApiHooks.notify_creator("Error(s) happend: " + ", ".join(e.args))
-        raise e
-    return HttpResponse(content="ok")
+    finally:
+        return HttpResponse(content="ok")
