@@ -33,9 +33,9 @@ def index(request):
             obj = inc_data["object"]
             user_id, join_type = obj["user_id"], obj["join_type"]
             text = "Group join: \n" + GroupApiHooks(gid=gid).users_get(user_id)
-            GroupApiHooks(gid=gid).notify_creator(text)
+            GroupApiHooks(gid=gid).notify_creator(text, gid)
     except Exception as e:
         print(e, inc_data)
-        GroupApiHooks(gid=gid).notify_creator("Error(s) happend: " + ", ".join(e.args))
+        GroupApiHooks(gid=gid).notify_creator("Error(s) happend: " + ", ".join(e.args), gid)
         raise e
     return HttpResponse(content="ok")
