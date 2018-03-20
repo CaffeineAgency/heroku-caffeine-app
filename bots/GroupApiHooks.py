@@ -17,6 +17,7 @@ class GroupApiHooks:
 
     def users_get(self, *ids):
         groupsec = self.groupsec
+		ids = [str(x) for x in ids]
         req_url = f"{self.endpoint}users.get?user_ids={','.join(ids[:1000])}&access_token={groupsec}&v=5.73"
         response = requests.request("GET", req_url).json()
         text = ""

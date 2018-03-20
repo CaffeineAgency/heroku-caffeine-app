@@ -33,7 +33,7 @@ def index(request):
         elif type == "group_join":
             obj = inc_data["object"]
             user_id, join_type = obj["user_id"], obj["join_type"]
-            text = "Group join: \n" + GroupApiHooks(gid=gid).users_get(*[user_id])
+            text = "Group join: " + GroupApiHooks(gid=gid).users_get(*[user_id]) + ", " + join_type
             GroupApiHooks(gid=gid).notify_creator(text, gid)
     except Exception as e:
         print(e, inc_data)
