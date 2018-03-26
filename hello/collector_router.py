@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 import acollection.deviantartlib.api as dapi
 import acollection.reactorlib.api as reapi
 import acollection.ruminelib.api as rapi
+import acollection.evrltolib.api as evrlapi
 from acollection.ydapi.yandexdisk_worker import *
 from init.extensions import getGet
 
@@ -18,6 +19,7 @@ class ApiRouter:
             "chk": self.async_operation_checker,
             "rumine": self.rumine_forum_parser,
             "reactorparser": self.pornreactor_tag_parser,
+            "evrltolib": self.evrlto_parser,
             "deviantart": self.deviantart_worker,
         }
 
@@ -58,6 +60,30 @@ class ApiRouter:
         }
         return HttpResponse(reapi.ReactorApi().get_images(request=rq), content_type="application/json")
 
+    def evrlto_parser(self):
+        api = evrlapi.EVRLToApi()
+        response = {}
+        link = getGet(self.request, "link")
+        article_id = getGet(self.request, "article_id")
+        named_link = getGet(self.request, "named_link")
+        page = getGet(self.request, "page")
+
+        type = getGet(self.request, "type")
+        if type == "main":
+            response = api.get_mainpage(page if page else 1)
+        elif type == "news":
+            response = api.get_newspage(page if page else 1)
+        elif type == "stories":
+            response = api.get_storiespage(page if page else 1)
+        elif type == "guides":
+            response = api.get_guidespage(page if page else 1)
+        elif type == "article":
+            response = api.get_article_content(link, article_id, named_link)
+        elif type == "story":
+            response = api.get_story_content(link, article_id, named_link)
+
+        return HttpResponse(api.jsondump(response), content_type="application/json")
+
     def deviantart_worker(self):
         do = getGet(self.request, "do")
         if do == "rip":
@@ -87,4 +113,23 @@ class ApiRouter:
                         Метод: GET
                         Входные данные:
                             mode=reactorgui
+                    'evrlto api' - API для сайта EVRL{dot}to.
+                        Метод: GET
+                        Входные данные:
+                            mode=evrltolib
+                            type=<one of [main, news, stories, guides] or [article, story]>
+                            // Далее всё зависит от type:
+                                // Верхние типы
+                                main:       - Возвращает новости с главной страницы сайта Ссылки на истории передавать в ::article
+                                news:       - Вовзращает новости с раздела новостей Ссылки на истории передавать в ::article
+                                stories:    - Возвращает т.н. "Истории". Ссылки на истории передавать в ::story
+                                guides:     - Возвращает гайды из раздела гайдов сайта Ссылки на истории передавать в ::article
+                                    pagenum=<pagenum> - Можно не указывать
+                                // Нижние типы
+                                article:
+                                story:
+                                    // Tip: link - обязателен, если не указаны article_id и named_link, и наоборот
+                                    link=<link>
+                                    article_id=<aid>
+                                    named_link=<nl>
                 """.encode("cp1251"), content_type="text/plain")
