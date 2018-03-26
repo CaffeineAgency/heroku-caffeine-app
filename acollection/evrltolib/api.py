@@ -50,7 +50,7 @@ class EVRLToApi:
                 # element.text_content() used to render text of element and all of its child
                 info = elem.cssselect(".mosaic_info span")
                 news = {
-                    "title": elem.cssselect(".mosaic_title")[0].text,
+                    "title": elem.cssselect(".mosaic_title")[0].text_content(),
                     "link": self.baseurl + elem.cssselect("a.mosaic_link")[0].attrib["href"]
                 }
                 tmp = elem.cssselect(".mosaic_description")
