@@ -56,7 +56,7 @@ class EVRLToApi:
                 tmp = elem.cssselect(".mosaic_description")
                 news["description"] = tmp[0].text if tmp else ""
                 tmp = elem.cssselect(".mosaic_poster")
-                news["poster"] = "https://" + tmp[0].attrib["style"][19:-3] if tmp else ""
+                news["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
                 news["info"] = {
                     "views": int("0" + info[0].text_content()) if info else 0,
                     "comments": int("0" + info[1].text_content()) if info else 0,
@@ -96,7 +96,7 @@ class EVRLToApi:
                 tmp = elem.cssselect(".mosaic_description")
                 news["description"] = tmp[0].text if tmp else ""
                 tmp = elem.cssselect(".mosaic_poster")
-                news["poster"] = "https://" + tmp[0].attrib["style"][19:-3] if tmp else ""
+                news["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
                 news["info"] = {
                     "views": int("0" + info[0].text_content()) if info else 0,
                     "comments": int("0" + info[1].text_content()) if info else 0,
@@ -136,7 +136,7 @@ class EVRLToApi:
                 tmp = elem.cssselect(".mosaic_description")
                 news["description"] = tmp[0].text if tmp else ""
                 tmp = elem.cssselect(".mosaic_poster")
-                news["poster"] = "https://" + tmp[0].attrib["style"][19:-3] if tmp else ""
+                news["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
                 news["info"] = {
                     "views": int("0" + info[0].text_content()) if info else 0,
                     "comments": int("0" + info[1].text_content()) if info else 0,
@@ -174,7 +174,7 @@ class EVRLToApi:
                     "link": self.baseurl + elem.cssselect("a.mosaic_link")[0].attrib["href"]
                 }
                 tmp = elem.cssselect(".mosaic_poster")
-                news["poster"] = "https://" + tmp[0].attrib["style"][19:-3] if tmp else ""
+                news["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
                 response["news"].append(news)
             response["last_page"] = dtree.cssselect("ul.pagination li")[-1].text_content()
             response["has_next"] = response["current_page"] != response["last_page"]
