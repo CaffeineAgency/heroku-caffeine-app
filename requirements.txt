@@ -2,6 +2,8 @@ requests
 gunicorn
 beautifulsoup4
 bs4
+lxml
+cssselect
 dj-database-url
 Django
 jsonpickle
