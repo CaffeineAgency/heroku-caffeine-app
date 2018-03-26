@@ -50,11 +50,11 @@ class EVRLToApi:
                 # element.text_content() used to render text of element and all of its child
                 info = elem.cssselect(".mosaic_info span")
                 news = {
-                    "title": elem.cssselect(".mosaic_title")[0].text_content(),
+                    "title": elem.cssselect(".mosaic_title")[0].text_content().strip(),
                     "link": self.baseurl + elem.cssselect("a.mosaic_link")[0].attrib["href"]
                 }
                 tmp = elem.cssselect(".mosaic_description")
-                news["description"] = tmp[0].text if tmp else ""
+                news["description"] = tmp[0].text.strip() if tmp else ""
                 tmp = elem.cssselect(".mosaic_poster")
                 news["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
                 news["info"] = {
@@ -90,11 +90,11 @@ class EVRLToApi:
             for i, elem in enumerate(pag_is):
                 info = elem.cssselect(".mosaic_info span")
                 news = {
-                    "title": elem.cssselect(".mosaic_title")[0].text,
+                    "title": elem.cssselect(".mosaic_title")[0].text_content().strip(),
                     "link": self.baseurl + elem.cssselect("a.mosaic_link")[0].attrib["href"]
                 }
                 tmp = elem.cssselect(".mosaic_description")
-                news["description"] = tmp[0].text if tmp else ""
+                news["description"] = tmp[0].text.strip() if tmp else ""
                 tmp = elem.cssselect(".mosaic_poster")
                 news["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
                 news["info"] = {
@@ -130,11 +130,11 @@ class EVRLToApi:
             for i, elem in enumerate(pag_is):
                 info = elem.cssselect(".mosaic_info span")
                 news = {
-                    "title": elem.cssselect(".mosaic_title")[0].text,
+                    "title": elem.cssselect(".mosaic_title")[0].text_content().strip(),
                     "link": self.baseurl + elem.cssselect("a.mosaic_link")[0].attrib["href"]
                 }
                 tmp = elem.cssselect(".mosaic_description")
-                news["description"] = tmp[0].text if tmp else ""
+                news["description"] = tmp[0].text.strip() if tmp else ""
                 tmp = elem.cssselect(".mosaic_poster")
                 news["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
                 news["info"] = {
@@ -170,7 +170,7 @@ class EVRLToApi:
             pag_is = [x for x in dtree.cssselect(".mosaic_block")]
             for i, elem in enumerate(pag_is):
                 news = {
-                    "title": elem.cssselect(".mosaic_title")[0].text,
+                    "title": elem.cssselect(".mosaic_title")[0].text_content().strip(),
                     "link": self.baseurl + elem.cssselect("a.mosaic_link")[0].attrib["href"]
                 }
                 tmp = elem.cssselect(".mosaic_poster")
