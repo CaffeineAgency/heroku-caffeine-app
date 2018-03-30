@@ -13,7 +13,7 @@ class EVRLToApi:
 
     @staticmethod
     def jsondump(obj):
-        return jsonpickle.encode(obj, unpicklable=False)
+        return jsonpickle.encode(obj)
 
 
     def execute_registration(self, login, password):
@@ -162,20 +162,20 @@ class EVRLToApi:
                 "has_next": None,
                 "current_page": page,
                 "last_page": None,
-                "news": []
+                "guides": []
             }
             endurl = f"{self.guidesurl}/?page={page}"
             docum = requests.get(endurl)
             dtree = lxml.html.fromstring(docum.content)
             pag_is = [x for x in dtree.cssselect(".mosaic_block")]
             for i, elem in enumerate(pag_is):
-                news = {
+                guides = {
                     "title": elem.cssselect(".mosaic_title")[0].text_content().strip(),
                     "link": self.baseurl + elem.cssselect("a.mosaic_link")[0].attrib["href"]
                 }
                 tmp = elem.cssselect(".mosaic_poster")
-                news["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
-                response["news"].append(news)
+                guides["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
+                response["guides"].append(guides)
             response["last_page"] = dtree.cssselect("ul.pagination li")[-1].text_content()
             response["has_next"] = response["current_page"] != response["last_page"]
             return response
