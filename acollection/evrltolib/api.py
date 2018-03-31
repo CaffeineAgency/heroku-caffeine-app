@@ -13,7 +13,7 @@ class EVRLToApi:
 
     @staticmethod
     def jsondump(obj):
-        return jsonpickle.encode(obj)
+        return jsonpickle.encode(obj, unpicklable=False)
 
 
     def execute_registration(self, login, password):
