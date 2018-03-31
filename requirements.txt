@@ -11,3 +11,4 @@ psycopg2
 vk-api
 whitenoise
 html5lib
+scout-apm
