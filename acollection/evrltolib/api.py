@@ -63,7 +63,7 @@ class EVRLToApi:
                     "likes": int("0" + info[2].text_content()) if info else 0
                 }
                 response["news"].append(news)
-            response["last_page"] = dtree.cssselect("ul.pagination li")[-1].text_content()
+            response["last_page"] = int(dtree.cssselect("ul.pagination li")[-1].text_content().strip())
             response["has_next"] = response["current_page"] != response["last_page"]
             return response
         except Exception as e:
@@ -103,9 +103,9 @@ class EVRLToApi:
                     "likes": int("0" + info[2].text_content()) if info else 0
                 }
                 response["news"].append(news)
-            response["last_page"] = dtree.cssselect("ul.pagination li")[-1].text_content()
+            response["last_page"] = int(dtree.cssselect("ul.pagination li")[-1].text_content().strip())
             response["has_next"] = response["current_page"] != response["last_page"]
-            response["for_date"] = dtree.cssselect(".time-delimeter")[0].text_content()
+            response["for_date"] = dtree.cssselect(".time-delimeter")[0].text_content().strip()
             return response
         except Exception as e:
             return {
@@ -142,10 +142,10 @@ class EVRLToApi:
                     "comments": int("0" + info[1].text_content()) if info else 0,
                     "likes": int("0" + info[2].text_content()) if info else 0
                 }
-                news["tags"] = [x.text_content() for x in elem.cssselect(".mosaic_tags span.label")]
+                news["tags"] = [x.text_content().strip() for x in elem.cssselect(".mosaic_tags span.label")]
                 news["date"] = dtree.cssselect(".mosaic_time")[0].text_content().strip()
                 response["news"].append(news)
-            response["last_page"] = dtree.cssselect("ul.pagination li")[-1].text_content()
+            response["last_page"] = int(dtree.cssselect("ul.pagination li")[-1].text_content().strip())
             response["has_next"] = response["current_page"] != response["last_page"]
             return response
         except Exception as e:
@@ -176,7 +176,7 @@ class EVRLToApi:
                 tmp = elem.cssselect(".mosaic_poster")
                 guides["poster"] = "https://" + tmp[0].attrib["style"][19:].split('");')[0] if tmp else ""
                 response["guides"].append(guides)
-            response["last_page"] = dtree.cssselect("ul.pagination li")[-1].text_content()
+            response["last_page"] = int(dtree.cssselect("ul.pagination li")[-1].text_content().strip())
             response["has_next"] = response["current_page"] != response["last_page"]
             return response
         except Exception as e:
@@ -219,9 +219,9 @@ class EVRLToApi:
             docum = requests.get(link)
             dtree = lxml.html.fromstring(docum.content)
             article_element = dtree.cssselect('[itemprop*=articleBody]')[0]
-            response["content"] = etree.tostring(article_element).decode("utf8")
+            response["content"] = etree.tostring(article_element).decode("utf8").strip()
             info = dtree.cssselect(".article-author span")
-            response["author"] = dtree.cssselect(".article-author a")[0].text_content()
+            response["author"] = dtree.cssselect(".article-author a")[0].text_content().strip()
             response["date"] = info.pop(0).attrib["datetime"]
             response["info"] = {
                 "views": int("0" + info[0].text_content()) if info else 0,
@@ -270,8 +270,8 @@ class EVRLToApi:
             docum = requests.get(link)
             dtree = lxml.html.fromstring(docum.content)
             article_element = dtree.cssselect('[itemprop*=articleBody]')[0]
-            response["content"] = etree.tostring(article_element).decode("utf8")
-            response["author"] = dtree.cssselect(".mg_author a")[0].text_content()
+            response["content"] = etree.tostring(article_element).decode("utf8").strip()
+            response["author"] = dtree.cssselect(".mg_author a")[0].text_content().strip()
             response["poster"] = dtree.cssselect(".mg_article_poster")[0].attrib["src"]
             info = dtree.cssselect(".mg_article_stat span")
             response["date"] = info.pop(0).attrib["datetime"]
