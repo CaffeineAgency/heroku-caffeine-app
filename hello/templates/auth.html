@@ -1,0 +1,18 @@
+{% extends "cpanel.html" %}
+{% load staticfiles %}
+
+{% block container %}
+
+{% if not is_logged_in %}
+<div class="alert text-center" role="alert">
+    <h4>B0NTN:</h4>
+    <form action="/cpanel" method="post">
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Enter</button>
+    </form>
+</div>
+{% else %}
+YDA4A! Bbl BOLLlN!
+{% endif %}
+
+{% endblock %}

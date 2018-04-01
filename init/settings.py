@@ -21,6 +21,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cpanel',
     'site',
     'hello',
     'bots',
@@ -59,17 +60,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'init.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd77npk6div8cel',                      
-        'USER': 'ztqlthfpxbuqsp',
-        'PASSWORD': 'd1452bde1c3e21b31a4b3cee8b95c59e4c8f44ebdf8ca848cefb80068466b852',
-        'HOST': 'ec2-54-221-254-72.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -91,9 +81,21 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ["DB_NAME"],
+        'USER': os.environ["DB_USER"],
+        'PASSWORD': os.environ["DB_PASSWORD"],
+        'HOST': os.environ["DB_HOST"],
+        'PORT': '5432',
+    }
+}
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-
+"""
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']

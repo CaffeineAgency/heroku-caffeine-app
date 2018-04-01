@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="" />
+    <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cpanel/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cpanel/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cpanel/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cpanel/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hello/templates/auth.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hello/templates/cpanel.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hello/templates/panel_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init/settings.py" afterPath="$PROJECT_DIR$/init/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init/urls.py" afterPath="$PROJECT_DIR$/init/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,61 +26,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="collector_router.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hello/collector_router.py">
+      <file leaf-file-name="panel_view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hello/templates/panel_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cpanel/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
               <folding>
-                <element signature="e#15#51#0" expanded="true" />
+                <element signature="e#15#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/acollection/evrltolib/api.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hello/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-                <marker date="1522049038366" expanded="true" signature="85:12217" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="848:1641" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="861:1641" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="1385:1641" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="1562:1641" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="7205:7316" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="7205:7523" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="7205:7727" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="7205:7863" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="7758:7863" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="7779:7862" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="7951:9984" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="7964:9848" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="8211:8367" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="8236:8366" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="8392:9084" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="8677:8830" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="8698:8813" ph="&quot;...&quot;" />
-                <marker date="1522049038366" expanded="true" signature="8861:9070" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="8882:9053" ph="&quot;...&quot;" />
-                <marker date="1522049038366" expanded="true" signature="9579:9819" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="9879:9984" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="9900:9983" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="10070:12217" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="10083:12081" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="10330:10486" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="10355:10485" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="10511:11233" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="10826:10979" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="10847:10962" ph="&quot;...&quot;" />
-                <marker date="1522049038366" expanded="true" signature="11010:11219" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="11031:11202" ph="&quot;...&quot;" />
-                <marker date="1522049038366" expanded="true" signature="11812:12052" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="12112:12217" ph="..." />
-                <marker date="1522049038366" expanded="true" signature="12133:12216" ph="..." />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="12" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cpanel/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/init/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="97" column="3" lean-forward="false" selection-start-line="97" selection-start-column="3" selection-end-line="97" selection-end-column="3" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,8 +83,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -108,15 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/messages_bot.py" />
-        <option value="$PROJECT_DIR$/init/requestWorkers.py" />
-        <option value="$PROJECT_DIR$/site/views.py" />
-        <option value="$PROJECT_DIR$/ydapi/Directory.py" />
-        <option value="$PROJECT_DIR$/hello/lworkers/__main__.py" />
-        <option value="$PROJECT_DIR$/hello/lworkers/__init__.py" />
-        <option value="$PROJECT_DIR$/hello/lworkers/collect.py" />
-        <option value="$PROJECT_DIR$/hello/lworkers/acollection_worker.py" />
-        <option value="$PROJECT_DIR$/ydapi/YandexDiskRestClient.py" />
         <option value="$PROJECT_DIR$/hello/templates/index.html" />
         <option value="$PROJECT_DIR$/acollection/__init__.py" />
         <option value="$PROJECT_DIR$/hello/worklogic/classes/rumine_models.py" />
@@ -124,7 +120,6 @@
         <option value="$PROJECT_DIR$/acollection/reactorlib/__init__.py" />
         <option value="$PROJECT_DIR$/commiter.bat" />
         <option value="$PROJECT_DIR$/hello/templates/reactorgallery.html" />
-        <option value="$PROJECT_DIR$/init/urls.py" />
         <option value="$PROJECT_DIR$/init/extensions.py" />
         <option value="$PROJECT_DIR$/hello/templates/yandexworker.html" />
         <option value="$PROJECT_DIR$/hello/worklogic/models/rumine_models.py" />
@@ -140,7 +135,6 @@
         <option value="$PROJECT_DIR$/acollection/deviantartlib/api.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/acollection/deviantartlib/models.py" />
-        <option value="$PROJECT_DIR$/init/settings.py" />
         <option value="$PROJECT_DIR$/hello/models.py" />
         <option value="$PROJECT_DIR$/hello/collector.py" />
         <option value="$PROJECT_DIR$/hello/views.py" />
@@ -155,10 +149,21 @@
         <option value="$PROJECT_DIR$/acollection/evrltoparser/api.py" />
         <option value="$PROJECT_DIR$/hello/admin.py" />
         <option value="$PROJECT_DIR$/acollection/evrltolib/test.py" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/hello/collector_router.py" />
         <option value="$PROJECT_DIR$/hello/static/info.txt" />
         <option value="$PROJECT_DIR$/acollection/evrltolib/api.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/init/settings.py" />
+        <option value="$PROJECT_DIR$/cpanel/models.py" />
+        <option value="$PROJECT_DIR$/hello/templates/register.html" />
+        <option value="$PROJECT_DIR$/hello/templates/login.html" />
+        <option value="$PROJECT_DIR$/init/urls.py" />
+        <option value="$PROJECT_DIR$/cpanel/urls.py" />
+        <option value="$PROJECT_DIR$/cpanel/views.py" />
+        <option value="$PROJECT_DIR$/hello/panel_view.html" />
+        <option value="$PROJECT_DIR$/hello/templates/cpanel.html" />
+        <option value="$PROJECT_DIR$/hello/templates/auth.html" />
+        <option value="$PROJECT_DIR$/hello/templates/panel_view.html" />
       </list>
     </option>
   </component>
@@ -205,7 +210,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -216,24 +221,7 @@
             <path>
               <item name="heroku-caffeine-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="heroku-caffeine-app" type="462c0819:PsiDirectoryNode" />
-              <item name="acollection" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heroku-caffeine-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heroku-caffeine-app" type="462c0819:PsiDirectoryNode" />
-              <item name="acollection" type="462c0819:PsiDirectoryNode" />
-              <item name="evrltolib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heroku-caffeine-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heroku-caffeine-app" type="462c0819:PsiDirectoryNode" />
-              <item name="acollection" type="462c0819:PsiDirectoryNode" />
-              <item name="reactorlib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heroku-caffeine-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heroku-caffeine-app" type="462c0819:PsiDirectoryNode" />
-              <item name="bots" type="462c0819:PsiDirectoryNode" />
+              <item name="cpanel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="heroku-caffeine-app" type="b2602c69:ProjectViewProjectNode" />
@@ -244,13 +232,18 @@
               <item name="heroku-caffeine-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="heroku-caffeine-app" type="462c0819:PsiDirectoryNode" />
               <item name="hello" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="heroku-caffeine-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="heroku-caffeine-app" type="462c0819:PsiDirectoryNode" />
+              <item name="init" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -261,15 +254,16 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\hello\templates" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\acollection\ydapi" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\acollection" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\cpanel" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\acollection" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\acollection\useringroup" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\bots" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\hello\worklogic\models" />
-      <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\hello\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -525,16 +519,16 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23524962" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24281392" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5029762" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.49702382" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -562,233 +556,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/requests/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hello/templates/yandexworker.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="47" column="7" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="85" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/vk_api/tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/vk_api/vk_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1375">
-          <caret line="118" column="8" lean-forward="false" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/useringroup/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/acollection/reactorlib/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/bs4/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="11" column="15" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/bs4/element.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="853" column="25" lean-forward="false" selection-start-line="853" selection-start-column="25" selection-end-line="853" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/requests/sessions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="509" column="17" lean-forward="false" selection-start-line="509" selection-start-column="17" selection-end-line="509" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/requests/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1069">
-          <caret line="810" column="8" lean-forward="false" selection-start-line="810" selection-start-column="8" selection-end-line="810" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/deviantartlib/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="3" lean-forward="false" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/deviantartlib/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/deviantartlib/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db.sqlite3">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/db/models/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="454" column="8" lean-forward="false" selection-start-line="454" selection-start-column="8" selection-end-line="454" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/shortcuts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hello/worklogic/collect.py" />
-    <entry file="file://$PROJECT_DIR$/hello/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/jsonpickle/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="80" column="11" lean-forward="false" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/ydapi/yandexdisk_worker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hello/templates/reactorgallery.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-761">
-          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hello/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hello/templates/ruminegui.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="10" lean-forward="false" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/ruminelib/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bots/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/useringroup/lib.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/smtplib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="891" column="8" lean-forward="false" selection-start-line="891" selection-start-column="8" selection-end-line="891" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/ruminelib/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="42" column="68" lean-forward="false" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/http/response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="299" column="31" lean-forward="false" selection-start-line="299" selection-start-column="23" selection-end-line="299" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile.windows">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ssh.bat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -804,31 +571,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bots/GroupApiHooks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bots/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/877280855/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="4019" column="8" lean-forward="false" selection-start-line="4019" selection-start-column="8" selection-end-line="4019" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hello/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -846,13 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hello/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hello/static/lang-logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -866,64 +605,326 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
+    <entry file="file://$PROJECT_DIR$/acollection/evrltolib/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        <state relative-caret-position="136">
+          <caret line="50" column="31" lean-forward="true" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init/extensions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bots/GroupApiHooks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/dj_database_url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/yandexworker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hello/collector_router.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
+        <state relative-caret-position="526">
           <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/exceptions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="86" column="6" lean-forward="false" selection-start-line="86" selection-start-column="6" selection-end-line="86" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/management/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="308" column="32" lean-forward="false" selection-start-line="308" selection-start-column="32" selection-end-line="308" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/reactorgallery.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="83" column="16" lean-forward="false" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/conf/urls/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/db/models/fields/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="1040" column="8" lean-forward="false" selection-start-line="1040" selection-start-column="8" selection-end-line="1040" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/db/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/utils/functional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-127">
+          <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/utils/translation/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="99" column="33" lean-forward="true" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/contrib/admin/sites.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="481" column="8" lean-forward="false" selection-start-line="481" selection-start-column="8" selection-end-line="481" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/urls/conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/contrib/auth/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-61">
+          <caret line="308" column="8" lean-forward="true" selection-start-line="308" selection-start-column="8" selection-end-line="308" selection-end-column="8" />
           <folding>
-            <element signature="e#15#51#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/acollection/evrltolib/api.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/contrib/auth/base_user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+        <state relative-caret-position="194">
+          <caret line="71" column="8" lean-forward="false" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
-            <marker date="1522049038366" expanded="true" signature="85:12217" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="848:1641" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="861:1641" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="1385:1641" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="1562:1641" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="7205:7316" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="7205:7523" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="7205:7727" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="7205:7863" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="7758:7863" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="7779:7862" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="7951:9984" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="7964:9848" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="8211:8367" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="8236:8366" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="8392:9084" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="8677:8830" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="8698:8813" ph="&quot;...&quot;" />
-            <marker date="1522049038366" expanded="true" signature="8861:9070" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="8882:9053" ph="&quot;...&quot;" />
-            <marker date="1522049038366" expanded="true" signature="9579:9819" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="9879:9984" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="9900:9983" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="10070:12217" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="10083:12081" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="10330:10486" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="10355:10485" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="10511:11233" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="10826:10979" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="10847:10962" ph="&quot;...&quot;" />
-            <marker date="1522049038366" expanded="true" signature="11010:11219" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="11031:11202" ph="&quot;...&quot;" />
-            <marker date="1522049038366" expanded="true" signature="11812:12052" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="12112:12217" ph="..." />
-            <marker date="1522049038366" expanded="true" signature="12133:12216" ph="..." />
+            <element signature="e#24#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/functools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/views/generic/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1010">
+          <caret line="73" column="26" lean-forward="false" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/views/generic/edit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="54" column="8" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cpanel/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cpanel/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="97" column="3" lean-forward="false" selection-start-line="97" selection-start-column="3" selection-end-line="97" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bots/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="12" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/cpanel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/auth.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello/templates/panel_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cpanel/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+          <folding>
+            <element signature="e#15#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
