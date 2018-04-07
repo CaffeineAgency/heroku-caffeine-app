@@ -1,15 +1,14 @@
 # coding=utf-8
 import jsonpickle
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 
 from bots.BotController import BotController
 from bots.GroupApiHooks import GroupApiHooks
+from init.extensions import getData
 
 
-@csrf_exempt
 def index(request):
-    inc_data = jsonpickle.decode(request.body)
+    _json = getData(request)
+    inc_data = jsonpickle.decode(_json)
     gids = {
         140299531: "rkkk_token",
         153656617: "cagency_token",
@@ -23,7 +22,7 @@ def index(request):
                 140299531: "401176a7",
                 153656617: "6bb6be65",
             }
-            return HttpResponse(content=cids.get(gid))
+            return cids.get(gid), "text/plain"
         elif type == "message_new":
             obj = inc_data["object"]
             if obj["body"].strip().startswith("."):
@@ -39,4 +38,4 @@ def index(request):
         print(e, inc_data)
         GroupApiHooks(gid=gid).notify_creator("Error(s) happend: " + ", ".join(e.args), gid)
         raise e
-    return HttpResponse(content="ok")
+    return "ok", "text/plain"
