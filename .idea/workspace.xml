@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cpanel/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cpanel/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cpanel/urls.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cpanel/views.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hello/templates/auth.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hello/templates/cpanel.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hello/templates/panel_view.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init/settings.py" afterPath="$PROJECT_DIR$/init/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init/urls.py" afterPath="$PROJECT_DIR$/init/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +31,8 @@
       <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -889,8 +879,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

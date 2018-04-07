@@ -1,7 +1,3 @@
-Flask
-Jinja2
-MarkupSafe
-
 requests
 gunicorn
 psycopg2
