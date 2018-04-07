@@ -1,12 +1,12 @@
 # coding=utf-8
 from flask import render_template
+from init.extensions import getGet
 
 import acollection.deviantartlib.api as dapi
+import acollection.evrltolib.api as evrlapi
 import acollection.reactorlib.api as reapi
 import acollection.ruminelib.api as rapi
-import acollection.evrltolib.api as evrlapi
 from acollection.ydapi.yandexdisk_worker import *
-from init.extensions import getGet
 
 
 class ApiRouter:

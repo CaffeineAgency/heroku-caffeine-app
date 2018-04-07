@@ -1,8 +1,9 @@
 # coding=utf-8
 from flask import Response
+from init.extensions import getGet
 
 from main_site.collector_router import ApiRouter
-from init.extensions import getGet
+
 
 def acollection(request):
     mode = getGet(request, "mode")
