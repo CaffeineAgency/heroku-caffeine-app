@@ -3,7 +3,8 @@ from init import wsgi
 
 app = wsgi.main
 
-def start():
+def start(*args):
+    print(*args)
     app()
 
 if __name__ == "__main__":
