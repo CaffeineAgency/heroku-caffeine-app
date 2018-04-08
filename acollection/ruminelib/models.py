@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Post:
     def __init__(self, post_id, sender, text):
         self.post_id = post_id
