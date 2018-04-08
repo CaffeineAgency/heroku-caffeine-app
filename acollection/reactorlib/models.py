@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Post:
     def __init__(self, author, images, tags):
         self.author = author

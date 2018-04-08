@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-
-
 class YandexDiskException(Exception):
     code = None
 

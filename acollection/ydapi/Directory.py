@@ -1,9 +1,7 @@
-#!/usr/bin/python3
-
 from acollection.ydapi.File import File
 
 
-class Directory():
+class Directory:
     def __init__(self, **kwargs):
         self.children = []
 

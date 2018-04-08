@@ -1,11 +1,11 @@
-requests
 gunicorn
-psycopg2
-whitenoise
+gevent
 
-Django==2.0.3
-dj-database-url
+Flask
+Jinja2
+MarkupSafe
 
+requests
 lxml
 cssselect
 bs4

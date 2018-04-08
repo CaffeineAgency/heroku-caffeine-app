@@ -1,13 +1,12 @@
 # coding=utf-8
-from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from flask import render_template
+from extensions import getGet
 
 import acollection.deviantartlib.api as dapi
+import acollection.evrltolib.api as evrlapi
 import acollection.reactorlib.api as reapi
 import acollection.ruminelib.api as rapi
-import acollection.evrltolib.api as evrlapi
 from acollection.ydapi.yandexdisk_worker import *
-from init.extensions import getGet
 
 
 class ApiRouter:
@@ -30,20 +29,20 @@ class ApiRouter:
         return self.command()
 
     def yandexgui(self):
-        return render_to_response('yandexworker.html')
+        return render_template('yandexworker.html'), "text/html"
 
     def reactorgui(self):
-        return render_to_response('reactorgallery.html')
+        return render_template('reactorgallery.html'), "text/html"
 
     def yandex_upload_file_by_link(self):
         url = getGet(self.request, "u")
         filename = getGet(self.request, "f")
         id = upload_file_by_link(url, filename)
-        return HttpResponse(id)
+        return id, "text/plain"
 
     def async_operation_checker(self):
         id = getGet(self.request, "id")
-        return HttpResponse(check_async_operation(id))
+        return check_async_operation(id)
 
     def rumine_forum_parser(self):
         rq = {
@@ -51,14 +50,14 @@ class ApiRouter:
             "pagenum": getGet(self.request, "pagenum")
         }
         api = rapi.RuMineApi(request=rq)
-        return HttpResponse(api.get_comments(), content_type="application/json")
+        return api.get_comments(), "application/json"
 
     def pornreactor_tag_parser(self):
         rq = {
             "tag": getGet(self.request, "tag"),
             "page": getGet(self.request, "page")
         }
-        return HttpResponse(reapi.ReactorApi().get_images(request=rq), content_type="application/json")
+        return reapi.ReactorApi().get_images(request=rq), "application/json"
 
     def evrlto_parser(self):
         api = evrlapi.EVRLToApi()
@@ -82,7 +81,7 @@ class ApiRouter:
         elif type == "story":
             response = api.get_story_content(link, article_id, named_link)
 
-        return HttpResponse(api.jsondump(response), content_type="application/json")
+        return api.jsondump(response), "application/json"
 
     def deviantart_worker(self):
         do = getGet(self.request, "do")
@@ -90,11 +89,11 @@ class ApiRouter:
             url = getGet(self.request, "url")
             if url:
                 api = dapi.DeviantRipperApi(url)
-                return HttpResponse(api.get_gallery_of_author(), content_type="application/json")
-        return HttpResponse("No work specified")
+                return api.get_gallery_of_author(), "application/json"
+        return "No work specified", "text/plain"
 
     def info(self):
-        return HttpResponse("""
+        return """
                 СПРАВКА:
                 // Все входные данные обязательны, если не указано обратное
                 Существует три режима работы сервиса:
@@ -132,4 +131,4 @@ class ApiRouter:
                                     link=<link>
                                     article_id=<aid>
                                     named_link=<nl>
-                """.encode("cp1251"), content_type="text/plain")
+                """, "text/plain"

@@ -2,7 +2,6 @@
 import codecs
 import bs4 as bs
 from bs4 import Comment
-import base64
 from .models import Post, Response
 import jsonpickle
 import requests

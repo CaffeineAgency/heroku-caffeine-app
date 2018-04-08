@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
 import jsonpickle
 from bs4 import BeautifulSoup as bs
 import requests
+
 
 class WorkerTask:
     URL = "https://www.deviantart.com/dapi/v1/gallery/"

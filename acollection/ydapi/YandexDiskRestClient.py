@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import requests
 from acollection.ydapi.Directory import Directory
 from acollection.ydapi.Disk import Disk
