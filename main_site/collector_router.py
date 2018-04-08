@@ -1,6 +1,6 @@
 # coding=utf-8
 from flask import render_template
-from init.extensions import getGet
+from extensions import getGet
 
 import acollection.deviantartlib.api as dapi
 import acollection.evrltolib.api as evrlapi

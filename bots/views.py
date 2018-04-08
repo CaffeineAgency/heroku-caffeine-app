@@ -1,6 +1,6 @@
 # coding=utf-8
 import jsonpickle
-from init.extensions import getData
+from extensions import getData
 
 from bots.BotController import BotController
 from bots.GroupApiHooks import GroupApiHooks
