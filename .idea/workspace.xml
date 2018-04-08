@@ -2,51 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/heroku-caffeine-app.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/deviantartlib/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/deviantartlib/api.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/deviantartlib/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/evrltolib/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/evrltolib/api.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/reactorlib/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/reactorlib/api.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/reactorlib/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ruminelib/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ruminelib/api.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ruminelib/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ydapi/Directory.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ydapi/Disk.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ydapi/File.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ydapi/YandexDiskException.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ydapi/YandexDiskRestClient.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ydapi/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/acollection/ydapi/yandexdisk_worker.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bots/BotController.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bots/GroupApiHooks.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bots/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bots/views.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/extensions.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main_site/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main_site/collector_router.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main_site/views.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/humans.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/info.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/reactorgallery.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/ruminegui.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/yandexworker.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/runtime.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/deviantartlib/api.py" afterPath="$PROJECT_DIR$/acollection/deviantartlib/api.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/deviantartlib/models.py" afterPath="$PROJECT_DIR$/acollection/deviantartlib/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/reactorlib/models.py" afterPath="$PROJECT_DIR$/acollection/reactorlib/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/ruminelib/api.py" afterPath="$PROJECT_DIR$/acollection/ruminelib/api.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/ruminelib/models.py" afterPath="$PROJECT_DIR$/acollection/ruminelib/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/ydapi/Directory.py" afterPath="$PROJECT_DIR$/acollection/ydapi/Directory.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/ydapi/Disk.py" afterPath="$PROJECT_DIR$/acollection/ydapi/Disk.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/ydapi/File.py" afterPath="$PROJECT_DIR$/acollection/ydapi/File.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/ydapi/YandexDiskException.py" afterPath="$PROJECT_DIR$/acollection/ydapi/YandexDiskException.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/acollection/ydapi/YandexDiskRestClient.py" afterPath="$PROJECT_DIR$/acollection/ydapi/YandexDiskRestClient.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bots/views.py" afterPath="$PROJECT_DIR$/bots/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main_site/collector_router.py" afterPath="$PROJECT_DIR$/main_site/collector_router.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main_site/views.py" afterPath="$PROJECT_DIR$/main_site/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,21 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Procfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="68">
+              <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -150,8 +110,10 @@
         <option value="$PROJECT_DIR$/init/wsgi.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/runtime.txt" />
+        <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/main_site/views.py" />
         <option value="$PROJECT_DIR$/main_site/collector_router.py" />
         <option value="$PROJECT_DIR$/bots/views.py" />
@@ -165,8 +127,6 @@
         <option value="$PROJECT_DIR$/acollection/reactorlib/models.py" />
         <option value="$PROJECT_DIR$/acollection/deviantartlib/models.py" />
         <option value="$PROJECT_DIR$/acollection/deviantartlib/api.py" />
-        <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
   </component>
@@ -220,11 +180,6 @@
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="heroku-caffeine-app" type="cbb8eebc:String" user="heroku-caffeine-app" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="heroku-caffeine-app" type="cbb8eebc:String" user="heroku-caffeine-app" />
-              <item name="static" type="cbb8eebc:String" user="static" />
             </path>
           </expand>
           <select />
@@ -536,9 +491,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25037822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25037822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5029762" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -604,7 +558,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="120" column="4" lean-forward="false" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -719,6 +672,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main_site/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -747,7 +708,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -779,7 +742,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -803,7 +768,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -835,7 +802,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-205">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -867,7 +836,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -905,16 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="68">
+          <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
           <folding />
         </state>
       </provider>

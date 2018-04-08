@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>PoH</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="alert text-center" role="alert">
+        <form action="/acollection">
+            <button type="submit" class="btn btn-success">Enter</button>
+        </form>
+    </div>
+    <div class="alert alert-info text-center" role="alert">
+        Таки тут находятся мои разные штуки. Эта страница - чисто заглушка, чтобы посмотреть остальные штуки, нажмите кнопку сверху.
+    </div>
+</div>
+{% endblock %}
