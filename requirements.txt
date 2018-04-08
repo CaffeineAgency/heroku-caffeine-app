@@ -1,13 +1,17 @@
-gunicorn
+# ----------------------
+# Flask
+# ----------------------
+flask
+
+
+# ----------------------
+# Testing
+# ----------------------
+mock
+
+
+# ----------------------
+# Production Server
+# ----------------------
 gevent
-
-Flask
-Jinja2
-MarkupSafe
-
-requests
-lxml
-cssselect
-bs4
-jsonpickle
-vk-api
+gunicorn
