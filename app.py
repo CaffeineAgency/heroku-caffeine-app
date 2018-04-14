@@ -29,7 +29,7 @@ def bot_route():
     return Response(stream_with_context(bots_index(request)))
 
 
-@app.route("/test/<str:tag>/<int:maxpage>")
+@app.route("/test/<tag>/<int:maxpage>")
 def test_route(tag, maxpage):
     from acollection.nozomilib.api import NozomiApi
     return Response(stream_with_context(NozomiApi().main(tag=tag, maxpage=maxpage)), mimetype="text/plain")
