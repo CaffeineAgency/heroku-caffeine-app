@@ -24,18 +24,17 @@ def acollection_route():
 
 
 @app.route("/bot")
+@app.route("/bot/")
 def bot_route():
     return bots_index(request)
 
 
-@app.route("/test/<int:d>")
+@app.route("/test")
 def test_route(d):
-    from models import Chat
-    if d:
-        return jsonify(Chat.query_all())
-    else:
-        db.session.add(Chat(8800, "SS", []))
-        return "success"
+    yield "t1"
+    yield "t2"
+    yield "ttt"
+    return ".dne"
 
 
 if __name__ == '__main__':
