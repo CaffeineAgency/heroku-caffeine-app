@@ -56,7 +56,7 @@ class NozomiApi:
             except:
                 continue
         fname = shutil.make_archive(self.tmpdir[2:-1], "zip", self.tmpdir)
-        files = {fname: fname}
+        files = {"file": (self.tmpdir[2:-1], fname)}
         yield "Archive done: " + fname + "\n"
         try:
             yield "Response: " + requests.post("http://vaix.ru/upload", files=files).text
