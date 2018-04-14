@@ -3,6 +3,7 @@ import shutil
 import time
 
 import lxml.html
+import os
 import requests
 
 from acollection.exts.Downloader import Downloader
@@ -19,6 +20,8 @@ class NozomiApi:
         ot = 1
         p = 0
         self.tmpdir = "./tmp_" + str(time.time()).replace(".", "") + "/"
+        if not os.path.exists(self.tmpdir):
+            os.mkdir(self.tmpdir)
         for i in range(ot, maxpage):
             try:
                 html = requests.get(f"{self.plink}{base}/{'index' if not tag else 'tag/' + tag}-{i}.html").text
