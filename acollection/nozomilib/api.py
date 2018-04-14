@@ -19,7 +19,7 @@ class NozomiApi:
         base = "https://nozomi.la"
         ot = 1
         p = 0
-        self.tmpdir = "./tmp_" + str(time.time()).replace(".", "") + "/"
+        self.tmpdir = os.getcwd() + "/tmp_" + str(time.time()).replace(".", "") + "/"
         if not os.path.exists(self.tmpdir):
             os.mkdir(self.tmpdir)
         for i in range(ot, maxpage):
