@@ -4,6 +4,7 @@ gevent
 Flask
 Jinja2
 MarkupSafe
+flask_sqlalchemy
 
 requests
 lxml
