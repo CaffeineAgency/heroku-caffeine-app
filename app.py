@@ -30,6 +30,8 @@ def bot_route():
 
 if __name__ == '__main__':
     if "create_db" in sys.argv:
+        print("generating db...")
         db.create_all()
+        print("success!")
     else:
         app.run(debug=True)

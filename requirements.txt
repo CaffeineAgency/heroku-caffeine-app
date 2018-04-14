@@ -1,5 +1,6 @@
 gunicorn
 gevent
+psycopg2
 
 Flask
 Jinja2
