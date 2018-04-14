@@ -1,6 +1,7 @@
 # encoding=utf-8
 import shutil
 import time
+from collections import Counter
 
 import lxml.html
 import os
@@ -15,14 +16,13 @@ class NozomiApi:
     images = []
 
     def main(self, tag=None, maxpage=10, proxy=False):
-        self.plink = self.plink if proxy else ""
+        maxpage += 1
+        plink = self.plink if proxy else ""
         base = "https://nozomi.la"
-        ot = 1
-        p = 0
-        self.tmpdir = os.getcwd() + "/tmp_" + str(time.time()).replace(".", "") + "/"
-        if not os.path.exists(self.tmpdir):
-            os.mkdir(self.tmpdir)
-        for i in range(ot, maxpage):
+        tmpdir = os.getcwd() + "/tmp_" + str(time.time()).replace(".", "") + "/"
+        if not os.path.exists(tmpdir):
+            os.mkdir(tmpdir)
+        for i in range(1, maxpage):
             try:
                 html = requests.get(f"{self.plink}{base}/{'index' if not tag else 'tag/' + tag}-{i}.html").text
                 root = lxml.html.fromstring(html)
@@ -36,6 +36,7 @@ class NozomiApi:
                         root = lxml.html.fromstring(html)
                         root.make_links_absolute(base)
                         image = root.cssselect("div.post img")[0].attrib["src"]
+                        self.images.append(image)
                         sidebar = root.cssselect("div.sidebar")[0]
                         chrs, series, artist, tags, uls = [], [], [], [], sidebar.cssselect("ul")
                         for i, span in enumerate(sidebar.cssselect("span.title")):
@@ -48,26 +49,22 @@ class NozomiApi:
                                 artist = [x.text for x in uls[i].cssselect("li a")]
                             elif title == "Tags":
                                 tags = [x.text for x in uls[i].cssselect("li a")]
-                        Downloader().download(image, rname=True, directory=self.tmpdir)
+                        Downloader().download(image, rname=True, directory=tmpdir)
                         yield str(x) + " This post done: " + post + "\n"
                     except Exception as e:
                         yield str(x) + " Error with post: " + post + " " + str(e) + "\n"
                         continue
             except:
                 continue
-        fname = shutil.make_archive(self.tmpdir[2:-1], "zip", self.tmpdir)
-        files = {"file": (self.tmpdir[2:-1] + ".zip", open(fname, "rb"), "application/zip")}
+            c = Counter(self.images)
+            if c.most_common(1)[0][1] > 1:
+                break
+        fname = shutil.make_archive(tmpdir[2:-1], "zip", tmpdir)
+        files = {"file": (tag + "_" + str(maxpage) + "_" + tmpdir[5:-1] + ".zip", open(fname, "rb"), "application/zip")}
         yield "Archive done: " + fname + "\n"
         try:
-            yield "Response: " + requests.post("http://vaix.ru/upload", files=files).text
+            rsp = requests.post("http://vaix.ru/upload", files=files).json()
+            yield "Response: path-> " + rsp["path"] + "\n"
+            yield "Response: path_delete-> " + rsp["path_delete"]
         except Exception as e:
             yield "Error with upload: " + str(e)
-
-
-    if __name__ == '__main__':
-        tag = input("Грузим тэг?\n(https://nozomi.la/tag/{ТЭГ}-1.html)\n(можно оставить пустым)\n>> ").strip()
-        if len(tag.strip()) == 0:
-            tag = None
-        plink = plink if input(
-            "Проксируем?[y/std: n]\n(мб медленно, зато в обход блокировок)\n>> ").lower() == "y" else ""
-        main(tag)
