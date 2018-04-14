@@ -31,7 +31,7 @@ def bot_route():
 
 @app.route("/test")
 def test_route():
-    return Response(stream_with_context(range(10000)))
+    return Response(stream_with_context(map(str, range(10000))))
 
 if __name__ == '__main__':
     if "create_db" in sys.argv:
