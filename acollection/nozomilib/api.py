@@ -25,7 +25,34 @@ class NozomiApi:
         for i in range(ot, maxpage):
             try:
                 html = requests.get(f"{self.plink}{base}/{'index' if not tag else 'tag/' + tag}-{i}.html").text
-                yield self.parse(base, html)
+                root = lxml.html.fromstring(html)
+                root.make_links_absolute(base)
+                posts = [x.attrib["href"] for x in root.cssselect("div.thumbnail-div a")]
+                for post in posts:
+                    post = post.split("#")[0]
+                    try:
+                        print("Dealing with post: " + post)
+                        html = requests.get(self.plink + post).text
+                        root = lxml.html.fromstring(html)
+                        root.make_links_absolute(base)
+                        image = root.cssselect("div.post img")[0].attrib["src"]
+                        sidebar = root.cssselect("div.sidebar")[0]
+                        chrs, series, artist, tags, uls = [], [], [], [], sidebar.cssselect("ul")
+                        for i, span in enumerate(sidebar.cssselect("span.title")):
+                            title = span.text.strip()
+                            if title == "Characters":
+                                chrs = [x.text for x in uls[i].cssselect("li a")]
+                            elif title == "Series":
+                                series = [x.text for x in uls[i].cssselect("li a")]
+                            elif title == "Artist":
+                                artist = [x.text for x in uls[i].cssselect("li a")]
+                            elif title == "Tags":
+                                tags = [x.text for x in uls[i].cssselect("li a")]
+                        Downloader().download(image, rname=True, directory=self.tmpdir)
+                        yield "This post done: " + post
+                    except Exception as e:
+                        yield "Error with post: " + post + str(e)
+                        continue
             except:
                 continue
         zipname = self.tmpdir[2:-1] + ".zip"
@@ -35,37 +62,6 @@ class NozomiApi:
             print(self.tmpdir + zipname)
             print(requests.post("http://vaix.ru/upload?file=" + zipname, files=open(self.tmpdir + zipname)).content)
 
-
-
-    def parse(self, base, html):
-        root = lxml.html.fromstring(html)
-        root.make_links_absolute(base)
-        posts = [x.attrib["href"] for x in root.cssselect("div.thumbnail-div a")]
-        for post in posts:
-            post = post.split("#")[0]
-            try:
-                print("Dealing with post: " + post)
-                html = requests.get(self.plink + post).text
-                root = lxml.html.fromstring(html)
-                root.make_links_absolute(base)
-                image = root.cssselect("div.post img")[0].attrib["src"]
-                sidebar = root.cssselect("div.sidebar")[0]
-                chrs, series, artist, tags, uls = [], [], [], [], sidebar.cssselect("ul")
-                for i, span in enumerate(sidebar.cssselect("span.title")):
-                    title = span.text.strip()
-                    if title == "Characters":
-                        chrs = [x.text for x in uls[i].cssselect("li a")]
-                    elif title == "Series":
-                        series = [x.text for x in uls[i].cssselect("li a")]
-                    elif title == "Artist":
-                        artist = [x.text for x in uls[i].cssselect("li a")]
-                    elif title == "Tags":
-                        tags = [x.text for x in uls[i].cssselect("li a")]
-                Downloader().download(image, rname=True, directory=self.tmpdir)
-                yield "This post done: " + post
-            except Exception as e:
-                yield "Error with post: " + post + str(e)
-                continue
 
     if __name__ == '__main__':
         tag = input("Грузим тэг?\n(https://nozomi.la/tag/{ТЭГ}-1.html)\n(можно оставить пустым)\n>> ").strip()
