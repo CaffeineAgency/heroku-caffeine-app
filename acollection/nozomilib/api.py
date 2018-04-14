@@ -20,8 +20,6 @@ class NozomiApi:
         ot = 1
         p = 0
         self.tmpdir = os.getcwd() + "/tmp_" + str(time.time()).replace(".", "") + "/"
-        if not os.path.exists(self.tmpdir):
-            os.mkdir(self.tmpdir)
         for i in range(ot, maxpage):
             try:
                 html = requests.get(f"{self.plink}{base}/{'index' if not tag else 'tag/' + tag}-{i}.html").text
@@ -49,18 +47,16 @@ class NozomiApi:
                             elif title == "Tags":
                                 tags = [x.text for x in uls[i].cssselect("li a")]
                         Downloader().download(image, rname=True, directory=self.tmpdir)
-                        yield "This post done: " + post
+                        yield "This post done: " + post + "\n"
                     except Exception as e:
-                        yield "Error with post: " + post + str(e)
+                        yield "Error with post: " + post + str(e) + "\n"
                         continue
             except:
                 continue
-        zipname = self.tmpdir[2:-1] + ".zip"
-        fname = shutil.make_archive(zipname, "zip", self.tmpdir, self.tmpdir)
-        print(fname)
-        if os.path.exists(self.tmpdir + zipname):
-            print(self.tmpdir + zipname)
-            print(requests.post("http://vaix.ru/upload?file=" + zipname, files=open(self.tmpdir + zipname)).content)
+        fname = shutil.make_archive(self.tmpdir[2:-1], "zip", self.tmpdir, self.tmpdir)
+        if os.path.exists(os.getcwd() + fname):
+            print(fname)
+            print(requests.post("http://vaix.ru/upload?file=" + fname, files=open(os.getcwd() + fname)).content)
 
 
     if __name__ == '__main__':

@@ -14,7 +14,7 @@ class Downloader:
 
     def download(self, link, filename=None, directory="./downloads/", rname=False,):
         if rname:
-            filename = str(time.time()).replace(".", "") + link.split(".")[-1]
+            filename = str(time.time()).replace(".", "") + "." + link.split(".")[-1]
         elif not filename:
             filename = link.split("/").pop().split("?")[0]
         else:
