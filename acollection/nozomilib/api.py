@@ -63,7 +63,7 @@ class NozomiApi:
         files = {"file": (tag + "_" + str(maxpage) + "_" + tmpdir[5:-1] + ".zip", open(fname, "rb"), "application/zip")}
         yield "Archive done: " + fname + "\n"
         try:
-            rsp = requests.post("http://vaix.ru/upload", files=files).json()["file"]
+            rsp = requests.post("http://vaix.ru/upload", files=files).json()["file"][0]
             yield "Response: path-> " + rsp["path"] + "\n"
             yield "Response: path_delete-> " + rsp["path_delete"]
         except Exception as e:
