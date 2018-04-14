@@ -1,14 +1,9 @@
 # encoding=utf-8
 import shutil
-from collections import Counter
-
-import jsonpickle
 import time
-from lxml import etree
 
 import lxml.html
 import requests
-import re
 
 from acollection.exts.Downloader import Downloader
 
