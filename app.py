@@ -23,15 +23,17 @@ def acollection_route():
     return acollection(request)
 
 
-@app.route("/bot")
+@app.route("/bot", methods=['GET', 'POST'])
 @app.route("/bot/", methods=['GET', 'POST'])
 def bot_route():
     return Response(stream_with_context(bots_index(request)))
 
 
-@app.route("/test")
-def test_route():
-    return Response(stream_with_context(map(lambda x: "\t"*x + str(x) + "\n", range(1000000))), mimetype="text/plain")
+@app.route("/test/<str:slug>/<int:maxpage>")
+def test_route(slug, maxpage):
+
+    from acollection.nozomilib.api import NozomiApi
+    return Response(stream_with_context(NozomiApi().main(tag=slug, maxpage=maxpage)), mimetype="text/plain")
 
 if __name__ == '__main__':
     if "create_db" in sys.argv:
