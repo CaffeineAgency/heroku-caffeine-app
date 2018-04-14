@@ -54,8 +54,8 @@ class NozomiApi:
             except:
                 continue
         fname = shutil.make_archive(self.tmpdir[2:-1], "zip", self.tmpdir, self.tmpdir)
+        print(fname)
         if os.path.exists(os.getcwd() + fname):
-            print(fname)
             print(requests.post("http://vaix.ru/upload?file=" + fname, files=open(os.getcwd() + fname)).content)
 
 
