@@ -1,7 +1,7 @@
 import os
 
 import sys
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 from main_site.views import acollection
@@ -26,6 +26,16 @@ def acollection_route():
 @app.route("/bot")
 def bot_route():
     return bots_index(request)
+
+
+@app.route("/test/<int:d>")
+def bot_route(d):
+    from models import Chat
+    if d:
+        return jsonify(Chat.query_all())
+    else:
+        db.session.add(Chat(8800, "SS", []))
+        return "success"
 
 
 if __name__ == '__main__':
