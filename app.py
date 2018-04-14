@@ -1,12 +1,17 @@
 import os
 
-from flask import Flask, request, render_template, Response
+import sys
+from flask import Flask, request, render_template
+from flask_sqlalchemy import SQLAlchemy
 
 from main_site.views import acollection
 from bots.views import index as bots_index
 
 app = Flask(__name__)
 app.static_url_path = "/static"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+db = SQLAlchemy(app)
+
 
 @app.route("/")
 def main_route():
@@ -24,4 +29,7 @@ def bot_route():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if "create_db" in sys.argv:
+        db.create_all()
+    else:
+        app.run(debug=True)
