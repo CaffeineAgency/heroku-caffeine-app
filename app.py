@@ -1,7 +1,7 @@
 import os
 
 import sys
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, Response
 from flask_sqlalchemy import SQLAlchemy
 
 from main_site.views import acollection
@@ -31,10 +31,13 @@ def bot_route():
 
 @app.route("/test")
 def test_route():
-    yield "t1"
-    yield "t2"
-    yield "ttt"
-    return ".dne"
+    stream = Response().stream
+    stream.write("t1")
+    stream.write("t1")
+    stream.write("t1")
+    stream.write("t1")
+    stream.write("t1")
+    stream.close()
 
 
 if __name__ == '__main__':
