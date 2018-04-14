@@ -8,8 +8,8 @@ from bots.GroupApiHooks import GroupApiHooks
 
 def index(request):
     yield "ok"
-    print(request)
     _json = getData(request)
+    print(_json)
     if _json:
         inc_data = jsonpickle.decode(_json)
         gids = {
