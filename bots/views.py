@@ -39,4 +39,4 @@ def index(request):
             print(e, inc_data)
             GroupApiHooks(gid=gid).notify_creator("Error(s) happend: " + ", ".join(e.args), gid)
             raise e
-    return "ok", "text/plain"
+    return "ok", 200, { "Content-Type": "text/plain" }

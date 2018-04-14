@@ -30,7 +30,7 @@ def bot_route():
 
 
 @app.route("/test")
-def test_route(d):
+def test_route():
     yield "t1"
     yield "t2"
     yield "ttt"
