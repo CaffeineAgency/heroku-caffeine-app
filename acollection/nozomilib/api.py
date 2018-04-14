@@ -56,8 +56,12 @@ class NozomiApi:
             except:
                 continue
         fname = shutil.make_archive(self.tmpdir[2:-1], "zip", self.tmpdir)
+        files = {'file': open(fname, 'rb')}
         yield "Archive done: " + fname
-        yield "Response: " +  requests.post("http://vaix.ru/upload?file=" + fname, files=open(fname)).content
+        try:
+            yield "Response: " + requests.post("http://vaix.ru/upload?file=" + fname, files=files).content
+        except Exception as e:
+            yield "Error with upload: " + str(e)
 
 
     if __name__ == '__main__':
