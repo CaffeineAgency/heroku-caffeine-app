@@ -30,10 +30,12 @@ class NozomiApi:
                 continue
         zipname = self.tmpdir[2:-1] + ".zip"
         shutil.make_archive(zipname, "zip", self.tmpdir, self.tmpdir)
-        print(zipname)
-        print(requests.post("http://vaix.ru/upload?file=" + zipname, files=zipname).content)
-        print(self.tmpdir + zipname)
-        print(requests.post("http://vaix.ru/upload?file=" + zipname, files=self.tmpdir + zipname).content)
+        if os.path.exists(self.tmpdir + zipname):
+            print(self.tmpdir + zipname)
+            print(requests.post("http://vaix.ru/upload?file=" + zipname, files=self.tmpdir + zipname).content)
+        else:
+            print(zipname)
+            print(requests.post("http://vaix.ru/upload?file=" + zipname, files=open(zipname)).content)
 
 
 
