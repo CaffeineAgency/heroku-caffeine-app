@@ -1,7 +1,7 @@
 import os
 
 import sys
-from flask import Flask, request, render_template, jsonify, Response
+from flask import Flask, request, render_template, jsonify, Response, stream_with_context
 from flask_sqlalchemy import SQLAlchemy
 
 from main_site.views import acollection
@@ -31,14 +31,7 @@ def bot_route():
 
 @app.route("/test")
 def test_route():
-    stream = Response().stream
-    stream.write("t1")
-    stream.write("t1")
-    stream.write("t1")
-    stream.write("t1")
-    stream.write("t1")
-    stream.close()
-
+    return Response(stream_with_context(["t1", "t2", "t3", "t4", "t4", "t3", "t2", "end"]))
 
 if __name__ == '__main__':
     if "create_db" in sys.argv:
