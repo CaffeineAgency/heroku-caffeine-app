@@ -24,7 +24,7 @@ def acollection_route():
 
 
 @app.route("/bot")
-@app.route("/bot/")
+@app.route("/bot/", methods=['GET', 'POST'])
 def bot_route():
     return Response(stream_with_context(bots_index(request)))
 
