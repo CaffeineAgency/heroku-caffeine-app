@@ -29,7 +29,7 @@ def bot_route():
 
 
 @app.route("/test/<int:d>")
-def bot_route(d):
+def test_route(d):
     from models import Chat
     if d:
         return jsonify(Chat.query_all())
