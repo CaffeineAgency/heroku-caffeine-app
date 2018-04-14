@@ -28,7 +28,7 @@ class NozomiApi:
                 root = lxml.html.fromstring(html)
                 root.make_links_absolute(base)
                 posts = [x.attrib["href"] for x in root.cssselect("div.thumbnail-div a")]
-                for post in posts:
+                for x, post in enumerate(posts):
                     post = post.split("#")[0]
                     try:
                         print("Dealing with post: " + post)
@@ -49,15 +49,15 @@ class NozomiApi:
                             elif title == "Tags":
                                 tags = [x.text for x in uls[i].cssselect("li a")]
                         Downloader().download(image, rname=True, directory=self.tmpdir)
-                        yield "This post done: " + post + "\n"
+                        yield str(x) + " This post done: " + post + "\n"
                     except Exception as e:
-                        yield "Error with post: " + post + str(e) + "\n"
+                        yield str(x) + " Error with post: " + post + " " + str(e) + "\n"
                         continue
             except:
                 continue
         fname = shutil.make_archive(self.tmpdir[2:-1], "zip", self.tmpdir)
-        print(fname)
-        print(requests.post("http://vaix.ru/upload?file=" + fname, files=open(os.getcwd() + fname)).content)
+        yield "Archive done: " + fname
+        yield "Response: " +  requests.post("http://vaix.ru/upload?file=" + fname, files=open(fname)).content
 
 
     if __name__ == '__main__':
