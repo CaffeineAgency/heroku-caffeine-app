@@ -59,7 +59,7 @@ class NozomiApi:
         files = {'file': fname}
         yield "Archive done: " + fname + "\n"
         try:
-            yield "Response: " + requests.post("http://vaix.ru/upload", files=files).text
+            yield "Response: " + requests.post("http://vaix.ru/upload?file=" + fname, files=files).text
         except Exception as e:
             yield "Error with upload: " + str(e)
 
