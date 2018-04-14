@@ -26,12 +26,12 @@ def acollection_route():
 @app.route("/bot")
 @app.route("/bot/")
 def bot_route():
-    return bots_index(request)
+    return Response(stream_with_context(bots_index(request)))
 
 
 @app.route("/test")
 def test_route():
-    return Response(stream_with_context(["t1", "t2", "t3", "t4", "t4", "t3", "t2", "end"]))
+    return Response(stream_with_context(range(10000)))
 
 if __name__ == '__main__':
     if "create_db" in sys.argv:

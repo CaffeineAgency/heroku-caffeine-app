@@ -7,6 +7,7 @@ from bots.GroupApiHooks import GroupApiHooks
 
 
 def index(request):
+    yield "ok"
     _json = getData(request)
     if _json:
         inc_data = jsonpickle.decode(_json)
@@ -39,4 +40,3 @@ def index(request):
             print(e, inc_data)
             GroupApiHooks(gid=gid).notify_creator("Error(s) happend: " + ", ".join(e.args), gid)
             raise e
-    return "ok", 200, { "Content-Type": "text/plain" }
