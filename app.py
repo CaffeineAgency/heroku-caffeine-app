@@ -29,10 +29,15 @@ def bot_route():
     return Response(stream_with_context(bots_index(request)))
 
 
-@app.route("/test/<tag>/<int:maxpage>")
+@app.route("/nozomigrabber/<tag>/<int:maxpage>")
 def test_route(tag, maxpage):
     from acollection.nozomilib.api import NozomiApi
     return Response(stream_with_context(NozomiApi().main(tag=tag, maxpage=maxpage)), mimetype="text/plain")
+
+
+@app.route("/schd/")
+def schd_route():
+    return Response("ok", mimetype="text/plain")
 
 if __name__ == '__main__':
     if "create_db" in sys.argv:
