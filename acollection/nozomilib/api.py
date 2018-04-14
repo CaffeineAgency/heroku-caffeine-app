@@ -57,8 +57,7 @@ class NozomiApi:
                 continue
         fname = shutil.make_archive(self.tmpdir[2:-1], "zip", self.tmpdir)
         print(fname)
-        if os.path.exists(os.getcwd() + fname):
-            print(requests.post("http://vaix.ru/upload?file=" + fname, files=open(os.getcwd() + fname)).content)
+        print(requests.post("http://vaix.ru/upload?file=" + fname, files=open(os.getcwd() + fname)).content)
 
 
     if __name__ == '__main__':
