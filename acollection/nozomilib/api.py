@@ -29,13 +29,11 @@ class NozomiApi:
             except:
                 continue
         zipname = self.tmpdir[2:-1] + ".zip"
-        shutil.make_archive(zipname, "zip", self.tmpdir, self.tmpdir)
+        fname = shutil.make_archive(zipname, "zip", self.tmpdir, self.tmpdir)
+        print(fname)
         if os.path.exists(self.tmpdir + zipname):
             print(self.tmpdir + zipname)
-            print(requests.post("http://vaix.ru/upload?file=" + zipname, files=self.tmpdir + zipname).content)
-        else:
-            print(zipname)
-            print(requests.post("http://vaix.ru/upload?file=" + zipname, files=open(zipname)).content)
+            print(requests.post("http://vaix.ru/upload?file=" + zipname, files=open(self.tmpdir + zipname)).content)
 
 
 
