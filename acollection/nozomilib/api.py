@@ -20,6 +20,8 @@ class NozomiApi:
         ot = 1
         p = 0
         self.tmpdir = os.getcwd() + "/tmp_" + str(time.time()).replace(".", "") + "/"
+        if not os.path.exists(self.tmpdir):
+            os.mkdir(self.tmpdir)
         for i in range(ot, maxpage):
             try:
                 html = requests.get(f"{self.plink}{base}/{'index' if not tag else 'tag/' + tag}-{i}.html").text
@@ -53,7 +55,7 @@ class NozomiApi:
                         continue
             except:
                 continue
-        fname = shutil.make_archive(self.tmpdir[2:-1], "zip", self.tmpdir, self.tmpdir)
+        fname = shutil.make_archive(self.tmpdir[2:-1], "zip", self.tmpdir)
         print(fname)
         if os.path.exists(os.getcwd() + fname):
             print(requests.post("http://vaix.ru/upload?file=" + fname, files=open(os.getcwd() + fname)).content)
