@@ -14,10 +14,10 @@ class ChatUser(object):
 
 
 class Chat(object):
-    def __init__(self, id, chat_name, users):
+    def __init__(self, id, chat_name, users_list):
         self.id = id
         self.chat_name = chat_name
-        self.users = users
+        self.users_list = users_list
 
     def __repr__(self):
-        return "<ChatUser('%s','%s', '%s')>" % (self.id, self.chat_name, self.users)
+        return "<ChatUser('%s','%s', '%s')>" % (self.id, self.chat_name, self.users_list)

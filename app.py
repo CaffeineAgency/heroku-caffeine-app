@@ -67,7 +67,6 @@ def db_route(do):
         chat = Chat(88005553535, "Hmm1", json.dumps([8800, 5553, 535]))
         db.add(chat)
         chat = Chat(12345678976, "Hdd2",  json.dumps([71, 931]))
-        print(chat)
         db.add(chat)
         db.commit()
         user = ChatUser(8800, 88005553535, "G P", 0)
