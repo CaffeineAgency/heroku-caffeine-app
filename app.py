@@ -5,7 +5,7 @@ import sys
 from flask import Flask, request, render_template, jsonify, Response, stream_with_context
 from sqlalchemy import create_engine, Column, MetaData, Table
 from sqlalchemy.orm import mapper, sessionmaker
-from sqlalchemy.types import BIGINT, String
+from sqlalchemy.types import String
 
 from main_site.views import acollection
 from bots.views import index as bots_index
@@ -17,13 +17,13 @@ app.static_url_path = "/static"
 engine = create_engine(os.getenv("DATABASE_URL"), echo=True)
 metadata = MetaData()
 users_table = Table('users', metadata,
-    Column('id', BIGINT, primary_key=True),
-    Column('chat_id', BIGINT),
+    Column('id', String, primary_key=True),
+    Column('chat_id', String),
     Column('fname', String),
     Column('rank', String),
 )
 chats_table = Table('chats', metadata,
-    Column('id', BIGINT, primary_key=True),
+    Column('id', String, primary_key=True),
     Column('chat_name', String),
     Column('users_list', String),
 )
@@ -64,20 +64,20 @@ def schd_route():
 def db_route(do):
     db = db_session()
     if do == "create":
-        chat = Chat(88005553535, "Hmm1", json.dumps([8800, 5553, 535]))
+        chat = Chat("88005553535", "Hmm1", json.dumps([8800, 5553, 535]))
         db.add(chat)
-        chat = Chat(12345678976, "Hdd2",  json.dumps([71, 931]))
+        chat = Chat("12345678976", "Hdd2",  json.dumps([71, 931]))
         db.add(chat)
         db.commit()
-        user = ChatUser(8800, 88005553535, "G P", 0)
+        user = ChatUser("8800", "88005553535", "G P", 0)
         db.add(user)
-        user = ChatUser(5553, 88005553535, "G D", 1)
+        user = ChatUser("5553", "88005553535", "G D", 1)
         db.add(user)
-        user = ChatUser(535, 12345678976, "T F", 2)
+        user = ChatUser("535", "12345678976", "T F", 2)
         db.add(user)
-        user = ChatUser(71, 12345678976, "D V", 1)
+        user = ChatUser("71", "12345678976", "D V", 1)
         db.add(user)
-        user = ChatUser(931, 12345678976, "S G", 2)
+        user = ChatUser("931", "12345678976", "S G", 2)
         db.add(user)
         db.commit()
         return "ZBS"
