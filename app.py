@@ -2,15 +2,33 @@ import os
 
 import sys
 from flask import Flask, request, render_template, jsonify, Response, stream_with_context
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Table, Column, Integer, String, ARRAY, MetaData, create_engine
+from sqlalchemy.orm import mapper, sessionmaker
 
 from main_site.views import acollection
 from bots.views import index as bots_index
+from models import *
 
 app = Flask(__name__)
 app.static_url_path = "/static"
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
-db = SQLAlchemy(app)
+
+engine = create_engine(os.getenv("DATABASE_URL"), echo=True)
+metadata = MetaData()
+users_table = Table('users', metadata,
+    Column('id', Integer, primary_key=True),
+    Column('chat_id', Integer),
+    Column('fname', String),
+    Column('rank', String),
+)
+chats_table = Table('chats', metadata,
+    Column('id', Integer, primary_key=True),
+    Column('chat_name', String),
+    Column('users_list', ARRAY),
+)
+metadata.create_all(engine)
+mapper(ChatUser, users_table)
+mapper(Chat, chats_table)
+db_session = sessionmaker(bind=engine)
 
 
 @app.route("/")
@@ -39,10 +57,35 @@ def test_route(tag, maxpage):
 def schd_route():
     return Response("ok", mimetype="text/plain")
 
+
+@app.route("/db/<do>/")
+def db_route(do):
+    db = db_session()
+    if do == "create":
+        chat = Chat(88005553535, "Hmm1", [8800, 5553, 535])
+        db.add(chat)
+        chat = Chat(12345678976, "Hdd2", [71, 931])
+        db.add(chat)
+        user = ChatUser(8800, 88005553535, "G P", 0)
+        db.add(user)
+        user = ChatUser(5553, 88005553535, "G D", 1)
+        db.add(user)
+        user = ChatUser(535, 12345678976, "T F", 2)
+        db.add(user)
+        user = ChatUser(71, 12345678976, "D V", 1)
+        db.add(user)
+        user = ChatUser(931, 12345678976, "S G", 2)
+        db.add(user)
+        db.commit()
+        return "ZBS"
+    elif do == "show":
+        def enumer():
+            for instance in db.query(ChatUser):
+                yield repr(instance) + "\n"
+        return Response(stream_with_context(enumer()), mimetype="text/plain")
+
+
+
+
 if __name__ == '__main__':
-    if "create_db" in sys.argv:
-        print("generating db...")
-        db.create_all()
-        print("success!")
-    else:
-        app.run(debug=True)
+    app.run(debug=True)

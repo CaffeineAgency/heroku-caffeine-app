@@ -1,21 +1,23 @@
-from sqlalchemy.ext.orderinglist import ordering_list
-
-from app import db
-
-
-class ChatUser(db.Model):
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
-    chat_id = db.Column(db.Integer, nullable=False)
-    fname = db.Column(db.String(32), nullable=False)
-    rank = db.Column(db.Integer, nullable=False)
+class ChatUser(object):
+    def __init__(self, id, chat_id, fname, rank):
+        self.id = id
+        self.chat_id = chat_id
+        self.fname = fname
+        self.rank = rank
 
     def set_rank(self, rank):
         if rank in [0, 1, 2]:
             self.rank = rank
 
+    def __repr__(self):
+        return "<ChatUser('%s','%s', '%s', '%s')>" % (self.id, self.chat_id, self.fname, self.rank)
 
-class Chat(db.Model):
-    __tablename__ = "chats"
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
-    chat_name = db.Column(db.String(32), nullable=False)
-    users = db.relationship("ChatUser", order_by="ChatUser.id", collection_class=ordering_list("id"))
+
+class Chat(object):
+    def __init__(self, id, chat_name, users):
+        self.id = id
+        self.chat_name = chat_name
+        self.users = users
+
+    def __repr__(self):
+        return "<ChatUser('%s','%s', '%s')>" % (self.id, self.chat_name, self.users)
