@@ -44,7 +44,7 @@ class EVRLToApi:
             }
             endurl = f"{self.baseurl}/?tab=mosaic_all&page={page}"
             docum = requests.get(endurl)
-            dtree = lxml.html.fromstring(docum.content)
+            dtree = lxml.html.fromstring(docum.text)
             pag_is = [x for x in dtree.cssselect(".mosaic_block") if "mosaic_other_news" not in x.attrib["class"]]
             for i, elem in enumerate(pag_is):
                 # element.text_content() used to render text of element and all of its child
@@ -85,7 +85,7 @@ class EVRLToApi:
             }
             endurl = f"{self.newsurl}/?page={page}"
             docum = requests.get(endurl)
-            dtree = lxml.html.fromstring(docum.content)
+            dtree = lxml.html.fromstring(docum.text)
             pag_is = [x for x in dtree.cssselect(".mosaic_block")]
             for i, elem in enumerate(pag_is):
                 info = elem.cssselect(".mosaic_info span")
@@ -125,7 +125,7 @@ class EVRLToApi:
             }
             endurl = f"{self.articlesurl}/?page={page}"
             docum = requests.get(endurl)
-            dtree = lxml.html.fromstring(docum.content)
+            dtree = lxml.html.fromstring(docum.text)
             pag_is = [x for x in dtree.cssselect(".mosaic_block")]
             for i, elem in enumerate(pag_is):
                 info = elem.cssselect(".mosaic_info span")
@@ -166,7 +166,7 @@ class EVRLToApi:
             }
             endurl = f"{self.guidesurl}/?page={page}"
             docum = requests.get(endurl)
-            dtree = lxml.html.fromstring(docum.content)
+            dtree = lxml.html.fromstring(docum.text)
             pag_is = [x for x in dtree.cssselect(".mosaic_block")]
             for i, elem in enumerate(pag_is):
                 guides = {
@@ -218,7 +218,7 @@ class EVRLToApi:
                 ]
             }
             docum = requests.get(link)
-            dtree = lxml.html.fromstring(docum.content)
+            dtree = lxml.html.fromstring(docum.text)
             article_element = dtree.cssselect('[itemprop*=articleBody]')[0]
             response["title"] = dtree.cssselect("title")[0].text_content().strip()
             response["content"] = etree.tostring(article_element).decode("utf8").strip()
@@ -271,7 +271,7 @@ class EVRLToApi:
                 ]
             }
             docum = requests.get(link)
-            dtree = lxml.html.fromstring(docum.content)
+            dtree = lxml.html.fromstring(docum.text)
             article_element = dtree.cssselect('[itemprop*=articleBody]')[0]
             response["title"] = dtree.cssselect("title")[0].text_content().strip()
             response["content"] = etree.tostring(article_element).decode("utf8").strip()
