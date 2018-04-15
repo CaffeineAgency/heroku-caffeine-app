@@ -16,15 +16,6 @@ class EVRLToApi:
         return jsonpickle.encode(obj, unpicklable=False)
 
 
-	@staticmethod
-    def stringify_children(node):
-        from lxml.etree import tostring
-        from itertools import chain
-        parts = ([node.text] + list(chain(*([c.text, tostring(c), c.tail] for c in node.getchildren()))) + [node.tail])
-        # filter removes possible Nones in texts and tails
-        return ''.join(filter(None, parts))
-
-
     def execute_registration(self, login, password):
         """
         login: reg_login
