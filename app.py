@@ -5,7 +5,7 @@ import sys
 from flask import Flask, request, render_template, jsonify, Response, stream_with_context
 from sqlalchemy import create_engine, Column, MetaData, Table
 from sqlalchemy.orm import mapper, sessionmaker
-from sqlalchemy.types import Numeric, String
+from sqlalchemy.types import BIGINT, String
 
 from main_site.views import acollection
 from bots.views import index as bots_index
@@ -17,13 +17,13 @@ app.static_url_path = "/static"
 engine = create_engine(os.getenv("DATABASE_URL"), echo=True)
 metadata = MetaData()
 users_table = Table('users', metadata,
-    Column('id', Numeric, primary_key=True),
-    Column('chat_id', Numeric),
+    Column('id', BIGINT, primary_key=True),
+    Column('chat_id', BIGINT),
     Column('fname', String),
     Column('rank', String),
 )
 chats_table = Table('chats', metadata,
-    Column('id', Numeric, primary_key=True),
+    Column('id', BIGINT, primary_key=True),
     Column('chat_name', String),
     Column('users_list', String),
 )
