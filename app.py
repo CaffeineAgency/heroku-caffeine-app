@@ -1,10 +1,11 @@
+import json
 import os
 
 import sys
 from flask import Flask, request, render_template, jsonify, Response, stream_with_context
 from sqlalchemy import create_engine, Column, MetaData, Table
 from sqlalchemy.orm import mapper, sessionmaker
-from sqlalchemy.types import Integer, String, ARRAY
+from sqlalchemy.types import Integer, String, ARRAY as Array
 
 from main_site.views import acollection
 from bots.views import index as bots_index
@@ -63,10 +64,10 @@ def schd_route():
 def db_route(do):
     db = db_session()
     if do == "create":
-        chat = Chat(88005553535, "Hmm1", "|".join(map(str, [8800, 5553, 535])))
+        chat = Chat(88005553535, "Hmm1", json.dumps([8800, 5553, 535]))
         db.add(chat)
         db.commit()
-        chat = Chat(12345678976, "Hdd2",  "|".join(map(str, [71, 931])))
+        chat = Chat(12345678976, "Hdd2",  json.dumps([71, 931]))
         db.add(chat)
         db.commit()
         user = ChatUser(8800, 88005553535, "G P", 0)
