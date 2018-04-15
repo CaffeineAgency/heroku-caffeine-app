@@ -208,12 +208,12 @@ class EVRLToApi:
                 "info": {},
                 "content": "",
                 "styles": [
-                    "https://evrl.to/static/css/build_common.css"
+                    "https://evrl.to/static/css/build_common.css",
                     "https://fonts.googleapis.com/css?family=Iceland"
                 ],
                 "scripts": [
-                    "https://platform.twitter.com/widgets.js"
-                    "https://evrl.to/static/js/build_vendor.js"
+                    "https://platform.twitter.com/widgets.js",
+                    "https://evrl.to/static/js/build_vendor.js",
                     "https://evrl.to/static/js/build_evercore.js"
                 ]
             }
@@ -261,12 +261,12 @@ class EVRLToApi:
                 "info": {},
                 "content": "",
                 "styles": [
-                    "https://evrl.to/static/css/build_common.css"
+                    "https://evrl.to/static/css/build_common.css",
                     "https://fonts.googleapis.com/css?family=Iceland"
                 ],
                 "scripts": [
-                    "https://platform.twitter.com/widgets.js"
-                    "https://evrl.to/static/js/build_vendor.js"
+                    "https://platform.twitter.com/widgets.js",
+                    "https://evrl.to/static/js/build_vendor.js",
                     "https://evrl.to/static/js/build_evercore.js"
                 ]
             }
