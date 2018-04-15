@@ -2,8 +2,9 @@ import os
 
 import sys
 from flask import Flask, request, render_template, jsonify, Response, stream_with_context
-from sqlalchemy import Table, Column, Integer, String, ARRAY, MetaData, create_engine
+from sqlalchemy import create_engine, Column, MetaData, Table
 from sqlalchemy.orm import mapper, sessionmaker
+from sqlalchemy.types import Integer, String, ARRAY
 
 from main_site.views import acollection
 from bots.views import index as bots_index
@@ -23,7 +24,7 @@ users_table = Table('users', metadata,
 chats_table = Table('chats', metadata,
     Column('id', Integer, primary_key=True),
     Column('chat_name', String),
-    Column('users_list', ARRAY),
+    Column('users_list', String),
 )
 metadata.create_all(engine)
 mapper(ChatUser, users_table)
@@ -62,9 +63,9 @@ def schd_route():
 def db_route(do):
     db = db_session()
     if do == "create":
-        chat = Chat(88005553535, "Hmm1", [8800, 5553, 535])
+        chat = Chat(88005553535, "Hmm1", "|".join(map(str, [8800, 5553, 535])))
         db.add(chat)
-        chat = Chat(12345678976, "Hdd2", [71, 931])
+        chat = Chat(12345678976, "Hdd2",  "|".join(map(str, [71, 931])))
         db.add(chat)
         user = ChatUser(8800, 88005553535, "G P", 0)
         db.add(user)
