@@ -220,7 +220,7 @@ class EVRLToApi:
             docum = requests.get(link)
             dtree = lxml.html.fromstring(docum.content)
             article_element = dtree.cssselect('[itemprop*=articleBody]')[0]
-            response["title"] = dtree.cssselect("title")[0].text_content()
+            response["title"] = dtree.cssselect("title")[0].text_content().strip()
             response["content"] = etree.tostring(article_element).decode("utf8").strip()
             info = dtree.cssselect(".article-author span")
             response["author"] = dtree.cssselect(".article-author a")[0].text_content().strip()
@@ -273,7 +273,7 @@ class EVRLToApi:
             docum = requests.get(link)
             dtree = lxml.html.fromstring(docum.content)
             article_element = dtree.cssselect('[itemprop*=articleBody]')[0]
-            response["title"] = dtree.cssselect("title")[0].text_content()
+            response["title"] = dtree.cssselect("title")[0].text_content().strip()
             response["content"] = etree.tostring(article_element).decode("utf8").strip()
             response["author"] = dtree.cssselect(".mg_author a")[0].text_content().strip()
             response["poster"] = dtree.cssselect(".mg_article_poster")[0].attrib["src"]
