@@ -42,7 +42,7 @@ class ApiRouter:
 
     def async_operation_checker(self):
         id = getGet(self.request, "id")
-        return check_async_operation(id)
+        return check_async_operation(id), "text/plain"
 
     def rumine_forum_parser(self):
         rq = {
