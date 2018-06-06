@@ -7,7 +7,7 @@ from bots.GroupApiHooks import GroupApiHooks
 
 
 def index(request):
-    yield "ok"
+    yield ""
     _json = getData(request)
     if _json:
         gids = {
@@ -24,7 +24,8 @@ def index(request):
                     153656617: "6bb6be65",
                 }
                 return cids.get(gid), "text/plain"
-            elif type == "message_new":
+            yield "ok"
+            if type == "message_new":
                 obj = _json["object"]
                 if obj["body"].strip().startswith("."):
                     hooker = GroupApiHooks(gid=gid)
