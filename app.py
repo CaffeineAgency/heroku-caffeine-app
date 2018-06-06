@@ -60,35 +60,5 @@ def schd_route():
     return Response("ok", mimetype="text/plain")
 
 
-@app.route("/db/<do>/")
-def db_route(do):
-    db = db_session()
-    if do == "create":
-        chat = Chat(88000, "Hmm1", json.dumps([8800, 5553, 535]))
-        db.add(chat)
-        chat = Chat(12345, "Hdd2",  json.dumps([71, 931]))
-        db.add(chat)
-        db.commit()
-        user = ChatUser(8800, 88000, "G P", 0)
-        db.add(user)
-        user = ChatUser(5553, 88000, "G D", 1)
-        db.add(user)
-        user = ChatUser(535, 12345, "T F", 2)
-        db.add(user)
-        user = ChatUser(71, 12345, "D V", 1)
-        db.add(user)
-        user = ChatUser(931, 12345, "S G", 2)
-        db.add(user)
-        db.commit()
-        return "ZBS"
-    elif do == "show":
-        def enumer():
-            for instance in db.query(ChatUser):
-                yield repr(instance) + "\n"
-        return Response(stream_with_context(enumer()), mimetype="text/plain")
-
-
-
-
 if __name__ == '__main__':
     app.run(debug=True)

@@ -7,7 +7,6 @@ from bots.GroupApiHooks import GroupApiHooks
 
 
 def index(request):
-    yield ""
     _json = getData(request)
     if _json:
         gids = {
