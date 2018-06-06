@@ -16,21 +16,22 @@ def index(request):
         gid = gids.get(_json["group_id"])
         try:
             print("bot@Clyde > Ok, we got something:",_json)
-            type = _json["type"]
-            if type == "confirmation":
+            _type = _json["type"]
+            if _type == "confirmation":
                 cids = {
                     140299531: "401176a7",
                     153656617: "6bb6be65",
                 }
                 return cids.get(gid), "text/plain"
-            yield "ok"
-            if type == "message_new":
+            else:
+                yield "ok"
+            if _type == "message_new":
                 obj = _json["object"]
                 if obj["body"].strip().startswith("."):
                     hooker = GroupApiHooks(gid=gid)
                     controller = BotController(obj, hooker)
                     controller.execute()
-            elif type == "group_join":
+            elif _type == "group_join":
                 obj = _json["object"]
                 user_id, join_type = obj["user_id"], obj["join_type"]
                 text = "Group join: " + GroupApiHooks(gid=gid).users_get(*[user_id]) + ", " + join_type
