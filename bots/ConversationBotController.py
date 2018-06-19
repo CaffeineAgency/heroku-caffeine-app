@@ -1,3 +1,7 @@
+import lxml.html
+import cssselect
+import requests
+
 
 class ConversationBotController:
     def __init__(self, obj, hooker, text):
@@ -6,6 +10,7 @@ class ConversationBotController:
             "help": lambda *_: "**Краткий референс**\nПример использования: \n.{cmd} arg1|arg2|<...>",
             "cmds": lambda *_: "Доступные команды:\n" + "\n".join(self.commands_list),
             "wake": lambda *_: "Awaken!",
+            "furry": self.get_random_furry_image,
             "notify_creator": lambda msg, *_: hooker.notify_creator(msg, self.sender),
         }
 
@@ -15,7 +20,7 @@ class ConversationBotController:
         self.parsed_command_result = self.try_parse_command()
 
     def try_parse_command(self):
-        text = self.text[1:].strip()
+        text = self.text
         command_dict = self.command_dict
 
         try:
@@ -30,3 +35,10 @@ class ConversationBotController:
     def execute(self):
         if self.parsed_command_result:
             self.hooker.send_message(self.sender, self.parsed_command_result)
+
+    def get_random_furry_image(self):
+        rand_furry_link = "http://furry.booru.org/index.php?page=post&s=random"
+        html = requests.get(rand_furry_link).text
+        root = lxml.html.fromstring(html)
+        image = root.cssselect("div.post img")[0].attrib["src"]
+        return "Catch it!&attachment={photo}".format(photo=self.hooker.upload_photo(image))
