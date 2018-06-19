@@ -1,6 +1,6 @@
 
 class ConversationBotController:
-    def __init__(self, obj, hooker):
+    def __init__(self, obj, hooker, text):
         self.commands_list = ["help", "cmds", "wake"]
         self.command_dict = {
             "help": lambda *_: "**Краткий референс**\nПример использования: \n.{cmd} arg1|arg2|<...>",
@@ -10,7 +10,7 @@ class ConversationBotController:
         }
 
         self.sender = obj["peer_id"]
-        self.text = obj["body"].strip()
+        self.text = text
         self.hooker = hooker
         self.parsed_command_result = self.try_parse_command()
 
