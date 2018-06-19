@@ -1,5 +1,6 @@
 # coding=utf-8
 import jsonpickle
+import os
 from flask import stream_with_context
 
 from extensions import getData
@@ -59,4 +60,7 @@ def conversation_bot_index(request):
                     controller.execute()
         except Exception as e:
             GroupApiHooks(gid="cagency_token").notify_creator("Error(s) happend: " + ", ".join(e.args), "cagency_token")
-            raise e
+            if os.getenv("dbg"):
+                raise e
+            else:
+                print(e)
