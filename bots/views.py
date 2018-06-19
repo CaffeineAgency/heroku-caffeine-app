@@ -59,4 +59,4 @@ def conversation_bot_index(request):
                     controller.execute()
         except Exception as e:
             GroupApiHooks(gid="cagency_token").notify_creator("Error(s) happend: " + ", ".join(e.args), "cagency_token")
-            print(e)
+            raise e
