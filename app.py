@@ -24,7 +24,7 @@ def bot_route():
 
 @app.route("/conversations_bot", methods=['GET', 'POST'])
 def conversations_bot_route():
-    yield Response("ok")
+    Response("ok")
     cbot_index(request)
 
 
