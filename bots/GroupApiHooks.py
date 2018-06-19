@@ -22,7 +22,7 @@ class GroupApiHooks:
 
     def upload_photo(self, peer, path_to_photo):
         groupsec = self.groupsec
-        res = requests.get(f"{self.endpoint}photos.getMessagesUploadServer&peer_id={peer}"
+        res = requests.get(f"{self.endpoint}photos.getMessagesUploadServer?peer_id={peer}"
                            f"&access_token={groupsec}&v=5.80")
         print(res.text)
         res = res.json()["response"]
@@ -31,7 +31,7 @@ class GroupApiHooks:
         print(res.text)
         res = res.json()
         server, photo, hash = res["server"], res["photo"], res["hash"]
-        res = requests.get(f"{self.endpoint}photos.saveMessagesPhoto&server={server}&"
+        res = requests.get(f"{self.endpoint}photos.saveMessagesPhoto?server={server}&"
                            f"photo={photo}&hash={hash}&access_token={groupsec}&v=5.80")
         print(res.text)
         res = res.json()
