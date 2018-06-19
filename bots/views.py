@@ -46,7 +46,6 @@ def bot_index(request):
 
 
 def conversation_bot_index(request):
-    yield "ok"
     _json = getData(request)
     print("bot@Celesta > Ok, we got something:", _json)
     if _json:
