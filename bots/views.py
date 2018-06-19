@@ -1,11 +1,14 @@
 # coding=utf-8
 import jsonpickle
+from flask import stream_with_context
+
 from extensions import getData
 
 from bots.ConversationBotController import ConversationBotController
 from bots.GroupApiHooks import GroupApiHooks
 
 
+@stream_with_context
 def bot_index(request):
     _json = getData(request)
     if _json:
@@ -42,24 +45,19 @@ def bot_index(request):
             raise e
 
 
+@stream_with_context
 def conversation_bot_index(request):
+    yield "ok"
     _json = getData(request)
     print("bot@Celesta > Ok, we got something:", _json)
     if _json:
-        gid = _json["group_id"]
-        _type = _json["type"]
-        if _type == "confirmation":
-            return {153656617: "6bb6be65"}.get(gid), "text/plain"
-        else:
-            yield "ok"
-
         try:
-            if _type == "message_new":
+            if _json["type"] == "message_new":
                 obj = _json["object"]
                 if obj["body"].strip():
-                    hooker = GroupApiHooks(gid=gid)
+                    hooker = GroupApiHooks(gid=153656617)
                     controller = ConversationBotController(obj, hooker)
                     controller.execute()
         except Exception as e:
             print(e)
-            GroupApiHooks(gid=gid).notify_creator("Error(s) happend: " + ", ".join(e.args), gid)
+            GroupApiHooks(gid=153656617).notify_creator("Error(s) happend: " + ", ".join(e.args), 153656617)

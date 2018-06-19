@@ -1,40 +1,9 @@
-import json
-import os
+from flask import Flask, request, render_template, Response, stream_with_context
 
-import sys
-from flask import Flask, request, render_template, jsonify, Response, stream_with_context
-from sqlalchemy import create_engine, Column, MetaData, Table
-from sqlalchemy.orm import mapper, sessionmaker
-from sqlalchemy.types import BIGINT, String
-
-from main_site.views import acollection
 from bots.views import bot_index as bots_index, conversation_bot_index as cbot_index
-from models import *
 
 app = Flask(__name__)
 app.static_url_path = "/static"
-
-# Not really necessary now
-""" 
-engine = create_engine(os.getenv("DATABASE_URL"), echo=True)
-metadata = MetaData()
-users_table = Table('users', metadata,
-    Column('id', BIGINT, primary_key=True),
-    Column('chat_id', BIGINT),
-    Column('fname', String),
-    Column('rank', String),
-)
-chats_table = Table('chats', metadata,
-    Column('id', BIGINT, primary_key=True),
-    Column('chat_name', String),
-    Column('users_list', String),
-)
-metadata.create_all(engine)
-mapper(ChatUser, users_table)
-mapper(Chat, chats_table)
-db_session = sessionmaker(bind=engine)
-"""
-
 
 @app.route("/")
 def main_route():
@@ -43,18 +12,20 @@ def main_route():
 
 @app.route("/acollection", methods=['GET'])
 def acollection_route():
+    from main_site.views import acollection
     return acollection(request)
 
 
 @app.route("/bot", methods=['GET', 'POST'])
 @app.route("/bot/", methods=['GET', 'POST'])
 def bot_route():
-    return Response(stream_with_context(bots_index(request)))
+    return Response(bots_index(request))
 
 
 @app.route("/conversations_bot", methods=['GET', 'POST'])
 def conversations_bot_route():
-    return Response(stream_with_context(cbot_index(request)))
+    #return Response(cbot_index(request)) Just for now
+    return Response("6bb6be65")
 
 
 @app.route("/nozomigrabber/<tag>/<int:maxpage>")
