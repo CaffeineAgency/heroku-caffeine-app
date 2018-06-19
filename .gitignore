@@ -3,6 +3,6 @@ venv
 staticfiles
 .env
 db.sqlite3
-.idea/
+.idea\
 commiter.bat
 ssh.bat
