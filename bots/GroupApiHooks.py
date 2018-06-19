@@ -11,6 +11,16 @@ class GroupApiHooks:
         self.groupsec = os.environ[gid]
         self.internal_token = os.environ["u_token"]
 
+    def users_get(self, *ids):
+        groupsec = self.groupsec
+        ids = [str(x) for x in ids[:1000]]
+        req_url = f"{self.endpoint}users.get?user_ids={','.join(ids)}&access_token={groupsec}&v=5.73"
+        response = requests.request("GET", req_url).json()
+        text = ""
+        for i, user in enumerate(response["response"]):
+            text += f"{i}. {user['first_name']} + {user['last_name']}".strip() + "\n"
+        return text.strip()
+
     def send_message(self, uid, text):
         groupsec = self.groupsec
         req_url = f"{self.endpoint}messages.send?message={text}&peer_id={uid}"
