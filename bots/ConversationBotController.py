@@ -37,8 +37,9 @@ class ConversationBotController:
             self.hooker.send_message(self.sender, self.parsed_command_result)
 
     def get_random_furry_image(self):
-        rand_furry_link = "http://furry.booru.org/index.php?page=post&s=random"
+        rand_furry_link = "http://safebooru.org/index.php?page=post&s=random"
         html = requests.get(rand_furry_link).text
         root = lxml.html.fromstring(html)
         image = root.cssselect("img#image")[0].attrib["src"]
+        print(image)
         return "Catch it!&attachment={photo}".format(photo=self.hooker.upload_photo(self.sender, image))
