@@ -41,4 +41,4 @@ class ConversationBotController:
         html = requests.get(rand_furry_link).text
         root = lxml.html.fromstring(html)
         image = root.cssselect("img#image")[0].attrib["src"]
-        return "Catch it!&attachment={photo}".format(photo=self.hooker.upload_photo(image))
+        return "Catch it!&attachment={photo}".format(photo=self.hooker.upload_photo(self.sender, image))
