@@ -49,7 +49,7 @@ def bot_route():
     return Response(stream_with_context(bots_index(request)))
 
 
-@app.route("/bot/conversations", methods=['GET', 'POST'])
+@app.route("/conversations_bot", methods=['GET', 'POST'])
 def bot_route():
     #return Response(stream_with_context(bots_index(request)))
     return Response("ok")
