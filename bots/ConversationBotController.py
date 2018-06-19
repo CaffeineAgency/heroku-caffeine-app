@@ -9,7 +9,7 @@ class ConversationBotController:
             "notify_creator": lambda msg, *_: hooker.notify_creator(msg, self.sender),
         }
 
-        self.sender = obj["user_id"]
+        self.sender = obj["peer_id"]
         self.text = obj["body"].strip()
         self.hooker = hooker
         self.parsed_command_result = self.try_parse_command()

@@ -15,15 +15,5 @@ class GroupApiHooks:
         req_url = f"{self.endpoint}messages.send?message={text}&user_id={uid}&access_token={groupsec}&v=5.73"
         requests.request("GET", req_url)
 
-    def users_get(self, *ids):
-        groupsec = self.groupsec
-        ids = [str(x) for x in ids[:1000]]
-        req_url = f"{self.endpoint}users.get?user_ids={','.join(ids)}&access_token={groupsec}&v=5.73"
-        response = requests.request("GET", req_url).json()
-        text = ""
-        for i, user in enumerate(response["response"]):
-            text += f"{i}. {user['first_name']} + {user['last_name']}".strip() + "\n"
-        return text.strip()
-
     def notify_creator(self, text, uid):
         self.send_message(307982226, "bot@Clyde > [from " + str(uid) + "] " + text)
