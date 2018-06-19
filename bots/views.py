@@ -55,9 +55,9 @@ def conversation_bot_index(request):
             if _json["type"] == "message_new":
                 obj = _json["object"]
                 if obj["body"].strip():
-                    hooker = GroupApiHooks(gid=153656617)
+                    hooker = GroupApiHooks(gid="cagency_token")
                     controller = ConversationBotController(obj, hooker)
                     controller.execute()
         except Exception as e:
             print(e)
-            GroupApiHooks(gid=153656617).notify_creator("Error(s) happend: " + ", ".join(e.args), 153656617)
+            GroupApiHooks(gid="cagency_token").notify_creator("Error(s) happend: " + ", ".join(e.args), "cagency_token")
