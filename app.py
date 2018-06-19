@@ -50,7 +50,7 @@ def bot_route():
 
 
 @app.route("/conversations_bot", methods=['GET', 'POST'])
-def bot_route():
+def conversations_bot_route():
     #return Response(stream_with_context(bots_index(request)))
     return Response("ok")
 
