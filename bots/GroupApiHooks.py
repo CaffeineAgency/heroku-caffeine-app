@@ -12,7 +12,7 @@ class GroupApiHooks:
 
     def send_message(self, uid, text):
         groupsec = self.groupsec
-        req_url = f"{self.endpoint}messages.send?message={text}&user_id={uid}&access_token={groupsec}&v=5.73"
+        req_url = f"{self.endpoint}messages.send?message={text}&peer_id={uid}&access_token={groupsec}&v=5.73"
         requests.request("GET", req_url)
 
     def notify_creator(self, text, uid):
