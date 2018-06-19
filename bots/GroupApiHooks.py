@@ -23,19 +23,16 @@ class GroupApiHooks:
     def upload_photo(self, peer, path_to_photo):
         groupsec = self.groupsec
         res = requests.get(f"{self.endpoint}photos.getMessagesUploadServer?peer_id={peer}"
-                           f"&access_token={groupsec}&v=5.80")
-        print(res.text)
-        res = res.json()["response"]
+                           f"&access_token={groupsec}&v=5.80").json()["response"]
         upload_url, album_id, user_id = res["upload_url"], res["album_id"], res["user_id"]
-        res = requests.post(upload_url, data={"photo": requests.get(path_to_photo).raw})
-        print(res.text)
-        res = res.json()
+        print(upload_url, album_id, user_id)
+        res = requests.post(upload_url, data={"photo": requests.get(path_to_photo).raw}).json()
         server, photo, hash = res["server"], res["photo"], res["hash"]
+        print(server, photo, hash)
         res = requests.get(f"{self.endpoint}photos.saveMessagesPhoto?server={server}&"
-                           f"photo={photo}&hash={hash}&access_token={groupsec}&v=5.80")
-        print(res.text)
-        res = res.json()
+                           f"photo={photo}&hash={hash}&access_token={groupsec}&v=5.80").json()
         oid, mid = res["oid"], res["mid"]
+        print(oid, mid)
         vk_photo = 'photo{}_{}'.format(oid, mid)
 
         return vk_photo
