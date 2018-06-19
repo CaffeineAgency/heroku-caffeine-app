@@ -54,7 +54,7 @@ def conversation_bot_index(request):
         try:
             if _json["type"] == "message_new":
                 obj = _json["object"]
-                if obj["body"].strip():
+                if obj["text"].strip().replace("[club153656617|@caffeincy] ", ""):
                     hooker = GroupApiHooks(gid="cagency_token")
                     controller = ConversationBotController(obj, hooker)
                     controller.execute()
