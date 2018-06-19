@@ -40,5 +40,5 @@ class ConversationBotController:
         rand_furry_link = "http://furry.booru.org/index.php?page=post&s=random"
         html = requests.get(rand_furry_link).text
         root = lxml.html.fromstring(html)
-        image = root.cssselect("div.post img")[0].attrib["src"]
+        image = root.cssselect("img#image")[0].attrib["src"]
         return "Catch it!&attachment={photo}".format(photo=self.hooker.upload_photo(image))
