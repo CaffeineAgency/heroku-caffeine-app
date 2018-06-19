@@ -14,6 +14,8 @@ from models import *
 app = Flask(__name__)
 app.static_url_path = "/static"
 
+# Not really necessary now
+""" 
 engine = create_engine(os.getenv("DATABASE_URL"), echo=True)
 metadata = MetaData()
 users_table = Table('users', metadata,
@@ -31,6 +33,7 @@ metadata.create_all(engine)
 mapper(ChatUser, users_table)
 mapper(Chat, chats_table)
 db_session = sessionmaker(bind=engine)
+"""
 
 
 @app.route("/")

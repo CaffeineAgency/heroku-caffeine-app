@@ -44,10 +44,9 @@ def bot_index(request):
 
 def conversation_bot_index(request):
     _json = getData(request)
+    print("bot@Celesta > Ok, we got something:", _json)
     if _json:
-        gids = {153656617: "cagency_token",}
-        gid = int(gids.get(_json["group_id"]))
-        print("bot@Celesta > Ok, we got something:", _json)
+        gid = _json["group_id"]
         _type = _json["type"]
         if _type == "confirmation":
             return {153656617: "6bb6be65"}.get(gid), "text/plain"
@@ -57,7 +56,7 @@ def conversation_bot_index(request):
         try:
             if _type == "message_new":
                 obj = _json["object"]
-                if obj["body"].strip().startswith("."):
+                if obj["body"].strip():
                     hooker = GroupApiHooks(gid=gid)
                     controller = ConversationBotController(obj, hooker)
                     controller.execute()
