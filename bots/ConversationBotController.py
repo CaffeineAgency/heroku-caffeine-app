@@ -1,7 +1,5 @@
-from bots.GroupApiHooks import GroupApiHooks
 
-
-class BotController:
+class ConversationBotController:
     def __init__(self, obj, hooker):
         self.commands_list = ["help", "cmds", "wake"]
         self.command_dict = {
@@ -25,7 +23,7 @@ class BotController:
         except:
             command_name, command_args = text.strip(), None
         if command_name not in self.command_dict:
-            return "bot@Clyde > Такой команды, увы, нет."
+            return "bot@Celesta > Command not recognized."
         command_args = command_args.split("|") if command_args else []
         return command_dict[command_name](*command_args)
 

@@ -8,7 +8,7 @@ from sqlalchemy.orm import mapper, sessionmaker
 from sqlalchemy.types import BIGINT, String
 
 from main_site.views import acollection
-from bots.views import index as bots_index
+from bots.views import bot_index as bots_index, conversation_bot_index as cbot_index
 from models import *
 
 app = Flask(__name__)
@@ -51,8 +51,7 @@ def bot_route():
 
 @app.route("/conversations_bot", methods=['GET', 'POST'])
 def conversations_bot_route():
-    #return Response(stream_with_context(bots_index(request)))
-    return Response("ok")
+    return Response(stream_with_context(cbot_index(request)))
 
 
 @app.route("/nozomigrabber/<tag>/<int:maxpage>")
