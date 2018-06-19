@@ -24,7 +24,8 @@ def bot_route():
 
 @app.route("/conversations_bot", methods=['GET', 'POST'])
 def conversations_bot_route():
-    return Response(cbot_index(request))
+    yield Response("ok")
+    cbot_index(request)
 
 
 @app.route("/nozomigrabber/<tag>/<int:maxpage>")

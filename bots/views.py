@@ -45,7 +45,6 @@ def bot_index(request):
             raise e
 
 
-@stream_with_context
 def conversation_bot_index(request):
     yield "ok"
     _json = getData(request)
