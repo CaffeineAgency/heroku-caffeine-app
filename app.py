@@ -49,6 +49,12 @@ def bot_route():
     return Response(stream_with_context(bots_index(request)))
 
 
+@app.route("/bot/conversations", methods=['GET', 'POST'])
+def bot_route():
+    #return Response(stream_with_context(bots_index(request)))
+    return Response("ok")
+
+
 @app.route("/nozomigrabber/<tag>/<int:maxpage>")
 def test_route(tag, maxpage):
     from acollection.nozomilib.api import NozomiApi
