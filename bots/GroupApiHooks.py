@@ -38,12 +38,12 @@ class GroupApiHooks:
         print(upload_url)
         with requests.get(path_to_photo) as image:
             res = requests.post(upload_url, data={"photo": image.raw}).json()
-        server, photo, _hash = res["server"], res["photo"], res["hash"]
-        print(server, photo, _hash)
-        res = requests.get(f"{self.endpoint}photos.saveMessagesPhoto?server={server}&"
-                           f"photo={photo}&hash={_hash}&access_token={groupsec}&v=5.80").json()
-        oid, mid = res["oid"], res["mid"]
-        print(oid, mid)
-        vk_photo = 'photo{}_{}'.format(oid, mid)
+            server, photo, _hash = res["server"], res["photo"], res["hash"]
+            print(server, photo, _hash)
+            res = requests.get(f"{self.endpoint}photos.saveMessagesPhoto?server={server}&"
+                               f"photo={photo}&hash={_hash}&access_token={groupsec}&v=5.80").json()
+            oid, mid = res["oid"], res["mid"]
+            print(oid, mid)
+            vk_photo = 'photo{}_{}'.format(oid, mid)
 
         return vk_photo
