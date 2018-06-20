@@ -41,7 +41,7 @@ class GroupApiHooks:
             files = {'file1': image.raw}
             res = requests.post(upload_url, files=files).json()
             server, photo, _hash = res["server"], res["photo"], res["hash"]
-            print(server, photo, _hash)
+            print(res, server, photo, _hash)
             res = requests.get(f"{self.endpoint}photos.saveMessagesPhoto?server={server}&"
                                f"photo={photo}&hash={_hash}&access_token={groupsec}&v=5.80").json()
             print(res)
