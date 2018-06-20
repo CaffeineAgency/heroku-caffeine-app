@@ -37,8 +37,7 @@ class GroupApiHooks:
         upload_url = res["upload_url"]
         print(upload_url)
         print("Loading image...", end=" ")
-        with requests.get(path_to_photo) as image:
-            print("ok" if image.ok else "err")
+        with requests.get(path_to_photo, stream=True) as image:
             res = requests.post(upload_url, data={"photo": image.raw}).json()
             server, photo, _hash = res["server"], res["photo"], res["hash"]
             print(server, photo, _hash)
