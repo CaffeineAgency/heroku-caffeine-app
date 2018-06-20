@@ -36,7 +36,9 @@ class GroupApiHooks:
                            f"&access_token={groupsec}&v=5.80").json()["response"]
         upload_url = res["upload_url"]
         print(upload_url)
+        print("Loading image...", end=" ")
         with requests.get(path_to_photo) as image:
+            print("ok" if image.ok else "err")
             res = requests.post(upload_url, data={"photo": image.raw}).json()
             server, photo, _hash = res["server"], res["photo"], res["hash"]
             print(server, photo, _hash)
