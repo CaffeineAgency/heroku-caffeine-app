@@ -44,6 +44,7 @@ class GroupApiHooks:
             print(server, photo, _hash)
             res = requests.get(f"{self.endpoint}photos.saveMessagesPhoto?server={server}&"
                                f"photo={photo}&hash={_hash}&access_token={groupsec}&v=5.80").json()
+            print(res)
             oid, mid = res["owner_id"], res["id"]
             print(oid, mid)
             vk_photo = 'photo{}_{}'.format(oid, mid)
