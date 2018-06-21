@@ -15,7 +15,7 @@ class GroupApiHooks:
         self.groupsec = os.environ[gid]
         self.internal_token = os.environ["u_token"]
         self.mapi_params = {
-            "v": 5.80,
+            "v": "5.80",
             "access_token": self.groupsec
         }
 
