@@ -81,7 +81,7 @@ class ConversationBotController:
         rand_link = boorus.get(_type)
         try:
             session = requests.session()
-            session.headers.update("User-Agent", "Mozilla/5.0")
+            session.headers.update(("User-Agent", "Mozilla/5.0"))
             html = session.get(rand_link).text
             root = lxml.html.fromstring(html)
             image = "http:" if needfix else ""
