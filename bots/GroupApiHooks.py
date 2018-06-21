@@ -53,6 +53,9 @@ class GroupApiHooks:
         def downloadImage(image):
             randomName = "".join([random.choice(string.ascii_letters) for x in range(15)]) + ".png"
             fullfilename = os.path.join("./", randomName)
+            opener = request.build_opener()
+            opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+            request.install_opener(opener)
             request.urlretrieve(image, fullfilename)
             return fullfilename
 

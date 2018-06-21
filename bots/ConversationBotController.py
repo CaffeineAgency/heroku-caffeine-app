@@ -80,7 +80,9 @@ class ConversationBotController:
         }
         rand_link = boorus.get(_type)
         try:
-            html = requests.get(rand_link).text
+            session = requests.session()
+            session.headers.update("User-Agent", "Mozilla/5.0")
+            html = session.get(rand_link).text
             root = lxml.html.fromstring(html)
             image = "http:" if needfix else ""
             image += root.cssselect("img#image")[0].attrib["src"]
