@@ -100,7 +100,7 @@ class ConversationBotController:
                "r34 - [NSFW]r34\n" \
                "sfw - [SFW]safebooru\n" \
                "e621 - [MIXED]e621 - unstable\n" \
-               "loli - [NSFW]lolicon - unstable\n" \
+               "loli - [NSFW]lolicon\n" \
                "clop - [NSFW]mlp r34\n" \
                "svtfoe - [NSFW]svtfoe booru\n" \
                "gf - [MIXED]gravityfalls booru\n" \
