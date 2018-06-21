@@ -5,6 +5,7 @@ from flask import stream_with_context
 
 from extensions import getData
 
+from bots.BotController import BotController
 from bots.ConversationBotController import ConversationBotController
 from bots.GroupApiHooks import GroupApiHooks
 

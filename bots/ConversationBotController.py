@@ -5,15 +5,30 @@ import requests
 
 class ConversationBotController:
     def __init__(self, obj, hooker, text):
-        self.commands_list = ["help", "cmds", "wake", "sfw"]
+        self.commands_list = [
+            "help - помощь",
+            "cmds - список команд",
+            "wake - `оживить` бота(желательно выполнять, если бот давно не работал)",
+            "booruhelp - список буру"
+        ]
         self.command_dict = {
             # Utility commands
-            "help": lambda *_: "**Краткий референс**\nПример использования: \n.{cmd} arg1|arg2|<...>",
+            "help": lambda *_: "іди нахуй. cmds в допомогу.",
             "cmds": lambda *_: "Доступные команды:\n" + "\n".join(self.commands_list),
             "wake": lambda *_: "Awaken!",
+            "booruhelp": lambda *_: self.booruhelp(),
             # Booru related commands
-            "sfw": self.get_random_image("sfw", True),
-            "e621": self.get_random_image("e621", False),
+            "sfw": lambda *_: self.get_random_image("sfw", True),
+            "e621": lambda *_: self.get_random_image("e621", False),
+            "loli": lambda *_: self.get_random_image("loli", False),
+            "clop": lambda *_: self.get_random_image("clop", False),
+            "svtfoe": lambda *_: self.get_random_image("svtfoe", False),
+            "allgirl": lambda *_: self.get_random_image("allgirl", False),
+            "gf": lambda *_: self.get_random_image("gf", False),
+            "rm": lambda *_: self.get_random_image("rm", False),
+            "r34": lambda *_: self.get_random_image("r34", False),
+            "furry": lambda *_: self.get_random_image("furry", False),
+            "meme": lambda *_: self.get_random_image("meme", False),
             # The most important command
             "notify_creator": lambda msg, *_: hooker.notify_creator(msg, self.sender),
         }
@@ -46,12 +61,20 @@ class ConversationBotController:
 
     def get_random_image(self, _type, needfix):
         print("bot@Celesta > requests for", _type, "photo from", self.sender)
-        if _type == "sfw":
-            rand_link = "http://safebooru.org/index.php?page=post&s=random"
-        elif _type == "e621":
-            rand_link = "https://e621.net/post/random"
-        else:
-            return
+        boorus = {
+            "sfw": "http://safebooru.org/index.php?page=post&s=random",
+            "e621": "https://e621.net/post/random",
+            "loli": "https://lolibooru.moe/post/random",
+            "clop": "http://clop.booru.org/index.php?page=post&s=random",
+            "svtfoe": "http://svtfoe.booru.org/index.php?page=post&s=random",
+            "allgirl": "http://allgirl.booru.org/index.php?page=post&s=random",
+            "gf": "http://gravityfalls.booru.org/index.php?page=post&s=random",
+            "rm": "http://rm.booru.org/index.php?page=post&s=random",
+            "r34": "https://rule34.xxx/index.php?page=post&s=random",
+            "furry": "http://furry.booru.org/index.php?page=post&s=random",
+            "meme": "http://meme.booru.org/index.php?page=post&s=random",
+        }
+        rand_link = boorus.get(_type)
         html = requests.get(rand_link).text
         root = lxml.html.fromstring(html)
         image = "http:" if needfix else ""
@@ -61,6 +84,18 @@ class ConversationBotController:
         print("bot@Celesta > created attachment", att_image)
         return {
             "message": "",
-            "attachment": att_image,
-            "forward_messages": str(self.invoked_by)
+            "attachment": att_image
         }
+
+    def booruhelp(self):
+        return "r34 - [NSFW]r34\n" \
+               "sfw - [SFW]safebooru\n" \
+               "e621 - [MIXED]e621\n" \
+               "loli - [NSFW]lolicon" \
+               "clop - [NSFW]mlp r34\n" \
+               "svtfoe - [NSFW]svtfoe booru\n" \
+               "gf - [MIXED]gravityfalls booru\n" \
+               "rm - [SFW]rozenmaiden booru\n" \
+               "furry - [NSFW]furry booru\n" \
+               "meme - [SFW]meme booru\n" \
+               "allgirl - [MIXED]allgirl booru"

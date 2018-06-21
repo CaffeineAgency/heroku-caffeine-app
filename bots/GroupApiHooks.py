@@ -20,7 +20,6 @@ class GroupApiHooks:
         }
 
     def users_get(self, *ids):
-        groupsec = self.groupsec
         ids = [str(x) for x in ids[:1000]]
         params = {
             **self.mapi_params,
@@ -30,7 +29,7 @@ class GroupApiHooks:
         response = requests.get(req_url, params).json()
         text = ""
         for i, user in enumerate(iterable=response["response"], start=1):
-            text += f"{i}. {user['first_name']} + {user['last_name']}".strip() + "\n"
+            text += f"{i}. {user['first_name']} {user['last_name']}".strip() + "\n"
         return text.strip()
 
     def send_message(self, uid, text, params=None):
