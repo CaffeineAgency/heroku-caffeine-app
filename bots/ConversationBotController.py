@@ -41,11 +41,15 @@ class ConversationBotController:
                 self.hooker.send_message(self.sender, self.parsed_command_result)
 
     def get_random_booru_image(self):
+        print("bot@Celesta > requests for sfw photo from", self.sender)
         rand_furry_link = "http://safebooru.org/index.php?page=post&s=random"
         html = requests.get(rand_furry_link).text
         root = lxml.html.fromstring(html)
         image = "http:" + root.cssselect("img#image")[0].attrib["src"]
+        print("bot@Celesta > parsed link", image)
+        att_image = self.hooker.upload_photo(image)
+        print("bot@Celesta > created attachment", att_image)
         return {
             "msg": "Catch it!",
-            "att": self.hooker.upload_photo(image)
+            "att": att_image
         }

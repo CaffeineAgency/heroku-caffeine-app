@@ -34,13 +34,13 @@ class GroupApiHooks:
         return text.strip()
 
     def send_message(self, uid, text, attachments=""):
-        groupsec = self.groupsec
         params = {
             **self.mapi_params,
             "message": text,
             "attachments": attachments,
             "peer_id": uid,
         }
+        print("bot@Mainframe > sending message with parameters:", params)
         req_url = f"{self.endpoint}messages.send"
         requests.get(req_url, params)
 
@@ -54,7 +54,6 @@ class GroupApiHooks:
             request.urlretrieve(image, fullfilename)
             return fullfilename
 
-        groupsec = self.groupsec
         params = {
             **self.mapi_params,
             "peer_id": peer,
