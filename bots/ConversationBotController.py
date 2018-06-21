@@ -15,7 +15,7 @@ class ConversationBotController:
             # Utility commands
             "help": lambda *_: "іди нахуй. cmds в допомогу.",
             "cmds": lambda *_: "Доступные команды:\n" + "\n".join(self.commands_list),
-            "wake": lambda *_: "Awaken!",
+            "wake": lambda *_: {"message": "Awaken!", "attachment": "audio307982226_456239370"},
             "booruhelp": lambda *_: self.booruhelp(),
             # Booru related commands
             "sfw": lambda *_: self.get_random_image("sfw", True),
@@ -29,6 +29,8 @@ class ConversationBotController:
             "r34": lambda *_: self.get_random_image("r34", False),
             "furry": lambda *_: self.get_random_image("furry", False),
             "meme": lambda *_: self.get_random_image("meme", False),
+            "xbooru": lambda *_: self.get_random_image("xbooru", False),
+            "gelbooru": lambda *_: self.get_random_image("gelbooru", False),
             # The most important command
             "notify_creator": lambda msg, *_: hooker.notify_creator(msg, self.sender),
         }
@@ -73,29 +75,38 @@ class ConversationBotController:
             "r34": "https://rule34.xxx/index.php?page=post&s=random",
             "furry": "http://furry.booru.org/index.php?page=post&s=random",
             "meme": "http://meme.booru.org/index.php?page=post&s=random",
+            "xbooru": "https://xbooru.com/index.php?page=post&s=random",
+            "gelbooru": "https://gelbooru.com/index.php?page=post&s=random",
         }
         rand_link = boorus.get(_type)
-        html = requests.get(rand_link).text
-        root = lxml.html.fromstring(html)
-        image = "http:" if needfix else ""
-        image += root.cssselect("img#image")[0].attrib["src"]
-        print("bot@Celesta > parsed link", image)
-        att_image = self.hooker.upload_photo(image)
-        print("bot@Celesta > created attachment", att_image)
-        return {
-            "message": "",
-            "attachment": att_image
-        }
+        try:
+            html = requests.get(rand_link).text
+            root = lxml.html.fromstring(html)
+            image = "http:" if needfix else ""
+            image += root.cssselect("img#image")[0].attrib["src"]
+            print("bot@Celesta > parsed link", image)
+            att_image = self.hooker.upload_photo(image)
+            print("bot@Celesta > created attachment", att_image)
+            return {
+                "message": "",
+                "attachment": att_image
+            }
+        except Exception as e:
+            self.hooker.notify_creator("We've got error: " + str(e), self.sender)
+            return "bot@Celesta > error > " + str(e)
 
     def booruhelp(self):
-        return "r34 - [NSFW]r34\n" \
+        return "Нестабильные сервисы зачастую ничего не возвращают\n" \
+               "r34 - [NSFW]r34\n" \
                "sfw - [SFW]safebooru\n" \
-               "e621 - [MIXED]e621\n" \
-               "loli - [NSFW]lolicon" \
+               "e621 - [MIXED]e621 - unstable\n" \
+               "loli - [NSFW]lolicon - unstable\n" \
                "clop - [NSFW]mlp r34\n" \
                "svtfoe - [NSFW]svtfoe booru\n" \
                "gf - [MIXED]gravityfalls booru\n" \
                "rm - [SFW]rozenmaiden booru\n" \
                "furry - [NSFW]furry booru\n" \
                "meme - [SFW]meme booru\n" \
+               "xbooru - [NSFW]xbooru\n" \
+               "gelbooru - [MIXED]gelbooru\n" \
                "allgirl - [MIXED]allgirl booru"
