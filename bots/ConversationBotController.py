@@ -7,11 +7,14 @@ class ConversationBotController:
     def __init__(self, obj, hooker, text):
         self.commands_list = ["help", "cmds", "wake", "sfw"]
         self.command_dict = {
+            # Utility commands
             "help": lambda *_: "**Краткий референс**\nПример использования: \n.{cmd} arg1|arg2|<...>",
             "cmds": lambda *_: "Доступные команды:\n" + "\n".join(self.commands_list),
             "wake": lambda *_: "Awaken!",
+            # Booru related commands
             "sfw": self.get_random_image("sfw", True),
             "e621": self.get_random_image("e621", False),
+            # The most important command
             "notify_creator": lambda msg, *_: hooker.notify_creator(msg, self.sender),
         }
 
