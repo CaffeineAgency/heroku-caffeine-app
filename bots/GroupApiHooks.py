@@ -33,12 +33,14 @@ class GroupApiHooks:
             text += f"{i}. {user['first_name']} + {user['last_name']}".strip() + "\n"
         return text.strip()
 
-    def send_message(self, uid, text, attachments=""):
+    def send_message(self, uid, text, params=None):
+        if params is None:
+            params = {}
         params = {
             **self.mapi_params,
             "message": text,
-            "attachments": attachments,
             "peer_id": uid,
+            **params
         }
         print("bot@Mainframe > sending message with parameters:", params)
         req_url = f"{self.endpoint}messages.send"

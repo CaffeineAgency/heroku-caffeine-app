@@ -15,6 +15,7 @@ class ConversationBotController:
         }
 
         self.sender = obj["peer_id"]
+        self.invoked_by = obj["conversation_message_id"]
         self.text = text
         self.hooker = hooker
         self.parsed_command_result = self.try_parse_command()
@@ -35,8 +36,7 @@ class ConversationBotController:
     def execute(self):
         if self.parsed_command_result:
             if type(self.parsed_command_result) == dict:
-                msg, att = self.parsed_command_result["msg"], self.parsed_command_result["att"]
-                self.hooker.send_message(self.sender, msg, att)
+                self.hooker.send_message(self.sender, "", self.parsed_command_result)
             else:
                 self.hooker.send_message(self.sender, self.parsed_command_result)
 
@@ -50,6 +50,7 @@ class ConversationBotController:
         att_image = self.hooker.upload_photo(image)
         print("bot@Celesta > created attachment", att_image)
         return {
-            "msg": "Catch it!",
-            "att": att_image
+            "message": "Catch it!",
+            "attachments": att_image,
+            "forward_messages": str(self.invoked_by)
         }
