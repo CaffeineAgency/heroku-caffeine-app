@@ -51,6 +51,6 @@ class ConversationBotController:
         print("bot@Celesta > created attachment", att_image)
         return {
             "message": "Catch it!",
-            "attachments": att_image,
+            "attachment": att_image,
             "forward_messages": str(self.invoked_by)
         }
