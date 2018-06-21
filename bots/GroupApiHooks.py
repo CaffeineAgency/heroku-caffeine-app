@@ -1,5 +1,9 @@
 import os
+import random
+import string
+
 import requests
+import urllib.request as request
 from vk_api import VkUpload
 
 
@@ -10,43 +14,68 @@ class GroupApiHooks:
         self.app_id = 5882810
         self.groupsec = os.environ[gid]
         self.internal_token = os.environ["u_token"]
+        self.mapi_params = {
+            "v": 5.80,
+            "access_token": self.groupsec
+        }
 
     def users_get(self, *ids):
         groupsec = self.groupsec
         ids = [str(x) for x in ids[:1000]]
-        req_url = f"{self.endpoint}users.get?user_ids={','.join(ids)}&access_token={groupsec}&v=5.73"
-        response = requests.request("GET", req_url).json()
+        params = {
+            **self.mapi_params,
+            "user_ids": ",".join(ids)
+        }
+        req_url = f"{self.endpoint}users.get"
+        response = requests.get(req_url, params).json()
         text = ""
-        for i, user in enumerate(response["response"]):
+        for i, user in enumerate(iterable=response["response"], start=1):
             text += f"{i}. {user['first_name']} + {user['last_name']}".strip() + "\n"
         return text.strip()
 
-    def send_message(self, uid, text):
+    def send_message(self, uid, text, attachments=""):
         groupsec = self.groupsec
-        req_url = f"{self.endpoint}messages.send?message={text}&peer_id={uid}"
-        req_url += f"&access_token={groupsec}&v=5.80"
-        requests.request("GET", req_url)
+        params = {
+            **self.mapi_params,
+            "message": text,
+            "attachments": attachments,
+            "peer_id": uid,
+        }
+        req_url = f"{self.endpoint}messages.send"
+        requests.get(req_url, params)
 
     def notify_creator(self, text, uid):
         self.send_message(307982226, "bot@Clyde > [from " + str(uid) + "] " + text)
 
-    def upload_photo(self, peer, path_to_photo):
-        groupsec = self.groupsec
-        res = requests.get(f"{self.endpoint}photos.getMessagesUploadServer?peer_id={peer}"
-                           f"&access_token={groupsec}&v=5.80").json()["response"]
-        upload_url = res["upload_url"]
-        print(upload_url)
-        print("Loading image...", end=" ")
-        with requests.get(path_to_photo) as image:
-            files = {'photo': image.content}
-            res = requests.post(upload_url, files=files).json()
-            server, photo, _hash = res["server"], res["photo"], res["hash"]
-            print(res, server, photo, _hash)
-            res = requests.get(f"{self.endpoint}photos.saveMessagesPhoto?server={server}&"
-                               f"photo={photo}&hash={_hash}&access_token={groupsec}&v=5.80").json()
-            print(res)
-            oid, mid = res["owner_id"], res["id"]
-            print(oid, mid)
-            vk_photo = 'photo{}_{}'.format(oid, mid)
+    def upload_photo(self, photo_url, peer=307982226):
+        def downloadImage(image):
+            randomName = "".join([random.choice(string.ascii_letters) for x in range(15)]) + ".png"
+            fullfilename = os.path.join("./", randomName)
+            request.urlretrieve(image, fullfilename)
+            return fullfilename
 
+        groupsec = self.groupsec
+        params = {
+            **self.mapi_params,
+            "peer_id": peer,
+        }
+        res = requests.get("https://api.vk.com/method/photos.getMessagesUploadServer", params)
+        res = res.json()["response"]
+        upload_url, album_id = res["upload_url"], res["album_id"]
+        image = downloadImage(photo_url)
+        with open(image, "rb") as f_image:
+            res = requests.post(upload_url, files={"photo": (image.split("/")[-1], f_image)})
+            res = res.json()
+        server, photo, _hash = res["server"], res["photo"], res["hash"]
+        params = {
+            **self.mapi_params,
+            "server": server,
+            "photo": photo,
+            "hash": _hash,
+            "album_id": album_id
+        }
+        res = requests.get("https://api.vk.com/method/photos.saveMessagesPhoto", params)
+        res = res.json()["response"][0]
+        owner_id, media_id = res["owner_id"], res["id"]
+        vk_photo = "photo{}_{}".format(owner_id, media_id)
         return vk_photo

@@ -34,11 +34,18 @@ class ConversationBotController:
 
     def execute(self):
         if self.parsed_command_result:
-            self.hooker.send_message(self.sender, self.parsed_command_result)
+            if type(self.parsed_command_result) == dict:
+                msg, att = self.parsed_command_result["msg"], self.parsed_command_result["att"]
+                self.hooker.send_message(self.sender, msg, att)
+            else:
+                self.hooker.send_message(self.sender, self.parsed_command_result)
 
     def get_random_booru_image(self):
         rand_furry_link = "http://safebooru.org/index.php?page=post&s=random"
         html = requests.get(rand_furry_link).text
         root = lxml.html.fromstring(html)
         image = "http:" + root.cssselect("img#image")[0].attrib["src"]
-        return "Catch it!&attachment={photo}".format(photo=self.hooker.upload_photo(self.sender, image))
+        return {
+            "msg": "Catch it!",
+            "att": self.hooker.upload_photo(image)
+        }
