@@ -54,7 +54,7 @@ def conversation_bot_index(request):
         try:
             if _json["type"] == "message_new":
                 obj = _json["object"]
-                text = obj["text"].strip().lsplit("]", 1).pop().strip()
+                text = obj["text"].strip().split("]", 1).pop().strip()
                 if text:
                     hooker = GroupApiHooks(gid="cagency_token")
                     controller = ConversationBotController(obj, hooker, text)
