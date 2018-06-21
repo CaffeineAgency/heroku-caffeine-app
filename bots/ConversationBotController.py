@@ -10,7 +10,8 @@ class ConversationBotController:
             "help": lambda *_: "**Краткий референс**\nПример использования: \n.{cmd} arg1|arg2|<...>",
             "cmds": lambda *_: "Доступные команды:\n" + "\n".join(self.commands_list),
             "wake": lambda *_: "Awaken!",
-            "sfw": self.get_random_booru_image,
+            "sfw": self.get_random_image("sfw", True),
+            "e621": self.get_random_image("e621", False),
             "notify_creator": lambda msg, *_: hooker.notify_creator(msg, self.sender),
         }
 
@@ -40,17 +41,23 @@ class ConversationBotController:
             else:
                 self.hooker.send_message(self.sender, self.parsed_command_result)
 
-    def get_random_booru_image(self):
-        print("bot@Celesta > requests for sfw photo from", self.sender)
-        rand_furry_link = "http://safebooru.org/index.php?page=post&s=random"
-        html = requests.get(rand_furry_link).text
+    def get_random_image(self, _type, needfix):
+        print("bot@Celesta > requests for", _type, "photo from", self.sender)
+        if _type == "sfw":
+            rand_link = "http://safebooru.org/index.php?page=post&s=random"
+        elif _type == "e621":
+            rand_link = "https://e621.net/post/random"
+        else:
+            return
+        html = requests.get(rand_link).text
         root = lxml.html.fromstring(html)
-        image = "http:" + root.cssselect("img#image")[0].attrib["src"]
+        image = "http:" if needfix else ""
+        image += root.cssselect("img#image")[0].attrib["src"]
         print("bot@Celesta > parsed link", image)
         att_image = self.hooker.upload_photo(image)
         print("bot@Celesta > created attachment", att_image)
         return {
-            "message": "Catch it!",
+            "message": "",
             "attachment": att_image,
             "forward_messages": str(self.invoked_by)
         }

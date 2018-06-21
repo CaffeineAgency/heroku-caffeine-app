@@ -40,8 +40,9 @@ class GroupApiHooks:
             **self.mapi_params,
             "message": text,
             "peer_id": uid,
-            **params
+            **params,
         }
+        params["random_id"] = "".join([str(ord(c)) for c in str(params)])
         print("bot@Mainframe > sending message with parameters:", params)
         req_url = f"{self.endpoint}messages.send"
         requests.get(req_url, params)
