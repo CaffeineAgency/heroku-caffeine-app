@@ -49,7 +49,7 @@ class ConversationBotController:
             command_name, command_args = text.split(maxsplit=1)
         except:
             command_name, command_args = text.strip(), None
-        if command_name not in self.command_dict:
+        if command_name.lower() not in self.command_dict:
             return "bot@Celesta > Command not recognized."
         command_args = command_args.split("|") if command_args else []
         return command_dict[command_name](*command_args)
@@ -97,9 +97,10 @@ class ConversationBotController:
 
     def booruhelp(self):
         return "Нестабильные сервисы зачастую ничего не возвращают\n" \
+               "Бот работает через прокси, поэтому моментального ответа не ждите(~2-5 сек.)\n" \
                "r34 - [NSFW]r34\n" \
                "sfw - [SFW]safebooru\n" \
-               "e621 - [MIXED]e621 - unstable\n" \
+               "e621 - [MIXED]e621 - very unstable\n" \
                "loli - [NSFW]lolicon\n" \
                "clop - [NSFW]mlp r34\n" \
                "svtfoe - [NSFW]svtfoe booru\n" \
