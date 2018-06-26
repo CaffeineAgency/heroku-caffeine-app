@@ -49,7 +49,8 @@ class ConversationBotController:
             command_name, command_args = text.split(maxsplit=1)
         except:
             command_name, command_args = text.strip(), None
-        if command_name.lower() not in self.command_dict:
+        command_name = command_name.lower()
+        if command_name not in self.command_dict:
             return "bot@Celesta > Command not recognized."
         command_args = command_args.split("|") if command_args else []
         return command_dict[command_name](*command_args)
