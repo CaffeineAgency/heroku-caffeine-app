@@ -37,6 +37,37 @@ def test_route(tag, maxpage):
     return Response(stream_with_context(NozomiApi().main(tag=tag, maxpage=maxpage)), mimetype="text/plain")
 
 
+@app.route("/coub/<coub_id>")
+def coub_route(coub_id):
+    import requests, lxml.html, cssselect, json
+    r = requests.get("https://coub.com/view/{}".format(coub_id))
+    if r.ok:
+        d = lxml.html.fromstring(r.text)
+        _json = json.loads(d.cssselect("script[type=text\/json]")[0].text.strip())
+        resp = json.dumps({
+            "status": "ok",
+            "title": _json["title"],
+            "info": {
+                "created": _json["created_at"],
+                "update": _json["updated_at"],
+                "published": _json["published_at"],
+                "views": _json["views_count"],
+                "thumb": _json["image_versions"]["template"].replace("%{version}", "big")
+            },
+            "music": {
+                "musicAuthor": d.cssselect(".musicAuthor")[0].text.strip(),
+                "musicTitle": d.cssselect(".musicTitle")[0].text.strip(),
+                "download_link": _json["file_versions"]["html5"]["audio"]["high"]["url"],
+            }
+        })
+    else:
+        resp = json.dumps({
+            "status": "error",
+            "msg": "This coub not exists or were hidden!"
+        })
+    return resp
+
+
 @app.route("/schd/")
 def schd_route():
     return Response("ok", mimetype="text/plain")
