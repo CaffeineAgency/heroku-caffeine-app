@@ -65,7 +65,7 @@ def coub_route(coub_id):
             "status": "error",
             "msg": "This coub not exists or were hidden!"
         })
-    return resp
+    return Response(resp, mimetype="application/javascript")
 
 
 @app.route("/schd/")
