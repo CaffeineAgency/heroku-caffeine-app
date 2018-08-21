@@ -9,4 +9,4 @@ def acollection(request):
     mode = getGet(request, "mode")
     router = ApiRouter(mode, request)
     resp, mime = router.execute()
-    return Response(response=resp.decode("unicode-escape"), mimetype=mime)
+    return Response(response=resp, mimetype=mime)
