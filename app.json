@@ -3,7 +3,7 @@
   "description": "Nuark Noir's CAH.",
   "image": "heroku/python",
   "repository": "",
-  "keywords": ["python", "django" ],
+  "keywords": ["python"],
   "addons": [ "heroku-postgresql" ],
   "environments": {
     "test": {

@@ -1,6 +1,10 @@
-import jsonpickle
+import re
+
+import json
+import requests
+import lxml.html
 from lxml import etree
-import requests, lxml.html
+import html
 
 class EVRLToApi:
 
@@ -13,7 +17,7 @@ class EVRLToApi:
 
     @staticmethod
     def jsondump(obj):
-        return jsonpickle.encode(obj, unpicklable=False)
+        return json.dumps(obj)
 
 
     def execute_registration(self, login, password):
@@ -44,7 +48,7 @@ class EVRLToApi:
             }
             endurl = f"{self.baseurl}/?tab=mosaic_all&page={page}"
             docum = requests.get(endurl)
-            dtree = lxml.html.fromstring(docum.text)
+            dtree = lxml.html.fromstring(docum.content)
             pag_is = [x for x in dtree.cssselect(".mosaic_block") if "mosaic_other_news" not in x.attrib["class"]]
             for i, elem in enumerate(pag_is):
                 # element.text_content() used to render text of element and all of its child
@@ -85,7 +89,7 @@ class EVRLToApi:
             }
             endurl = f"{self.newsurl}/?page={page}"
             docum = requests.get(endurl)
-            dtree = lxml.html.fromstring(docum.text)
+            dtree = lxml.html.fromstring(docum.content)
             pag_is = [x for x in dtree.cssselect(".mosaic_block")]
             for i, elem in enumerate(pag_is):
                 info = elem.cssselect(".mosaic_info span")
@@ -125,7 +129,7 @@ class EVRLToApi:
             }
             endurl = f"{self.articlesurl}/?page={page}"
             docum = requests.get(endurl)
-            dtree = lxml.html.fromstring(docum.text)
+            dtree = lxml.html.fromstring(docum.content)
             pag_is = [x for x in dtree.cssselect(".mosaic_block")]
             for i, elem in enumerate(pag_is):
                 info = elem.cssselect(".mosaic_info span")
@@ -166,7 +170,7 @@ class EVRLToApi:
             }
             endurl = f"{self.guidesurl}/?page={page}"
             docum = requests.get(endurl)
-            dtree = lxml.html.fromstring(docum.text)
+            dtree = lxml.html.fromstring(docum.content)
             pag_is = [x for x in dtree.cssselect(".mosaic_block")]
             for i, elem in enumerate(pag_is):
                 guides = {
@@ -190,17 +194,18 @@ class EVRLToApi:
         try:
             if link:
                 article_id, named_link = link.replace(self.articlesurl, "")[:-1].split("/")
-            elif article_id and named_link:
-                link = f"{self.articlesurl}/{article_id}/{named_link}/"
+            elif article_id:
+                link = f"{self.articlesurl}/{article_id}/"
             else:
                 return {
                     "rid": -1,
                     "error": "No article link or article_id and named_link given"
                 }
+            if article_id and named_link:
+                link = f"{link}/{named_link}/"
             response = {
                 "rid": 0,
                 "link": link,
-                "title": "",
                 "article_id": article_id,
                 "named_link": named_link,
                 "author": "",
@@ -208,20 +213,22 @@ class EVRLToApi:
                 "info": {},
                 "content": "",
                 "styles": [
-                    "https://evrl.to/static/css/build_common.css",
+                    "https://evrl.to/static/css/build_common.css"
                     "https://fonts.googleapis.com/css?family=Iceland"
                 ],
                 "scripts": [
-                    "https://platform.twitter.com/widgets.js",
-                    "https://evrl.to/static/js/build_vendor.js",
+                    "https://platform.twitter.com/widgets.js"
+                    "https://evrl.to/static/js/build_vendor.js"
                     "https://evrl.to/static/js/build_evercore.js"
                 ]
             }
             docum = requests.get(link)
-            dtree = lxml.html.fromstring(docum.text)
+            dtree = lxml.html.fromstring(docum.content)
             article_element = dtree.cssselect('[itemprop*=articleBody]')[0]
-            response["title"] = dtree.cssselect("title")[0].text_content().strip()
             response["content"] = etree.tostring(article_element).decode("utf8").strip()
+            response["content"] = html.unescape(response["content"])
+            response["content"] = re.sub('(onclick="EA.nav($(this), event);")', "", response["content"])
+            response["content"] = response["content"].replace("\"100%\"/>", "\"100%\"></iframe>")
             info = dtree.cssselect(".article-author span")
             response["author"] = dtree.cssselect(".article-author a")[0].text_content().strip()
             response["date"] = info.pop(0).attrib["datetime"]
@@ -252,7 +259,6 @@ class EVRLToApi:
             response = {
                 "rid": 0,
                 "link": link,
-                "title": "",
                 "article_id": article_id,
                 "named_link": named_link,
                 "author": "",
@@ -261,20 +267,22 @@ class EVRLToApi:
                 "info": {},
                 "content": "",
                 "styles": [
-                    "https://evrl.to/static/css/build_common.css",
+                    "https://evrl.to/static/css/build_common.css"
                     "https://fonts.googleapis.com/css?family=Iceland"
                 ],
                 "scripts": [
-                    "https://platform.twitter.com/widgets.js",
-                    "https://evrl.to/static/js/build_vendor.js",
+                    "https://platform.twitter.com/widgets.js"
+                    "https://evrl.to/static/js/build_vendor.js"
                     "https://evrl.to/static/js/build_evercore.js"
                 ]
             }
             docum = requests.get(link)
-            dtree = lxml.html.fromstring(docum.text)
+            dtree = lxml.html.fromstring(docum.content)
             article_element = dtree.cssselect('[itemprop*=articleBody]')[0]
-            response["title"] = dtree.cssselect("title")[0].text_content().strip()
             response["content"] = etree.tostring(article_element).decode("utf8").strip()
+            response["content"] = html.unescape(response["content"])
+            response["content"] = re.sub('(onclick="EA.nav($(this), event);")', "", response["content"])
+            response["content"] = response["content"].replace("\"100%\"/>", "\"100%\"></iframe>")
             response["author"] = dtree.cssselect(".mg_author a")[0].text_content().strip()
             response["poster"] = dtree.cssselect(".mg_article_poster")[0].attrib["src"]
             info = dtree.cssselect(".mg_article_stat span")

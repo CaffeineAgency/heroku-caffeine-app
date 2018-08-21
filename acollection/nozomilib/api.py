@@ -11,7 +11,6 @@ from acollection.exts.Downloader import Downloader
 
 
 class NozomiApi:
-
     plink = "http://nuark.xyz/proxy.php?h&l="
     images = []
 

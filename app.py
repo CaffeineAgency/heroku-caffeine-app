@@ -39,7 +39,7 @@ def test_route(tag, maxpage):
 
 @app.route("/coub/<coub_id>")
 def coub_route(coub_id):
-    import requests, lxml.html, cssselect, json
+    import requests, lxml.html, json
     r = requests.get("https://coub.com/view/{}".format(coub_id))
     if r.ok:
         d = lxml.html.fromstring(r.text)

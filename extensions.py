@@ -1,5 +1,3 @@
-from flask import request
-
 def getGet(request, name):
     return request.args.get(name)
 
