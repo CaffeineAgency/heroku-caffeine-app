@@ -1,12 +1,11 @@
 # coding=utf-8
 from flask import render_template
-from extensions import getGet
 
-import acollection.deviantartlib.api as dapi
 import acollection.evrltolib.api as evrlapi
 import acollection.reactorlib.api as reapi
 import acollection.ruminelib.api as rapi
 from acollection.ydapi.yandexdisk_worker import *
+from extensions import getGet
 
 
 class ApiRouter:
@@ -19,7 +18,6 @@ class ApiRouter:
             "rumine": self.rumine_forum_parser,
             "reactorparser": self.pornreactor_tag_parser,
             "evrltolib": self.evrlto_parser,
-            "deviantart": self.deviantart_worker,
         }
 
         self.request = request
@@ -60,7 +58,7 @@ class ApiRouter:
         return reapi.ReactorApi().get_images(request=rq), "application/json"
 
     def evrlto_parser(self):
-        api = evrlapi.EVRLToApi()
+        _api = evrlapi.EVRLToApi()
         response = {}
         link = getGet(self.request, "link")
         article_id = getGet(self.request, "article_id")
@@ -69,19 +67,19 @@ class ApiRouter:
 
         type = getGet(self.request, "type")
         if type == "main":
-            response = api.get_mainpage(page if page else 1)
+            response = _api.get_mainpage(page if page else 1)
         elif type == "news":
-            response = api.get_newspage(page if page else 1)
+            response = _api.get_newspage(page if page else 1)
         elif type == "stories":
-            response = api.get_storiespage(page if page else 1)
+            response = _api.get_storiespage(page if page else 1)
         elif type == "guides":
-            response = api.get_guidespage(page if page else 1)
+            response = _api.get_guidespage(page if page else 1)
         elif type == "article":
-            response = api.get_article_content(link, article_id, named_link)
+            response = _api.get_article_content(link, article_id, named_link)
         elif type == "story":
-            response = api.get_story_content(link, article_id, named_link)
+            response = _api.get_story_content(link, article_id, named_link)
 
-        return api.jsondump(response), "application/json"
+        return _api.jsondump(response), "application/json"
 
     def deviantart_worker(self):
         do = getGet(self.request, "do")

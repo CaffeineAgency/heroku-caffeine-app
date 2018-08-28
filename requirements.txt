@@ -1,11 +1,13 @@
 gunicorn
 gevent
+gevent-websocket
 psycopg2-binary
 
 Flask
+Flask-Sockets
+flask_sqlalchemy
 Jinja2
 MarkupSafe
-flask_sqlalchemy
 
 requests
 lxml
