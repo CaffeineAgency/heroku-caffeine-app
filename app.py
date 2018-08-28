@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request, render_template, Response, stream_with_context
 from flask_sockets import Sockets
 from gevent import pywsgi
@@ -102,7 +104,8 @@ def echo_socket(ws):
         ws.send(message)
 
 def run():
-    server = pywsgi.WSGIServer(('0.0.0.0', 5000), app, handler_class=WebSocketHandler)
+    port = int(os.environ.get('PORT', 21235))
+    server = pywsgi.WSGIServer(('0.0.0.0', port), app, handler_class=WebSocketHandler)
     server.serve_forever()
 
 
