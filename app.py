@@ -103,9 +103,14 @@ def echo_socket(ws):
         message = ws.receive()
         ws.send(message)
 
-def run():
-    port = int(os.environ.get('PORT', 21235))
+def run(*args, **kwargs):
+    print("Starting heroku-caffeine app...")
+    print("ARGS:", args)
+    print("kwARGS:", kwargs)
+    port = int(os.environ.get("PORT"))
+    print("Listening port:", port)
     server = pywsgi.WSGIServer(('0.0.0.0', port), app, handler_class=WebSocketHandler)
+    print("Starting serve...")
     server.serve_forever()
 
 
