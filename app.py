@@ -1,17 +1,12 @@
 from flask import Flask, request, render_template, Response, stream_with_context
 from flask_sockets import Sockets
+from gevent import pywsgi
+from geventwebsocket.handler import WebSocketHandler
 from bots.views import bot_index as bots_index, conversation_bot_index as cbot_index
 
 app = Flask(__name__)
 app.static_url_path = "/static"
 sockets = Sockets(app)
-
-
-@sockets.route('/echo')
-def echo_socket(ws):
-    while not ws.closed:
-        message = ws.receive()
-        ws.send(message)
 
 
 @app.route("/")
@@ -100,11 +95,17 @@ def schd_route():
     return Response("ok", mimetype="text/plain")
 
 
-def socketeer():
-    from gevent import pywsgi
-    from geventwebsocket.handler import WebSocketHandler
-    server = pywsgi.WSGIServer(('', 5000), app, handler_class=WebSocketHandler)
+@sockets.route("/echo")
+def echo_socket(ws):
+    while not ws.closed:
+        message = ws.receive()
+        ws.send(message)
+
+def run():
+    server = pywsgi.WSGIServer(('0.0.0.0', 5000), app, handler_class=WebSocketHandler)
     server.serve_forever()
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+if __name__ == "__main__":
+    app.debug = True
+    run()
