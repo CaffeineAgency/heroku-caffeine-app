@@ -103,6 +103,7 @@ def echo_socket(ws):
         message = ws.receive()
         ws.send(message)
 
+
 def run(*args, **kwargs):
     print("Starting heroku-caffeine app...")
     print("ARGS:", args)
