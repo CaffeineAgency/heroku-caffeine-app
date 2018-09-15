@@ -1,12 +1,13 @@
 import os
 
-from flask import Flask, request, render_template, Response, stream_with_context
+from flask import Flask, request, render_template, Response, stream_with_context, session, redirect, send_file
 from flask_sockets import Sockets
 from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
 from bots.views import bot_index as bots_index, conversation_bot_index as cbot_index
 
 app = Flask(__name__)
+app.secret_key = b'\xda\x9c\xd0\x9d\xcb\xac\xe9\x02@MQ\xbaFz\xad\xa2=\xb4Y\xaf\xd4k\xe9P'
 app.static_url_path = "/static"
 sockets = Sockets(app)
 
@@ -92,6 +93,34 @@ def coub_route(coub_id):
     return Response(resp, mimetype="application/javascript")
 
 
+@app.route("/vkmusic/")
+def vkmusic_route():
+    from vkmusic.views import render_response
+    return render_response(request, session)
+
+
+@app.route("/vkmusic/vkm_auth", methods=['GET', 'POST'])
+def vkmusic_auth_route():
+    from vkmusic.views import do_auth
+    return do_auth(request, session)
+
+
+@app.route("/proxyfy", methods=['GET', 'POST'])
+def proxyfy_route():
+    from extensions import getVal
+    l = getVal(request, "flink")
+    m = getVal(request, "mime")
+    if not (l and m):
+        return "n-o-n-e"
+    import requests
+    rs = requests.get(l)
+    import time
+    fn = "tmp/" + str(time.time()) + "." + l.split("?")[0].rsplit(".").pop()
+    with open(fn, "wb+") as f:
+        f.write(rs.content)
+    return send_file(fn, mimetype=m)
+
+
 @app.route("/schd/")
 def schd_route():
     return Response("ok", mimetype="text/plain")
@@ -106,7 +135,7 @@ def echo_socket(ws):
 
 def run(*args, **kwargs):
     print("Starting heroku-caffeine app...")
-    port = int(os.environ.get("PORT"))
+    port = int(os.environ.get("PORT", 80))
     print("Listening port:", port)
     server = pywsgi.WSGIServer(('0.0.0.0', port), app, handler_class=WebSocketHandler)
     print("Starting serve...")

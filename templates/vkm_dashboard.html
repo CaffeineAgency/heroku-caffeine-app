@@ -1,0 +1,37 @@
+{% extends "vkm_base.html" %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>VkMusic :: List</h1>
+    </div>
+</div>
+<div class="container">
+    <ul class="list-group">
+    {% for track in tracks %}
+        <li class="list-group-item" data-lnk="{{ track['url'] }}">
+            <a type="button" class="btn-floating btn-sm deep-purple white-text" onclick="play(this)"><i class="fa fa-play" aria-hidden="true"></i></a>
+            <a type="button" class="btn-floating btn-sm deep-purple white-text" onclick="sub_download('{{ track['url'] }}', '{{ track['artist'] }} - {{ track['title'] }}.mp3', 'audio/mpeg');"><i class="fa fa-download" aria-hidden="true"></i></a>
+            {{ track['artist'] }} - {{ track['title'] }}
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+<script>
+    var audio = new Audio();
+    audio.volume = 0.25;
+    var play = (caller) => {
+        audio.pause();
+        audio.src = caller.parentNode.dataset["lnk"];
+        audio.play();
+    }
+    var sub_download = (l, f, m) => {
+        var x=new XMLHttpRequest();
+        x.open("GET", "/proxyfy?mime=audio/mpeg&flink=" + l, true);
+        x.responseType = 'blob';
+        x.onload = (e) => {download(x.response, f, m);}
+        x.send();
+    }
+</script>
+{% endblock %}

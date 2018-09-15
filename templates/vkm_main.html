@@ -1,0 +1,34 @@
+{% extends "vkm_base.html" %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>VkMusic :: Auth</h1>
+    </div>
+</div>
+<div class="container">
+    {% if errored %}
+    <div class="alert alert-danger text-center" role="alert">
+        Неверная связка логин/пароль. Вы будете возвращены на страницу авторизации.
+    </div>
+    <meta http-equiv="refresh" content="1;URL=./" />
+    {% else %}
+    <div class="row m-2">
+        <div class="alert alert-info text-center col-6" role="alert">
+            Мы не храним ваши пароли. Нам нужен только access_token, который можно получить только пройдя авторизацию.
+        </div>
+        <div class="alert alert-warning text-center col-6" role="alert">
+            2F аутентификация временно не доступна.
+        </div>
+    </div>
+
+    <form class="text-center border border-light p-5" action="./vkm_auth" method="POST">
+        <input required type="text" name="login" class="form-control mb-4" placeholder="E-mail">
+        <input required type="password" name="pwd" class="form-control mb-4" placeholder="Password">
+
+        <button class="btn btn-info btn-block my-4" type="submit">Войти</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
