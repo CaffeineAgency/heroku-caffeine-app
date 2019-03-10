@@ -8,6 +8,9 @@
     </div>
 </div>
 <div class="container">
+    {% if usrhere %}
+    <a class="btn btn-warning btn-block" href="./vkm_logout">Logout</a>
+    {% endif %}
     {% if errored %}
     <div class="alert alert-danger text-center" role="alert">
         Неверная связка логин/пароль. Вы будете возвращены на страницу авторизации.

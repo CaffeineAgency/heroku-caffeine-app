@@ -1,7 +1,7 @@
 # coding=utf-8
 from flask import render_template, redirect
 from vk_api import VkApi
-from acollection.vk_api_pt.audio import VkAudio
+from vkmusic.audio import VkAudio
 
 from extensions import getPost
 
@@ -25,7 +25,11 @@ def render_response(request, session):
         else:
             vkaudio = VkAudio(vapi)
             tracks = vkaudio.get(0)
-            return render_template("vkm_dashboard.html", **{"tracks": tracks})
+            data = {
+                "usrhere": True,
+                "tracks": tracks
+            }
+            return render_template("vkm_dashboard.html", **data)
     return render_template("vkm_main.html")
 
 
@@ -50,3 +54,8 @@ def do_auth(request, session):
             session.modified = True
             return redirect("/vkmusic/")
     return render_template("vkm_main.html", **{"errored": True})
+
+
+def vkm_logout(request, session):
+    del session["usert"]
+    return redirect("/vkmusic/")

@@ -4,7 +4,7 @@ from flask import Flask, request, render_template, Response, stream_with_context
 from flask_sockets import Sockets
 from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
-from vkmusic.views import render_response
+from vkmusic.views import render_response, vkm_logout
 from vkmusic.views import do_auth
 from extensions import getVal
 import lxml.html
@@ -71,6 +71,11 @@ def vkmusic_route():
 @app.route("/vkmusic/vkm_auth", methods=['GET', 'POST'])
 def vkmusic_auth_route():
     return do_auth(request, session)
+
+
+@app.route("/vkmusic/vkm_logout", methods=['GET', 'POST'])
+def vkmusic_auth_route():
+    return vkm_logout(request, session)
 
 
 @app.route("/proxyfy", methods=['GET', 'POST'])
