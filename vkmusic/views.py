@@ -52,11 +52,11 @@ def do_auth(request, session):
         else:
             session["usert"] = (vapi.login, vapi.token)
             session.modified = True
-            return redirect("/vkmusic/")
+            return render_response(request, session)
     return render_template("vkm_main.html", **{"errored": True})
 
 
 def vkm_logout(request, session):
     session.pop("usert", None)
     session.modified = True
-    return redirect("/vkmusic/")
+    return render_response(request, session)
