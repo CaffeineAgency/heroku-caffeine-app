@@ -10,7 +10,7 @@ v = "5.80"
 
 
 def render_response(request, session):
-    if "usert" in session:
+    if "usert" in session and session["usert"]:
         log, tok = session["usert"]
         vapi = VkApi(login=log, token=tok)
         try:
@@ -57,5 +57,5 @@ def do_auth(request, session):
 
 
 def vkm_logout(request, session):
-    delattr(session, "usert")
+    session["usert"] = None
     return redirect("/vkmusic/")
