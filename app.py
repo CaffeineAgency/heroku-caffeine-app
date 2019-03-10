@@ -4,7 +4,13 @@ from flask import Flask, request, render_template, Response, stream_with_context
 from flask_sockets import Sockets
 from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
-from bots.views import bot_index as bots_index, conversation_bot_index as cbot_index
+from vkmusic.views import render_response
+from vkmusic.views import do_auth
+from extensions import getVal
+import lxml.html
+import requests
+import json
+import time
 
 app = Flask(__name__)
 app.secret_key = b'\xda\x9c\xd0\x9d\xcb\xac\xe9\x02@MQ\xbaFz\xad\xa2=\xb4Y\xaf\xd4k\xe9P'
@@ -17,44 +23,8 @@ def main_route():
     return render_template("index.html")
 
 
-@app.route("/acollection", methods=['GET'])
-def acollection_route():
-    from main_site.views import acollection
-    return acollection(request)
-
-
-@app.route("/api/evrl/", methods=['GET'])
-def evrlapi_route():
-    from main_site.collector_router import ApiRouter
-    router = ApiRouter("evrltolib", request)
-    resp, mime = router.execute()
-    return Response(response=resp, mimetype=mime)
-
-
-@app.route("/bot", methods=['GET', 'POST'])
-@app.route("/bot/", methods=['GET', 'POST'])
-def bot_route():
-    return Response(bots_index(request))
-
-
-@app.route("/conversations_bot", methods=['GET', 'POST'])
-def conversations_bot_route():
-    @stream_with_context
-    def resp():
-        yield "ok"
-        cbot_index(request)
-    return Response(resp())
-
-
-@app.route("/nozomigrabber/<tag>/<int:maxpage>")
-def test_route(tag, maxpage):
-    from acollection.nozomilib.api import NozomiApi
-    return Response(stream_with_context(NozomiApi().main(tag=tag, maxpage=maxpage)), mimetype="text/plain")
-
-
 @app.route("/coub/<coub_id>")
 def coub_route(coub_id):
-    import requests, lxml.html, json
     r = requests.get("https://coub.com/view/{}".format(coub_id))
     if r.ok:
         d = lxml.html.fromstring(r.text)
@@ -95,35 +65,25 @@ def coub_route(coub_id):
 
 @app.route("/vkmusic/")
 def vkmusic_route():
-    from vkmusic.views import render_response
     return render_response(request, session)
 
 
 @app.route("/vkmusic/vkm_auth", methods=['GET', 'POST'])
 def vkmusic_auth_route():
-    from vkmusic.views import do_auth
     return do_auth(request, session)
 
 
 @app.route("/proxyfy", methods=['GET', 'POST'])
 def proxyfy_route():
-    from extensions import getVal
     l = getVal(request, "flink")
     m = getVal(request, "mime")
     if not (l and m):
         return "n-o-n-e"
-    import requests
     rs = requests.get(l)
-    import time
     fn = "tmp/" + str(time.time()) + "." + l.split("?")[0].rsplit(".").pop()
     with open(fn, "wb+") as f:
         f.write(rs.content)
     return send_file(fn, mimetype=m)
-
-
-@app.route("/schd/")
-def schd_route():
-    return Response("ok", mimetype="text/plain")
 
 
 @sockets.route("/echo")

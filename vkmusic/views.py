@@ -13,10 +13,19 @@ def render_response(request, session):
     if "usert" in session:
         log, tok = session["usert"]
         vapi = VkApi(login=log, token=tok)
-        vapi.auth()
-        vkaudio = VkAudio(vapi)
-        tracks = vkaudio.get(0)
-        return render_template("vkm_dashboard.html", **{"tracks": tracks})
+        try:
+            vapi.auth()
+        except Exception as e:
+            print(e.args)
+            erdata = {
+                "errored": True,
+                "info": str(e.args)
+            }
+            return render_template("vkm_main.html", **erdata)
+        else:
+            vkaudio = VkAudio(vapi)
+            tracks = vkaudio.get(0)
+            return render_template("vkm_dashboard.html", **{"tracks": tracks})
     return render_template("vkm_main.html")
 
 
@@ -31,7 +40,11 @@ def do_auth(request, session):
             vapi.auth()
         except Exception as e:
             print(e.args)
-            return render_template("vkm_main.html", **{"errored": True})
+            erdata = {
+                "errored": True,
+                "info": str(e.args)
+            }
+            return render_template("vkm_main.html", **erdata)
         else:
             session["usert"] = (vapi.login, vapi.token)
             session.modified = True
