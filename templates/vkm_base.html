@@ -12,6 +12,9 @@
     <script type="text/javascript" src="http://danml.com/js/download2.js"></script>
 </head>
 <body>
+{% if usrhere %}
+<a class="btn btn-warning btn-block" href="./vkm_logout">Logout</a>
+{% endif %}
 
 {% block content %}{% endblock %}
 
