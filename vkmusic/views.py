@@ -57,5 +57,5 @@ def do_auth(request, session):
 
 
 def vkm_logout(request, session):
-    del session["usert"]
+    delattr(session, "usert")
     return redirect("/vkmusic/")
