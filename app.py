@@ -1,15 +1,16 @@
 import os
 
-from flask import Flask, request, render_template, Response, stream_with_context, session, redirect, send_file
+from flask import Flask, request, render_template, session, send_file
 from flask_sockets import Sockets
 from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
+
+import coub_api
+import vkmusic.test
 from vkmusic.views import render_response, vkm_logout
 from vkmusic.views import do_auth
 from extensions import getVal
-import lxml.html
 import requests
-import json
 import time
 
 app = Flask(__name__)
@@ -22,46 +23,8 @@ sockets = Sockets(app)
 def main_route():
     return render_template("index.html")
 
-
-@app.route("/coub/<coub_id>")
-def coub_route(coub_id):
-    r = requests.get("https://coub.com/view/{}".format(coub_id))
-    if r.ok:
-        d = lxml.html.fromstring(r.text)
-        _json = json.loads(d.cssselect("script[type=text\/json]")[0].text.strip())
-        _r = {
-            "status": "ok",
-            "title": _json["title"],
-            "info": {
-                "created": _json.get("created_at"),
-                "update": _json["updated_at"],
-                "published": _json["published_at"],
-                "views": _json["views_count"],
-                "thumb": _json["image_versions"]["template"].replace("%{version}", "big")
-            },
-            "music": {}
-        }
-
-        musicAuthor, musicTitle, download_link = [""]*3
-        try: musicAuthor = d.cssselect(".musicAuthor")[0].text.strip()
-        except: pass
-        try: musicTitle = d.cssselect(".musicTitle")[0].text.strip()
-        except: pass
-        try: download_link = _json["file_versions"]["html5"]["audio"]["high"]["url"]
-        except: pass
-
-        _r["music"]["musicAuthor"] = musicAuthor
-        _r["music"]["musicTitle"] = musicTitle
-        _r["music"]["download_link"] = download_link
-
-        resp = json.dumps(_r)
-    else:
-        resp = json.dumps({
-            "status": "error",
-            "msg": "This coub not exists or were hidden!"
-        })
-    return Response(resp, mimetype="application/javascript")
-
+vkmusic.test.make_route(app)
+coub_api.make_route(app)
 
 @app.route("/vkmusic/")
 def vkmusic_route():
@@ -85,7 +48,7 @@ def proxyfy_route():
     if not (l and m):
         return "n-o-n-e"
     rs = requests.get(l)
-    fn = "tmp/" + str(time.time()) + "." + l.split("?")[0].rsplit(".").pop()
+    fn = "tmp/" + str(time.time())
     with open(fn, "wb+") as f:
         f.write(rs.content)
     return send_file(fn, mimetype=m)
