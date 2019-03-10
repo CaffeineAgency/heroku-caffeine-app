@@ -74,7 +74,7 @@ def vkmusic_auth_route():
 
 
 @app.route("/vkmusic/vkm_logout", methods=['GET', 'POST'])
-def vkmusic_auth_route():
+def vkmusic_deauth_route():
     return vkm_logout(request, session)
 
 
