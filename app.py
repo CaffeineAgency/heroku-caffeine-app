@@ -23,8 +23,8 @@ sockets = Sockets(app)
 def main_route():
     return render_template("index.html")
 
-vkmusic.test.make_route(app)
-coub_api.make_route(app)
+app = vkmusic.test.make_route(app)
+app = coub_api.make_route(app)
 
 @app.route("/vkmusic/")
 def vkmusic_route():
