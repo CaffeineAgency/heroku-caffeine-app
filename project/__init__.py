@@ -40,7 +40,7 @@ def _route_auth_logout():
 def _route_music():
     is_user = "usert" in session
     try:
-        if is_user:
+        if not is_user:
             raise Exception("NO USER")
         login, token = session.get("usert")
         api = VkApi(login=login, token=token, app_id=app_id, api_version=v)
