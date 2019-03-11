@@ -15,7 +15,6 @@ tpl_vm_music = "vkm_music.html"
 def make_routes(app):
     app.add_url_rule("/login", "vkmr_auth_login", _route_auth_login,  methods=['GET', 'POST'])
     app.add_url_rule("/logout", "vkmr_auth_logout", _route_auth_logout,  methods=['GET', 'POST'])
-    app.add_url_rule("/vkmusic", "vkmr_main", _route_music,  methods=['GET', 'POST'])
 
 
 def _route_auth_login():
