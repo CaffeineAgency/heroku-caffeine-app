@@ -19,7 +19,7 @@ def make_routes(app):
 
 def _route_auth():
     is_user = "usert" in session
-    action = getVal(request, "act")
+    action = getGet(request, "act")
     if action is not None:
         if is_user and action.lower() == "logout":
             if is_user:
