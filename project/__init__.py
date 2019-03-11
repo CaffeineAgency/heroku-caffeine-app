@@ -28,7 +28,7 @@ def _route_auth_login():
         success, data = auth(login, pwd)
         if success:
             return redirect("/")
-    render_template(tpl_vm_auth, session=session, data=data)
+    return render_template(tpl_vm_auth, session=session, data=data)
 
 
 
