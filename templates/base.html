@@ -24,7 +24,16 @@
 					<div class="uk-navbar-right">
 						<div class="uk-navbar-item">
 							{% if session.usert %}
-							<a href="/logout" class="uk-button uk-button-primary"><span data-uk-icon="sign-in" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="sign-in"><polygon points="7 2 17 2 17 17 7 17 7 16 16 16 16 3 7 3"></polygon><polygon points="9.1 13.4 8.5 12.8 11.28 10 4 10 4 9 11.28 9 8.5 6.2 9.1 5.62 13 9.5"></polygon></svg></span>LOGOUT</a>
+							<ul class="uk-navbar-nav">
+								<li>
+									<a href="#" aria-expanded="false" class="">Hello, {{ session.udata.first_name }}!</a>
+									<div class="uk-navbar-dropdown">
+										<ul class="uk-nav uk-navbar-dropdown-nav">
+											<li><a href="/logout" class=""><span data-uk-icon="sign-out" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="sign-out"><polygon points="13.1 13.4 12.5 12.8 15.28 10 8 10 8 9 15.28 9 12.5 6.2 13.1 5.62 17 9.5"></polygon><polygon points="13 2 3 2 3 17 13 17 13 16 4 16 4 3 13 3"></polygon></svg></span>LOGOUT</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
 							{% else %}
 							<a href="/login" class="uk-button uk-button-secondary"><span data-uk-icon="sign-in" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="sign-in"><polygon points="7 2 17 2 17 17 7 17 7 16 16 16 16 3 7 3"></polygon><polygon points="9.1 13.4 8.5 12.8 11.28 10 4 10 4 9 11.28 9 8.5 6.2 9.1 5.62 13 9.5"></polygon></svg></span>LOGIN</a>
 							{% endif %}
