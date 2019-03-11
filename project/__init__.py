@@ -13,22 +13,27 @@ tpl_vm_music = "vkm_music.html"
 
 
 def make_routes(app):
-    app.add_url_rule("/auth", "vkmr_auth", _route_auth,  methods=['GET', 'POST'])
+    app.add_url_rule("/login", "vkmr_auth", _route_auth_login,  methods=['GET', 'POST'])
+    app.add_url_rule("/logout", "vkmr_auth", _route_auth_logout,  methods=['GET', 'POST'])
     app.add_url_rule("/vkmusic", "vkmr_main", _route_music,  methods=['GET', 'POST'])
 
 
-def _route_auth():
-    is_user = "usert" in session
-    action = getGet(request, "act")
-    print(session, action, is_user)
-    if action is not None:
-        if is_user and action.lower() == "logout":
-            if is_user:
-                deauth(session)
-        elif not is_user and action.lower() == "login":
-            success, data, *_ = auth(request, session)
-            if not success:
-                render_template(tpl_vm_auth, session=session, data=data)
+def _route_auth_login():
+    if "usert" in session:
+        return redirect("/")
+    login = getPost(request, "login")
+    pwd = getPost(request, "pwd")
+    data = {}
+    if login and pwd:
+        success, data = auth(login, pwd)
+        if success:
+            return redirect("/")
+    render_template(tpl_vm_auth, session=session, data=data)
+
+
+
+def _route_auth_logout():
+    deauth()
     return redirect("/")
 
 
@@ -49,17 +54,15 @@ def _route_music():
     return render_template(tpl_vm_music, session=session, data=data)
 
 
-def deauth(session):
+def deauth():
     session.pop("usert", None)
     session.modified = True
     return session
 
 
-def auth(request, session):
+def auth(login, pwd):
     data = {}
     success = True
-    login = getPost(request, "login")
-    pwd = getPost(request, "pwd")
     api = VkApi(login=login, password=pwd, app_id=app_id, api_version=v)
     try:
         api.auth()
@@ -72,4 +75,4 @@ def auth(request, session):
     else:
         session["usert"] = (api.login, api.token)
         session.modified = True
-    return success, data, request, session
+    return success, data

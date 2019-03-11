@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,8 +32,8 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+            <state relative-caret-position="1054">
+              <caret line="71" column="16" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
               <folding>
                 <element signature="e#15#82#0" expanded="true" />
               </folding>
@@ -617,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552278136693</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Rework #17">
+      <created>1552278418990</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1552278418990</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -678,7 +686,8 @@
     <MESSAGE value="Rework #14" />
     <MESSAGE value="Rework #15" />
     <MESSAGE value="Rework #16" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rework #16" />
+    <MESSAGE value="Rework #17" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rework #17" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -750,13 +759,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vkmusic/test.py" />
-    <entry file="file://D:/Program Files/Python/Python37/Lib/site-packages/Flask-1.0.2-py3.7.egg/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="809">
-          <caret line="1179" column="40" selection-start-line="1179" selection-start-column="40" selection-end-line="1179" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/extensions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -790,13 +792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="605">
           <caret line="291" column="8" selection-start-line="291" selection-start-column="8" selection-end-line="291" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python/Python37/Lib/site-packages/Flask-1.0.2-py3.7.egg/flask/globals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="59" column="15" lean-forward="true" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -862,13 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/vkm_auth.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -880,10 +868,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Program Files/Python/Python37/Lib/site-packages/Flask-1.0.2-py3.7.egg/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1322">
+          <caret line="1124" column="8" selection-start-line="1124" selection-start-column="8" selection-end-line="1124" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/Python/Python37/Lib/site-packages/Flask-1.0.2-py3.7.egg/flask/globals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/vkm_auth.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+        <state relative-caret-position="1054">
+          <caret line="71" column="16" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
           <folding>
             <element signature="e#15#82#0" expanded="true" />
           </folding>
