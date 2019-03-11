@@ -44,7 +44,7 @@ def _route_music():
             raise Exception("NO USER")
         login, token = session.get("usert")
         api = VkApi(login=login, token=token, app_id=app_id, api_version=v)
-        api.auth()
+        api.auth(token_only=True)
     except Exception as e:
         print(e.args, e)
         return redirect("/login")
