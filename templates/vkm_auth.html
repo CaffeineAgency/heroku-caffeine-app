@@ -23,7 +23,9 @@
 				<div class="uk-alert-danger" uk-alert>
 					<a class="uk-alert-close" uk-close></a>
 					<p>Неверная связка логин/пароль.</p>
+					{% if info %}
 					<p>{{ info }}</p>
+					{% endif %}
 				</div>
 				{% endif %}
 				<form action="" method="post">
