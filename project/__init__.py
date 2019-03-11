@@ -17,7 +17,7 @@ def make_routes(app):
     app.add_url_rule("/vkmusic", "vkmr_main", _route_music,  methods=['GET', 'POST'])
 
 
-def _route_auth(request, session):
+def _route_auth():
     is_user = "usert" in session
     action = getVal(request, "act")
     if action is not None:
@@ -31,7 +31,7 @@ def _route_auth(request, session):
     return redirect("/")
 
 
-def _route_music(request, session):
+def _route_music():
     is_user = "usert" in session
     try:
         if is_user:
