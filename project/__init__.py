@@ -45,8 +45,9 @@ def _route_music():
         login, token = session.get("usert")
         api = VkApi(login=login, token=token, app_id=app_id, api_version=v)
         api.auth()
-    except:
-        return redirect("/auth?act=login")
+    except Exception as e:
+        print(e.args, e)
+        return redirect("/login")
     music_api = VkAudio(api)
     data = {
         "tracks": music_api.get(0)
