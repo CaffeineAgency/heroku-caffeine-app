@@ -5,7 +5,7 @@ import requests
 from flask import Response
 
 
-def make_route(app):
+def make_routes(app):
     app.add_url_rule("/coub/<coub_id>", "coub_route", coub_route)
 
 

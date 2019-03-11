@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="uk-flex uk-flex-center uk-flex-middle uk-height-viewport uk-light uk-position-relative uk-position-z-index">
+	<div class="uk-width-medium uk-padding-small" uk-scrollspy="cls: uk-animation-fade">
+		<header class="uk-text-center">
+            <h1 class="uk-heading-primary">Login</h1>
+            <p class="uk-width-3-5 uk-margin-auto">Данные не будут сохранены и/или переданы третьим лицам. Access token хранится внутри сессии пользователя.</p>
+        </header>
+        {% if data.witherror %}
+        <div class="uk-alert-danger" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p>Неверная связка логин/пароль.</p>
+            <p>{{ info }}</p>
+        </div>
+        {% endif %}
+		<form action="" method="post">
+			<fieldset class="uk-fieldset">
+				<div class="uk-margin">
+					<div class="uk-inline uk-width-1-1">
+						<span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: user"></span>
+						<input class="uk-input uk-border-pill" required placeholder="Username" type="text" name="login">
+					</div>
+				</div>
+				<div class="uk-margin">
+					<div class="uk-inline uk-width-1-1">
+						<span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: lock"></span>
+						<input class="uk-input uk-border-pill" required placeholder="Password" type="password" name="pwd">
+					</div>
+				</div>
+
+				<div class="uk-margin">
+					<button type="submit" class="uk-button uk-button-primary uk-border-pill uk-width-1-1">LOG IN</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+{% endblock %}

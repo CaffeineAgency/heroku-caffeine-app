@@ -6,9 +6,7 @@ from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
 
 import coub_api
-import vkmusic.test
-from vkmusic.views import render_response, vkm_logout
-from vkmusic.views import do_auth
+import project
 from extensions import getVal
 import requests
 import time
@@ -23,23 +21,8 @@ sockets = Sockets(app)
 def main_route():
     return render_template("index.html")
 
-vkmusic.test.make_route(app)
-coub_api.make_route(app)
-
-@app.route("/vkmusic/")
-def vkmusic_route():
-    return render_response(request, session)
-
-
-@app.route("/vkmusic/vkm_auth", methods=['GET', 'POST'])
-def vkmusic_auth_route():
-    return do_auth(request, session)
-
-
-@app.route("/vkmusic/vkm_logout", methods=['GET', 'POST'])
-def vkmusic_deauth_route():
-    return vkm_logout(request, session)
-
+coub_api.make_routes(app)
+project.make_routes(app)
 
 @app.route("/proxyfy", methods=['GET', 'POST'])
 def proxyfy_route():
