@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/static/img/bg.jpg" afterDir="false" />
+    <list default="true" id="4940d9c2-009c-4bd6-905c-91a3219cece6" name="Default" comment="Rework #22 :: Image optimization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/vkm_auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vkm_auth.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +31,8 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+            <state relative-caret-position="425">
+              <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
               <folding>
                 <element signature="e#15#82#0" expanded="true" />
               </folding>
@@ -42,11 +40,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vkm_music.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/vkm_music.html">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+            <state relative-caret-position="262">
+              <caret line="19" column="69" lean-forward="true" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+              <folding>
+                <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +56,8 @@
       <file leaf-file-name="vkm_auth.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/vkm_auth.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="23" selection-end-line="56" selection-end-column="7" />
+            <state relative-caret-position="357">
+              <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -149,8 +151,8 @@
         <option value="$PROJECT_DIR$/templates/vkm_main.html" />
         <option value="$PROJECT_DIR$/runtime.txt" />
         <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/project/__init__.py" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/vkm_auth.html" />
       </list>
     </option>
@@ -183,7 +185,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -199,6 +201,16 @@
               <item name="heroku-caffeine-app" type="462c0819:PsiDirectoryNode" />
               <item name="acollection" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="heroku-caffeine-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="heroku-caffeine-app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="heroku-caffeine-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="heroku-caffeine-app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -213,17 +225,7 @@
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="heroku-caffeine-app" type="cbb8eebc:String" user="heroku-caffeine-app" />
-              <item name="project" type="cbb8eebc:String" user="project" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="heroku-caffeine-app" type="cbb8eebc:String" user="heroku-caffeine-app" />
               <item name="static" type="cbb8eebc:String" user="static" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="heroku-caffeine-app" type="cbb8eebc:String" user="heroku-caffeine-app" />
-              <item name="templates" type="cbb8eebc:String" user="templates" />
             </path>
           </expand>
           <select />
@@ -240,11 +242,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\static" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\static\img" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\vkmusic" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app" />
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\init\static" />
-      <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\init" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\minec\Documents\GitHub\heroku-caffeine-app\static" />
@@ -639,14 +641,49 @@
       <option name="project" value="LOCAL" />
       <updated>1552279843858</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Rework #20 :: Auth">
+      <created>1552280352120</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1552280352120</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Rework #20 :: Some web-related files">
+      <created>1552280451211</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1552280451211</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Rework #20 :: Some web-related files fix">
+      <created>1552280604889</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1552280604889</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Rework #21 :: Navbar layout">
+      <created>1552281693329</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1552281693329</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Rework #22 :: Image optimization">
+      <created>1552282168642</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1552282168642</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.17927383" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="4" weight="0.17927383" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50223213" side_tool="true" weight="0.32352942" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32467532" />
@@ -681,9 +718,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Explicit data moved to envvars&#10;Add try/catch construction, to catch all the errors and send them to my profile" />
-    <MESSAGE value="Checking for user-token-required features" />
-    <MESSAGE value="Working on bugs..." />
     <MESSAGE value="Rework" />
     <MESSAGE value="Rework #2" />
     <MESSAGE value="Working on bot features..." />
@@ -704,7 +738,12 @@
     <MESSAGE value="Rework #18" />
     <MESSAGE value="Rework #19" />
     <MESSAGE value="Rework #20" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rework #20" />
+    <MESSAGE value="Rework #20 :: Auth" />
+    <MESSAGE value="Rework #20 :: Some web-related files" />
+    <MESSAGE value="Rework #20 :: Some web-related files fix" />
+    <MESSAGE value="Rework #21 :: Navbar layout" />
+    <MESSAGE value="Rework #22 :: Image optimization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rework #22 :: Image optimization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -712,7 +751,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/acollection/deviantartlib/api.py" />
     <entry file="file://$PROJECT_DIR$/acollection/deviantartlib/models.py" />
     <entry file="file://$PROJECT_DIR$/acollection/reactorlib/api.py" />
     <entry file="file://$PROJECT_DIR$/acollection/evrltolib/api.py" />
@@ -880,28 +918,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding>
-            <element signature="e#15#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/img/bg.jpg">
+    <entry file="file://$PROJECT_DIR$/static/bg.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/vkm_music.html">
@@ -911,10 +928,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+          <folding>
+            <element signature="e#15#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/bg.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="19" column="69" lean-forward="true" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/vkm_auth.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="23" selection-end-line="56" selection-end-column="7" />
+        <state relative-caret-position="357">
+          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
         </state>
       </provider>
     </entry>

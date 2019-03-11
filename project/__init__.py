@@ -73,7 +73,7 @@ def auth(login, pwd):
         }
         success = False
     else:
-        session["udata"] = api.get_api().users_get()[0]
+        session["udata"] = api.get_api().users.get()[0]
         session["usert"] = (api.login, api.token)
         session.modified = True
     return success, data
