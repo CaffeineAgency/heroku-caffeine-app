@@ -6,7 +6,6 @@ from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
 
 import coub_api
-import project
 from extensions import getVal
 import requests
 import time
@@ -22,7 +21,6 @@ def main_route():
     return render_template("index.html")
 
 coub_api.make_routes(app)
-project.make_routes(app)
 
 @app.route("/proxyfy", methods=['GET', 'POST'])
 def proxyfy_route():
