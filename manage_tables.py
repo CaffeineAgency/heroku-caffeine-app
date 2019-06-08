@@ -5,9 +5,6 @@ DATABASE_URL = os.environ['DATABASE_URL']
 conn = None
 
 
-def connect():
-	conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
 def createTables():
 	commands = [
 	"""
@@ -23,7 +20,7 @@ def createTables():
 	"""
 	]
 	try:
-		conn = psycopg2.connect(**params)
+		conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 		cur = conn.cursor()
 		for command in commands:
 			cur.execute(command)
@@ -48,7 +45,7 @@ def populateTables():
 	"""
 	]
 	try:
-		conn = psycopg2.connect(**params)
+		conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 		cur = conn.cursor()
 		for command in commands:
 			cur.execute(command)
@@ -62,12 +59,10 @@ def populateTables():
 
 
 if __name__ == "__main__":
-	print("[1/3] Connecting to database...")
-	connect()
-	print("[2/3] Creating tables...")
+	print("[1/2] Creating tables...")
 	createTables()
 	connect()
-	print("[3/3] Populatinf database...")
+	print("[2/2] Populatinf database...")
 	populateTables()
 	print("Done")
 	
