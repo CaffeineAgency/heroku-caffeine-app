@@ -1,4 +1,5 @@
 import os
+import psycopg2
 
 from flask import Flask, request, render_template, session, send_file
 from flask_sockets import Sockets
@@ -10,10 +11,14 @@ from extensions import getVal
 import requests
 import time
 
+
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 app = Flask(__name__)
 app.secret_key = b'\xda\x9c\xd0\x9d\xcb\xac\xe9\x02@MQ\xbaFz\xad\xa2=\xb4Y\xaf\xd4k\xe9P'
 app.static_url_path = "/static"
 sockets = Sockets(app)
+
 
 
 @app.route("/")
