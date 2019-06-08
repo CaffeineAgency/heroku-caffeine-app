@@ -36,10 +36,10 @@ def populateTables():
 	"""
 	insert into Places (title, description, image_link, sentby, position, approved) 
 		values 
-			('Красная площадь', '', 'admin', POINT(56.0088264,92.8400713), false),
-			('Красная площадь', '', 'admin', POINT(56.0088264,92.8400713), true),
-			('Красная площадь', '', 'admin', POINT(56.0088264,92.8400713), true),
-			('Красная площадь', '', 'admin', POINT(56.0088264,92.8400713), false);
+			('Красная площадь', '', '', 'admin', POINT(56.0088264,92.8400713), false),
+			('Красная площадь', '', '', 'admin', POINT(56.0088264,92.8400713), true),
+			('Красная площадь', '', '', 'admin', POINT(56.0088264,92.8400713), true),
+			('Красная площадь', '', '', 'admin', POINT(56.0088264,92.8400713), false);
 	"""
 	]
 	try:
@@ -56,10 +56,40 @@ def populateTables():
 			conn.close()
 
 
+def testingSelection():
+	commands = [
+	"""
+	SELECT
+	  *
+	FROM 
+	  Places
+	WHERE
+	  position <@ circle '((56.0092305, 92.8393127), 300)' and approved;
+	"""
+	]
+	try:
+		conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+		cur = conn.cursor()
+		for command in commands:
+			cur.execute(command)
+			records = cur.fetchall()
+			for i, row in enumerate(records):
+				print(i, row)
+		cur.close()
+		conn.commit()
+	except (Exception, psycopg2.DatabaseError) as error:
+		print(error)
+	finally:
+		if conn is not None:
+			conn.close()
+
+
 if __name__ == "__main__":
-	print("[1/2] Creating tables...")
+	print("[1/3] Creating tables...")
 	createTables()
-	print("[2/2] Populatinf database...")
+	print("[2/3] Populatinf database...")
 	populateTables()
+	print("[3/3] Populatinf database...")
+	testingSelection()
 	print("Done")
 	
