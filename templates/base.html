@@ -14,30 +14,7 @@
 		</style>
 	</head>
 	<body>
-		<!--HEADER-->
-		<header class="uk-box-shadow-small" style="background-color: white">
-			<div class="uk-container uk-container-expand">
-				<nav class="uk-navbar" id="navbar" data-uk-navbar="">
-					<div class="uk-navbar-left">
-						<a class="uk-navbar-item uk-logo" href="#">VKB</a>
-					</div>
-					<div class="uk-navbar-right">
-						<div class="uk-navbar-item">
-						</div>
-					</div>
-				</nav>
-			</div>
-		</header>
-		<!--/HEADER-->
-
-		<section class="uk-section uk-section-muted">
-			<div class="uk-container uk-container-small">
-                {% block content %}{% endblock %}
-			</div>
-		</section>
-
-		<!--FOOTER-->
-		<footer class="uk-section-secondary">
+		<div class="uk-section-secondary">
 			<div class="uk-section uk-section-xsmall" style="background-color: rgba(0,0,0,0.15)">
 				<div class="uk-container">
 					<div class="uk-grid uk-child-width-1-2@s uk-text-center uk-text-left@s" data-uk-grid="">
@@ -49,9 +26,14 @@
 					</div>
 				</div>
 			</div>
-		</footer>
-		<!--/FOOTER-->
+		</div>
 
+		<section class="uk-section">
+			<div class="uk-container uk-container-small">
+                {% block content %}{% endblock %}
+			</div>
+		</section>
+		
 		<!-- JS FILES -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
