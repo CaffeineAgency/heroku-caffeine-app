@@ -2,8 +2,6 @@ import os
 import psycopg2
 
 DATABASE_URL = os.environ['DATABASE_URL']
-conn = None
-
 
 def createTables():
 	commands = [
@@ -61,7 +59,6 @@ def populateTables():
 if __name__ == "__main__":
 	print("[1/2] Creating tables...")
 	createTables()
-	connect()
 	print("[2/2] Populatinf database...")
 	populateTables()
 	print("Done")
