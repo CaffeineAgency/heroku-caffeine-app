@@ -23,7 +23,7 @@ def krout_list(x, y, r):
         }
     }
     resp.update(selection)
-    return Response(resp, mimetype="application/javascript")
+    return Response(json.dumps(resp), mimetype="application/javascript")
 
 def selectFromDB(x, y, r):
     global connection
