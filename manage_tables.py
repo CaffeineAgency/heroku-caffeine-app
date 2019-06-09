@@ -1,7 +1,8 @@
 import os
 import psycopg2
+import random
 
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.environ["DATABASE_URL"]
 
 def createTables():
 	commands = [
@@ -18,7 +19,7 @@ def createTables():
 	"""
 	]
 	try:
-		conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+		conn = psycopg2.connect(DATABASE_URL, sslmode="require")
 		cur = conn.cursor()
 		for command in commands:
 			cur.execute(command)
@@ -32,21 +33,19 @@ def createTables():
 
 
 def populateTables():
-	commands = [
+	commands = ["""DROP TABLE IF EXISTS Places"""] + [
 	"""
 	insert into Places (title, description, image_link, sentby, position, approved) 
-		values 
-			('Красная площадь', '', '', 'admin', POINT(56.0088264,92.8400713), false),
-			('Красная площадь', '', '', 'admin', POINT(56.0088264,92.8400713), true),
-			('Красная площадь', '', '', 'admin', POINT(56.0088264,92.8400713), true),
-			('Красная площадь', '', '', 'admin', POINT(56.0088264,92.8400713), false);
+		values ('{}', 'Test point', '', 'admin', POINT({},{}), {});
 	"""
-	]
+	]*1000
 	try:
 		conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 		cur = conn.cursor()
-		for command in commands:
-			cur.execute(command)
+		for i, command in enumerate(commands):
+			x = round(random.uniform(55.9596691, 56.0423812), 7)
+			y = round(random.uniform(92.666692, 93.2466611), 7)
+			cur.execute(command.format("Point #{}".format(i), x, y, "true"))
 		cur.close()
 		conn.commit()
 	except (Exception, psycopg2.DatabaseError) as error:
@@ -85,10 +84,12 @@ def testingSelection():
 
 
 if __name__ == "__main__":
+	dev = os.environ["envir"] == "dev"
 	print("[1/3] Creating tables...")
 	createTables()
 	print("[2/3] Populatinf database...")
-	populateTables()
+	if dev:
+		populateTables()
 	print("[3/3] Populatinf database...")
 	testingSelection()
 	print("Done")
