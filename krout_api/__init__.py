@@ -40,9 +40,7 @@ def selectFromDB(x, y, r):
     try:
         cur = connection.cursor()
         cur.execute(command)
-        records = cur.fetchall()
-        for i, row in enumerate(records):
-            print(i, row)
+        response["records"] = cur.fetchall()
         cur.close()
     except (Exception, connection.DatabaseError) as error:
         print(error)
