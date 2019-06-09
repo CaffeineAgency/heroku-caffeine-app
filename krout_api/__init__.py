@@ -1,14 +1,10 @@
 import json
 import time
-import lxml.html
-import requests
+import os
+import psycopg2
 from flask import Response
 
-connection = None
-
-def make_routes(app, conn):
-    global connection
-    connection = conn
+def make_routes(app,):
     app.add_url_rule("/krout_api/<x>,<y>,<r>", "krout_list", krout_list)
 
 
@@ -26,7 +22,8 @@ def krout_list(x, y, r):
     return Response(json.dumps(resp), mimetype="application/javascript")
 
 def selectFromDB(x, y, r):
-    global connection
+    DATABASE_URL = os.environ['DATABASE_URL']
+    connection = psycopg2.connect(DATABASE_URL, sslmode='require')
     records = []
     response = {
         "errored": False,
