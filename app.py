@@ -29,7 +29,6 @@ def main_route():
 
 coub_api.make_routes(app)
 krout_api.make_routes(app, conn)
-
 @app.route("/proxyfy", methods=['GET', 'POST'])
 def proxyfy_route():
     l = getVal(request, "flink")
