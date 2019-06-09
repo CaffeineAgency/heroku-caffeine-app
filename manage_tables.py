@@ -33,10 +33,10 @@ def createTables():
 
 
 def populateTables():
-	commands = ["""DROP TABLE IF EXISTS Places"""] + [
+	commands = [
 	"""
 	insert into Places (title, description, image_link, sentby, position, approved) 
-		values ('{}', 'Test point', '', 'admin', POINT({},{}), {});
+		values ('Point #{}', 'Test point', '', 'admin', POINT({},{}), {});
 	"""
 	]*1000
 	try:
@@ -45,7 +45,7 @@ def populateTables():
 		for i, command in enumerate(commands):
 			x = round(random.uniform(55.9596691, 56.0423812), 7)
 			y = round(random.uniform(92.666692, 93.2466611), 7)
-			cur.execute(command.format("Point #{}".format(i), x, y, "true"))
+			cur.execute(command.format(i, x, y, "true"))
 		cur.close()
 		conn.commit()
 	except (Exception, psycopg2.DatabaseError) as error:
@@ -87,10 +87,12 @@ if __name__ == "__main__":
 	dev = os.environ["envir"] == "dev"
 	print("[1/3] Creating tables...")
 	createTables()
-	print("[2/3] Populatinf database...")
 	if dev:
+		print("[2/3] Populating database...")
 		populateTables()
-	print("[3/3] Populatinf database...")
+	else:
+		print("[2/3] Skiping database populating...")
+	print("[3/3] Testing selection from database...")
 	testingSelection()
 	print("Done")
 	
