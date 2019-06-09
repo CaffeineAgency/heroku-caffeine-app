@@ -1,3 +1,4 @@
+
 # Created by https://www.gitignore.io/api/windows,pycharm,python
 # Edit at https://www.gitignore.io/?templates=windows,pycharm,python
 
@@ -11,11 +12,6 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/usage.statistics.xml
-.idea/dictionaries
-.idea/shelf
 
 # Generated files
 .idea/**/contentModel.xml
@@ -73,6 +69,9 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+
+# JetBrains templates
+**___jb_tmp___
 
 ### PyCharm Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
@@ -170,6 +169,13 @@ ipython_config.py
 # pyenv
 .python-version
 
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don’t work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
 # celery beat schedule file
 celerybeat-schedule
 
@@ -202,9 +208,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-### Python Patch ###
-.venv/
 
 ### Windows ###
 # Windows thumbnail cache files
