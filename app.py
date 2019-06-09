@@ -7,6 +7,7 @@ from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
 
 import coub_api
+import krout_api
 from extensions import getVal
 import requests
 import time
@@ -14,6 +15,7 @@ import time
 
 DATABASE_URL = os.environ['DATABASE_URL']
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
 app = Flask(__name__)
 app.secret_key = b'\xda\x9c\xd0\x9d\xcb\xac\xe9\x02@MQ\xbaFz\xad\xa2=\xb4Y\xaf\xd4k\xe9P'
 app.static_url_path = "/static"
@@ -26,6 +28,7 @@ def main_route():
     return render_template("index.html")
 
 coub_api.make_routes(app)
+krout_api.make_routes(app, conn)
 
 @app.route("/proxyfy", methods=['GET', 'POST'])
 def proxyfy_route():
