@@ -7,7 +7,7 @@ from flask import Response, request
 
 def make_routes(app,):
     app.add_url_rule("/krout_api/<x>,<y>,<r>", "krout_list", krout_list)
-    app.add_url_rule("/krout_api/route/add", "krout_add", krout_add)
+    app.add_url_rule("/krout_api/route/add", "krout_add", krout_add, methods=["POST"])
     app.add_url_rule("/krout_api/approve/<id>/<administrator_token>", "krout_approve", krout_approve)
 
 
