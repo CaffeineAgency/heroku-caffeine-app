@@ -96,7 +96,7 @@ def insertIntoDB(title, description, image_link, sender, x, y):
         Places (title, description, image_link, sentby, position, approved)
     VALUES
         values ('{}', '{}', '{}', '{}', POINT({},{}), {});
-    """.format(title, description, image_link, sender, x, y, "yes")
+    """.format(title, description, image_link, sender, x, y, "true")
     try:
         cur = connection.cursor()
         cur.execute(command)
