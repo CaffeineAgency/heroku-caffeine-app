@@ -28,7 +28,7 @@ def krout_list(x, y, r):
 def krout_add():
     x, y, sender, title, description, image_link = (request.form.get(t) for t in "x y sender title description image_link".split())
 
-    selection = insertIntoDB(title, description, image_link, sender, x, y, r)
+    selection = insertIntoDB(title, description, image_link, sender, x, y)
     resp = {
         "time": time.time(),
         "current_position": {
@@ -84,7 +84,7 @@ def selectFromDB(x, y, r):
         return response
 
 
-def insertIntoDB(title, description, image_link, sender, x, y, r):
+def insertIntoDB(title, description, image_link, sender, x, y):
     DATABASE_URL = os.environ['DATABASE_URL']
     connection = psycopg2.connect(DATABASE_URL, sslmode='require')
     response = {
