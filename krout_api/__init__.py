@@ -26,15 +26,14 @@ def krout_list(x, y, r):
 
 
 def krout_add():
-    x, y, r, sender, title, description, image_link = (request.form.get(t) for t in "x y r sender title description image_link".split())
+    x, y, sender, title, description, image_link = (request.form.get(t) for t in "x y sender title description image_link".split())
 
     selection = insertIntoDB(title, description, image_link, sender, x, y, r)
     resp = {
         "time": time.time(),
         "current_position": {
             "x": x,
-            "y": y,
-            "r": r
+            "y": y
         }
     }
     resp.update(selection)
