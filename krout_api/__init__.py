@@ -74,6 +74,7 @@ def selectFromDB(x, y, r):
         cur.execute(command)
         response["records"] = cur.fetchall()
         cur.close()
+        connection.commit()
     except (Exception, connection.DatabaseError) as error:
         print(error)
         response["errored"] = True
@@ -102,6 +103,7 @@ def insertIntoDB(title, description, image_link, sender, x, y):
         cur.execute(command)
         response["message"] = "ok"
         cur.close()
+        connection.commit()
     except (Exception, connection.DatabaseError) as error:
         print(error)
         response["errored"] = True
@@ -131,6 +133,7 @@ def approvePlace(id):
         cur.execute(command)
         response["message"] = "ok"
         cur.close()
+        connection.commit()
     except (Exception, connection.DatabaseError) as error:
         print(error)
         response["errored"] = True
